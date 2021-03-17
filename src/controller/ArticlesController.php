@@ -32,14 +32,11 @@ class ArticlesController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function loadFeatures(/* $_data */){
+    public function loadFeatures(){
         
-        /***************/
-        $_data = $_POST;
-        /***************/
 
         ob_start();
-        $idProdType = $_data['type'];
+        $idProdType = $_POST['type'];
         $allProdType = $this->prodTypeService->getAllTypeProd();
         $featuresByProductType = $this->featuresService->getAllFeaturesByProdType($idProdType);
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
@@ -49,12 +46,10 @@ class ArticlesController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function addNewArticle(/* $_data */) {
+    public function addNewArticle() {
 
-                /***************/
-                $_data = $_POST;
-                /***************/
-        $newArticleEntity = $this->articlesService->create($_data);
+
+        $newArticleEntity = $this->articlesService->create($_POST);
         $this->articlesService->recordNewArticle($newArticleEntity);
     }
 }
