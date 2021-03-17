@@ -19,7 +19,7 @@ const A_LINK = [
     'recup_mot_de_passe' => URL . 'FrontCustomer/recoveryPasswordFrontCustomer'
 ];
 
-// Lien de formaulaires
+// Lien de formulaires
 const FORM_LINK = [
     'addNewArticle' => URL . 'Articles/addNewArticle',
     'loadFeatures' => URL . 'Articles/loadFeatures',
