@@ -1,0 +1,18 @@
+@font-face {
+ font-family: "yorkwhiteletter";
+ src: url("/fonts/yorkwhiteletter-webfont.woff2") format("woff2"),
+        url("/fonts/yorkwhiteletter-webfont.woff") format("woff");
+}
+
+:root {
+    --blue: #3498db;
+    --blue2: #2980b9;
+    --green: #42b883;
+    --green2: #27ae60;
+    --red: #e74c3c;
+    --red2: #c0392b;
+    --raisin: #35495e;
+    --quicksand: 'Quicksand', sans-serif;
+    --bangers: 'bangers', sans-serif;
+    --york: 'yorkwhiteletter', sans-serif;
+}
