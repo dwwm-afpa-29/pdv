@@ -249,7 +249,13 @@ public function recoveryPasswordCustomer() {
         if($data->success) {
 
             if($_POST['mail'] === $_SESSION['mail']){
-                //to be continued
+
+                $passModif = $_POST['passwd'];
+                $confirm = $this->customerService->passwordModified($passModif);
+
+                if($confirm == true) {
+                    echo 'Votre mot de passe a bien été modifié';
+                }
             }
             else if(empty($_SESSION['mail'])){
 

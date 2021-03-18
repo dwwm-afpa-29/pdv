@@ -54,6 +54,12 @@ class CustomerService {
     }
 
 
+    //MODIFICATION DU MOT DE PASSE
+
+    public function passwordModified($passModif) {
+        $confirm = $this->customerDao->passwordModifiedDAO($passModif);
+        return $confirm;
+    }
 
     //---------------------reCaptcha---------------------
 

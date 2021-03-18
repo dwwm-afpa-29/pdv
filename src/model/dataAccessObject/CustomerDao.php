@@ -100,9 +100,19 @@ class CustomerDao extends BaseDao {
         }else{
             return $res;
         }
-
-        
     }
+    //--------------------------MODIFICATION DU MOT DE PASSE
+
+    public function passwordModifiedDAO($passModif) {
+        $passwdCrypt = password_hash($passModif, PASSWORD_BCRYPT);
+        $connex = $this->db->prepare("UPDATE `customer` set passwd = :passModif WHERE mail = :email");
+        $res = $connex->execute([
+        ':passModif' => $passwdCrypt,
+        ':email' => $_SESSION['mail']
+        ]);
+        return true;
+    }
+    
 }
 
 ?>

@@ -12,12 +12,12 @@
 
     <p>
         <label for = "passwd1"> Nouveau mot de passe</label>
-        <input type="email" name="passwd1">
+        <input type="password" name="passwd">
     </p>
 
     <p>
         <label for = "passwd2"> Confirmer votre mot de passe</label>
-        <input type="email" name="passwd2">
+        <input type="password" name="passwd2">
     </p>
 
     <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
