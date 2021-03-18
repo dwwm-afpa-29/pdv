@@ -30,17 +30,29 @@ class CustomerService {
         return $customer;
     }
 
-    public function recovery($customerMail) {
+    public function verifExistMail($customerMail) {
 
-        $customer = $this->customerDao->recoveryDAO($customerMail);
+        $customer = $this->customerDao->verifExistMailDAO($customerMail);
         return $customer;
     }
 
+
+    //RECUPERATION DU MOT DE PASSE
+
+    //----------Enregistre dans la BDD le mail et le Token
     public function recoveryTrue($customerMail, $codeRecovery) {
-        print_r($codeRecovery);
+        //print_r($codeRecovery);
         $customer = $this->customerDao->recoveryTrueDAO($customerMail, $codeRecovery);
         return $customer;
     }
+    //----------Vérifie la correspondance entre le mail entré et le token du lien
+    public function linkRecovery($token) {
+        $customer = $this->customerDao->linkRecoveryDAO($token);
+        //print_r($customer);
+
+        return $customer;
+    }
+
 
 
     //---------------------reCaptcha---------------------

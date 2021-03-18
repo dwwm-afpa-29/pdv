@@ -3,15 +3,21 @@
 
 <h2>Veuillez saisir un nouveau mot de passe</h2>
 
-<form action ="<?= FORM_LINK['recoveryPasswordBackCustomer']; ?>" method = 'POST'>
+<form action ="<?= FORM_LINK['recoveryPasswordCustomer']; ?>" method = 'POST'>
+
+    <p>
+        <label for = "mail"> Votre Email de connexion</label>
+        <input type="email" name="mail">
+    </p>
+
     <p>
         <label for = "passwd1"> Nouveau mot de passe</label>
-        <input type="text" name="passwd1">
+        <input type="email" name="passwd1">
     </p>
 
     <p>
         <label for = "passwd2"> Confirmer votre mot de passe</label>
-        <input type="text" name="passwd2">
+        <input type="email" name="passwd2">
     </p>
 
     <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
@@ -28,8 +34,6 @@
         grecaptcha.ready(function() {
             grecaptcha.execute('6Le0VXgaAAAAADWW3lXLqdAHq5A8Ugcq1s9yjCCh', {action: 'submit'}).then(function(token) {
                 document.getElementById("recaptchaResponse").value = token;
-                document.getElementById("recaptchaResponse2").value = token;
-                document.getElementById("recaptchaResponse3").value = token;
             });
         });
 </script>
