@@ -13,9 +13,13 @@ namespace app\src\lib;
 class Rooter {
     // ATTRIBUTS
     private $_get = [];
-    private $_default = ['Articles', 'newArticle', ''];
     private $_controller;
     private $_action;
+    private $_params;
+    private $_default = [
+        'controlleur' => 'ArticlesController',
+        'action' => 'newArticle',
+        'params' => ''];
 
     // CONSTRUCTEUR
     /**
@@ -30,13 +34,12 @@ class Rooter {
     // METHODES
     /**
      * Récupère les paramètres de l'url sous forme de tableau
-     * puis explose le paramètre 'p' si il existe, sinon on lui attribut des valeurs par défaut
+     * puis explose le paramètre 'p' si il existe ou qu'il ne renvoie pas une chaine vide , sinon on lui attribut des valeurs par défaut
      * @param array $get. Url sous forme de tableau
      * @return void
      */
     private function explodeUrl(array $get) : void {
-        if(isset($get['p'])) {
-
+        if(isset($get['p']) && $get['p'] != '') {
             // suppression du "trailing slash" eventuel (le / de fin de chaine)
             $cleanGet = ($get['p'][-1] === '/') ? substr($get['p'],0, -1) : $get['p'];
 
@@ -51,8 +54,9 @@ class Rooter {
      * @return void
      */
     private function defineController() : void {
-        $file = $this->_get[0] . 'Controller';
-        $this->_controller = (is_file(BACK_ROOT . '/controller/' . $file . '.php')) ? $file : 'ArticlesController';
+        // récupère le nom du controller puis on supprime l'élément du tableau
+        $file = array_shift($this->_get) . 'Controller';
+        $this->_controller = (is_file(BACK_ROOT . '/controller/' . $file . '.php')) ? $file : $this->_default['controlleur'];
     }
 
     /**
@@ -60,7 +64,23 @@ class Rooter {
      * @return void
      */
     private function defineAction() : void {
-        $this->_action = (isset($this->_get[1])) ? $this->_get[1] : 'newArticle';    
+        // récupère le nom de la méthode a executer puis on supprime l'élément du tableau
+        $this->_action = (isset($this->_get[0])) ? array_shift($this->_get) : $this->_default['action'];
+
+        // On vérifie que la méthode existe dans le controller, dans le cas contraire on renvoie les valeurs par défaut
+        if(!method_exists($this->_controller, $this->_action)) {
+            $this->_controller = $this->_default['controlleur'];
+            $this->_action = $this->_default['action'];
+        }
+    }
+
+    /**
+     * Défini les paramètres
+     * Les paramètres sont transmis sous forme de tableau
+     * @return void 
+     */
+    private function defineParams() : void {
+        $this->_params = (isset($this->_get[0])) ? $this->_get : $this->_default['params'];
     }
 
     /**
@@ -72,12 +92,12 @@ class Rooter {
         
         $controller = $this->_controller;
         $action = $this->_action;
-        $params = '';
+        $params = $this->_params;
         
         // Instancie mon controller
         $new  = new $controller;
 
-        // Appel de la méthode (action)
+        // Appel de la méthode (action) avec les paramètres éventuels
         $new->$action($params);
     }
 }

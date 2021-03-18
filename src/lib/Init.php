@@ -14,12 +14,12 @@ define('URL', $_SERVER['SCRIPT_NAME'] . '?p=');
 
 // Lien de balise A
 const A_LINK = [
-    'accueil' => URL . 'User',
+    'accueil' => URL . 'Articles/newArticle',
     'inscription_client' => URL . 'Customer/connexCustomer',
     'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer'
 ];
 
-// Lien de formulaires
+// Lien de formaulaires
 const FORM_LINK = [
     'addNewArticle' => URL . 'Articles/addNewArticle',
     'loadFeatures' => URL . 'Articles/loadFeatures',
