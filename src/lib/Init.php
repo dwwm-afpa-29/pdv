@@ -15,18 +15,19 @@ define('URL', $_SERVER['SCRIPT_NAME'] . '?p=');
 // Lien de balise A
 const A_LINK = [
     'accueil' => URL . 'Articles/newArticle',
-    'inscription_client' => URL . 'FrontCustomer/connexFrontCustomer',
-    'recup_mot_de_passe' => URL . 'FrontCustomer/recoveryPasswordFrontCustomer'
+    'inscription_client' => URL . 'Customer/connexCustomer',
+    'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer'
 ];
 
 // Lien de formaulaires
 const FORM_LINK = [
     'addNewArticle' => URL . 'Articles/addNewArticle',
     'loadFeatures' => URL . 'Articles/loadFeatures',
-    'recoveryBackCustomer' => URL . 'BackCustomer/recoveryBackCustomer',
-    'recoveryPasswordBackCustomer' => URL . 'BackCustomer/recoveryPasswordBackCustomer',
-    'signinBackCustomer' => URL . 'BackCustomer/signinBackCustomer',
-    'signupBackCustomer' => URL . 'BackCustomer/signupBackCustomer'
+    'recoveryCustomer' => URL . 'Customer/recoveryCustomer',
+    'recup_lien_mail' => URL . 'linkRecoveryPasswordCustomer',
+    'recoveryPasswordCustomer' => URL . 'Customer/recoveryPasswordCustomer',
+    'signinCustomer' => URL . 'Customer/signinCustomer',
+    'signupCustomer' => URL . 'Customer/signupCustomer'
 ];
 
 /**************** Inclusion de fichiers ***************************************/

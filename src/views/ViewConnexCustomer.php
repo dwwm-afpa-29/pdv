@@ -6,7 +6,7 @@
 
     <h2> INSCRIPTION </h2>
 
-    <form action="<?= FORM_LINK['signupBackCustomer']; ?>" method="POST">
+    <form action="<?= FORM_LINK['signupCustomer']; ?>" method="POST">
         <p>
             <label for="first_name">Prénom</label>
             <input type="text" name="first_name">
@@ -43,7 +43,7 @@
     <!--------------------SIGNIN-------------------->
 
     <h2> CONNEXION </h2>
-    <form action = "<?= FORM_LINK['signinBackCustomer']; ?>" method="POST">
+    <form action = "<?= FORM_LINK['signinCustomer']; ?>" method="POST">
     
         <p>
             <label for = "mail"> Votre Email</label>
@@ -64,7 +64,7 @@
 
     <h2> MOT DE PASSE OUBLIé </h2>
 
-    <form action = "<?= FORM_LINK['recoveryBackCustomer']; ?>" method="POST">
+    <form action = "<?= FORM_LINK['recoveryCustomer']; ?>" method="POST">
         <p>
             <label for = "mail"> Votre Email </label>
             <input type = "email" name="mail">

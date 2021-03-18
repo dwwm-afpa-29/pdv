@@ -5,8 +5,7 @@ class CustomerDao extends BaseDao {
     public function createCustomerFromFields ($fields): Customer {
         $customer = new Customer ();
         $passwdCrypt = password_hash($fields['passwd'], PASSWORD_BCRYPT);
-        $customer   -> setId($fields['id'])
-                    -> setFirstName($fields['first_name'])
+        $customer   -> setFirstName($fields['first_name'])
                     -> setLastName($fields['last_name'])
                     -> setMail($fields['mail'])
                     -> setPasswd($passwdCrypt)
@@ -24,8 +23,8 @@ class CustomerDao extends BaseDao {
 
     public function signupDAO (Customer $customer) {
 
-        $connex = $this->db->prepare("INSERT INTO customer(first_name, last_name, mail, passwd, address_street, address_zip_code, address_city, phone_number, date_of_birth) 
-        VALUES(:first_name, :last_name, :mail, :passwd, :address_street, :address_zip_code, :address_city, :phone_number, :date_of_birth)");
+        $connex = $this->db->prepare("INSERT INTO customer(id, first_name, last_name, mail, passwd, address_street, address_zip_code, address_city, phone_number, date_of_birth) 
+        VALUES(NULL, :first_name, :last_name, :mail, :passwd, :address_street, :address_zip_code, :address_city, :phone_number, :date_of_birth)");
         
         $res= $connex->execute([
             ':first_name' => $customer->getFirstName(),
@@ -53,9 +52,9 @@ class CustomerDao extends BaseDao {
 
 
 
-    //--------------------RECOVERY MOT DE PASSE ET SECURITE--------------------
+    //VERIFICATION DE L'EXISTENCE DU MAIL DANS LA BDD
 
-    public function recoveryDAO ($customerMail) {
+    public function verifExistMailDAO ($customerMail) {
         $connex = $this->db->prepare("SELECT * FROM `customer` WHERE mail = :customerMail");
         $result = $connex->execute([':customerMail' => $customerMail]);
         $result2 = $connex->fetch(\PDO::FETCH_ASSOC);
@@ -69,14 +68,51 @@ class CustomerDao extends BaseDao {
         }
     }
 
+    //--------------------RECOVERY MOT DE PASSE ET SECURITE--------------------
     public function recoveryTrueDAO($customerMail, $codeRecovery){
-        print_r($codeRecovery);
-        $connex = $this->db->prepare("INSERT INTO `customer_recovery` (mail, code_recovery) VALUES (:mail, :code_recovery)");
+
+        $actualTime = mktime();
+        $connex = $this->db->prepare("INSERT INTO `customer_recovery` (mail, code_recovery, date_time) VALUES (:mail, :code_recovery, :actualTime)");
         $res = $connex->execute([
             ':mail'=> $customerMail,
-            ':code_recovery'=> $codeRecovery
+            ':code_recovery'=> $codeRecovery,
+            ':actualTime' => $actualTime
         ]);
     }
+
+    //--------------------TRAITEMENT DU TOKEN ET DE LA DATE----------------------
+    public function linkRecoveryDAO($token) {
+
+        $connex= $this->db->prepare("SELECT * FROM `customer_recovery` WHERE code_recovery = :token");
+        $connex->execute([':token'=> $token]);
+        $res = $connex->fetch(\PDO::FETCH_ASSOC);
+        $_SESSION['mail'] = $res['mail'];
+        print_r($res);
+
+        //--------------traitement de la date-------------------------
+        $dateActual = mktime();
+        $dateRegister = $res['date_time'];
+
+        if(($dateActual - $dateRegister) > 1800){
+            $delete = $this->db->prepare("DELETE FROM `customer_recovery` WHERE mail = :email");
+            $delete->execute([':email' => $res['mail']]);
+            return null;
+        }else{
+            return $res;
+        }
+    }
+    //--------------------------MODIFICATION DU MOT DE PASSE
+
+    public function passwordModifiedDAO($passModif) {
+        $passwdCrypt = password_hash($passModif, PASSWORD_BCRYPT);
+        $connex = $this->db->prepare("UPDATE `customer` set passwd = :passModif WHERE mail = :email");
+        $res = $connex->execute([
+        ':passModif' => $passwdCrypt,
+        ':email' => $_SESSION['mail']
+        ]);
+        return true;
+    }
+    
 }
 
 ?>
