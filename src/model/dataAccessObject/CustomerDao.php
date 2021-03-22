@@ -71,9 +71,9 @@ class CustomerDao extends BaseDao {
     //--------------------RECOVERY MOT DE PASSE ET SECURITE--------------------
     public function recoveryTrueDAO($customerMail, $codeRecovery){
 
-        $actualTime = mktime();
+        $actualTime = time();
         $connex = $this->db->prepare("INSERT INTO `customer_recovery` (mail, code_recovery, date_time) VALUES (:mail, :code_recovery, :actualTime)");
-        $res = $connex->execute([
+        $connex->execute([
             ':mail'=> $customerMail,
             ':code_recovery'=> $codeRecovery,
             ':actualTime' => $actualTime
@@ -90,7 +90,7 @@ class CustomerDao extends BaseDao {
         print_r($res);
 
         //--------------traitement de la date-------------------------
-        $dateActual = mktime();
+        $dateActual = time();
         $dateRegister = $res['date_time'];
 
         if(($dateActual - $dateRegister) > 1800){

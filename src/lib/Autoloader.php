@@ -65,4 +65,9 @@ class Autoloader {
         // Le dernier élément du tableau correspond au nom de la classe
         return end($explode);
     }
+    public static function debug($array){
+        echo '<pre>';
+        print_r($array);
+        echo '</pre>';
+    }
 }
