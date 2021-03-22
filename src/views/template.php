@@ -37,7 +37,7 @@
             <!-- BOUTONS BANNIERE -->
             <div class="boutons-banniere">
                 
-                <a class="fill-button" href="#"><span class="fill-button-hover"><span class="fill-button-text">Connexion</span></span></a>
+                <a class="fill-button" href="<?= A_LINK['inscription_client']; ?>"><span class="fill-button-hover"><span class="fill-button-text">Connexion</span></span></a>
                 <a class="fill-button" href="#"><span class="fill-button-hover"><span class="fill-button-text"><i class="fas fa-shopping-cart"></i></span></span></a>
                 
             </div>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="bouton-mobile">
-            <a class="fill-button" href="#"><span class="fill-button-hover"><span
+            <a class="fill-button" href="<?= A_LINK['inscription_client']; ?>"><span class="fill-button-hover"><span
                         class="fill-button-text">Connexion</span></span></a>
         </div>
 
@@ -298,8 +298,6 @@
     <main>
     <div>
             <a href="<?= A_LINK['accueil'];?>">Accueil</a>
-            <a href="<?= A_LINK['inscription_client'];?>">Connexion client</a>
-            <a href="<?= A_LINK['recup_mot_de_passe'];?>">Recup mot de passe</a>
     </div>
         <?= $view ?? '<p>Aucun affichage possible</p>'; ?>
     </main>

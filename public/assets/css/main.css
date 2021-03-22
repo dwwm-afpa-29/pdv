@@ -385,12 +385,13 @@ nav {
                                         /* ----- MAIN ----- */
 
 main {
-    position: relative;
+    /*position: relative;*/
     
     grid-column: 1 / 13;
     grid-row: 3 / 4;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
