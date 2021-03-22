@@ -300,6 +300,7 @@
             <a href="<?= A_LINK['accueil'];?>">Accueil</a>
             <a href="<?= A_LINK['inscription_client'];?>">Connexion client</a>
             <a href="<?= A_LINK['recup_mot_de_passe'];?>">Recup mot de passe</a>
+            <a href="<?= A_LINK['nouveau_produit'];?>">Nouvel Article</a>
     </div>
         <?= $view ?? '<p>Aucun affichage possible</p>'; ?>
     </main>
