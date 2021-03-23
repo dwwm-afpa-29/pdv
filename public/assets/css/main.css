@@ -383,6 +383,7 @@ nav {
     box-shadow: 4px 4px 4px #ccc;
 
     border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
 }
 
 .recherche>button {
@@ -396,6 +397,7 @@ nav {
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     border-left: none;
+    border-radius: 0 5px 5px 0;
 }
 
                                         /* ----- MAIN ----- */
