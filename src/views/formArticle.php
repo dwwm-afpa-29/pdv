@@ -38,7 +38,9 @@ if (isset($featureTypes)) {
 
     foreach ($featureTypes as $featureType){
         echo '<label for="'.$featureType->getWording().'">'.$featureType->getWording().'</label>';
-        echo '<select name="'.$featureType->getWording().'">';
+        $multiple = ($featureType->getWording()== 'cepage')?"multiple":"";
+        $array = ($featureType->getWording()== 'cepage')?"[]":"";
+        echo '<select name="'.$featureType->getWording().$array.'" '.$multiple.'>';
         foreach ($featuresByProductType as $features_table){
             foreach ($features_table as $feature) {
                 if ($feature->getIdTypeFeatures()==$featureType->getId()){

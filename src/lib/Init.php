@@ -16,7 +16,8 @@ define('URL', $_SERVER['SCRIPT_NAME'] . '?p=');
 const A_LINK = [
     'accueil' => URL . 'Articles/newArticle',
     'inscription_client' => URL . 'Customer/connexCustomer',
-    'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer'
+    'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer',
+    'nouveau_produit' => URL . 'Articles/newArticle'
 ];
 
 // Lien de formaulaires
