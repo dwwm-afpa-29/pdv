@@ -12,16 +12,17 @@ class ArticlesDao extends BaseDao{
     public function createArticleFromField($_data) {
         $newArticle = new Articles();
         $newArticle->setName($_data['name'])
-                            ->setPrice($_data['price'])
-                            ->setPhoto($_data['photo'])
-                            ->setProdType($_data['type']);
+                    ->setDegre($_data['degre'])
+                    ->setPrice($_data['price'])
+                    ->setPhoto($_data['photo'])
+                    ->setProdType($_data['type']);
         return $newArticle;
     }
 
 
     public function recordArticle($_articleEntity){
         
-        $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `price`, `photo`, `id_type_products`) VALUES (NULL, :nameProd, :price , :photo, :id_type_products)");
+        $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products)");
 
         $stmtFeaturesVsArticles = $this->db->prepare("INSERT INTO `articles_vs_features` (`id`, `id_articles`) VALUES (:id, :id_articles)");
 
@@ -31,6 +32,7 @@ class ArticlesDao extends BaseDao{
             $stmtArticles->execute(
                 [
                     ':nameProd'=>$_articleEntity->getName(),
+                    ':degre'=>$_articleEntity->getDegre(),
                     ':price'=>$_articleEntity->getPrice(),
                     ':photo'=>$_articleEntity->getPhoto(),
                     ':id_type_products'=>$_articleEntity->getProdType(),

@@ -1,12 +1,11 @@
 <?php
-
 if (!isset($featureTypes)) {
     echo '<form action="' . FORM_LINK['loadFeatures'] . '" method="POST">';
     echo '<label for="type">Type de produit</label>';
     echo '<select name="type">';
     foreach ($allProdType as $type) {
         $selected = ($type->getId() == $idProdType)? "selected":"";
-       echo '<option value="'.$type->getId().'" '.$selected.'>'.$type->getWording().'</option>';
+       echo '<option value="'.$type->getId().';'.$type->getWording().'" '.$selected.'>'.$type->getWording().'</option>';
     }
     echo '</select>';
     echo '<input type="submit" value="ok">';
@@ -29,12 +28,16 @@ if (isset($featureTypes)) {
 
     echo '<label for="name">Nom de l\'article</label>';
     echo '<input type="text" name="name"></br>';
+    if ($wordingProdType != "épicerie" && $wordingProdType != "accessoires") {
+        echo '<label for="degre">degré</label>';
+        echo '<input type="number" name="degre" value = 0></br>';
+    } else {
+        echo '<input type="hidden" name="degre" value = 0>';
+    };
     echo '<label for="price">prix</label>';
     echo '<input type="number" name="price"></br>';
     echo '<label for="photo">photo</label>';
     echo '<input type="text" name="photo"></br>';
-
-
 
     foreach ($featureTypes as $featureType){
         echo '<label for="'.$featureType->getWording().'">'.$featureType->getWording().'</label>';

@@ -33,10 +33,10 @@ class ArticlesController{
     }
 
     public function loadFeatures(){
-        
-
         ob_start();
-        $idProdType = $_POST['type'];
+        $dataProdtype= explode(";",$_POST['type']);
+        $idProdType = $dataProdtype[0];
+        $wordingProdType = $dataProdtype[1];
         $allProdType = $this->prodTypeService->getAllTypeProd();
         $featuresByProductType = $this->featuresService->getAllFeaturesByProdType($idProdType);
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
