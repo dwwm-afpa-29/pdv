@@ -60,7 +60,7 @@ header {
     color: #fff;
 }
 
-.banniere>img {
+.banniere>a>img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -234,12 +234,12 @@ nav {
 
 .produits>a {
     text-decoration: none;
-    color: var(--green);
+    color: rgba(66, 184, 131, 0.7);
     font-size: 1.3rem;
 }
 
 .produits>a:hover {
-    font-weight: bold;
+    color: rgba(76, 194, 141, 1);
 }
 
 @-moz-document url-prefix() {
@@ -258,10 +258,11 @@ nav {
 
     display: none;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
 
     width: 250px;
+    height: 350px;
 
     transition-duration: 3s;
     background-color: #fff;
@@ -270,6 +271,21 @@ nav {
     box-shadow: 4px 4px 4px #000;
 
     border-radius: 5px;
+    overflow-y: scroll;
+    -webkit-scrollbar-color: var(--raisin);
+    -webkit-scrollbar-width: thin;
+    scrollbar-color: var(--raisin);
+    scrollbar-width: thin;
+}
+
+.produit::-webkit-scrollbar {
+    background-color: var(--green);
+    width: 5px;
+    border-radius: 0 5px 5px 0;
+}
+
+.produit::-webkit-scrollbar-thumb {
+    background: var(--raisin);
 }
 
                                         /* ----- PRODUIT TITRE ----- */
@@ -385,8 +401,6 @@ nav {
                                         /* ----- MAIN ----- */
 
 main {
-    /*position: relative;*/
-    
     grid-column: 1 / 13;
     grid-row: 3 / 4;
 
@@ -398,11 +412,11 @@ main {
     padding: 40px 20px;
 }
 
-.essai {
+/* .essai {
     width: 75%;
     height: 800px;
     border: 1px solid #ccc;
-}
+} */
 
                                         /* ----- FOOTER ----- */
 

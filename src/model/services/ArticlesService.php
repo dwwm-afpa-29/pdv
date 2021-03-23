@@ -16,8 +16,15 @@ class ArticlesService {
 
         foreach ($_data as $key => $element){
             if($key != 'name' && $key != 'price' && $key != 'photo' && $key != 'type') {
-                $newArticleFeature = $this->featuresDao->findFeaturesByID($element);
-                $newArticle->addFeatures($newArticleFeature);
+                if ($key == 'cepage') {
+                    foreach ($element as $arrayElmt){
+                        $newArticleFeature = $this->featuresDao->findFeaturesByID($arrayElmt);
+                        $newArticle->addFeatures($newArticleFeature);
+                    }
+                } else {
+                    $newArticleFeature = $this->featuresDao->findFeaturesByID($element);
+                    $newArticle->addFeatures($newArticleFeature);
+                }
             }
         }
         return $newArticle;
