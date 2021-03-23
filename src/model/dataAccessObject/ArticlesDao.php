@@ -25,7 +25,6 @@ class ArticlesDao extends BaseDao{
         $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products)");
 
         $stmtFeaturesVsArticles = $this->db->prepare("INSERT INTO `articles_vs_features` (`id`, `id_articles`) VALUES (:id, :id_articles)");
-
         try {
             $this->db->beginTransaction();
 
@@ -37,8 +36,9 @@ class ArticlesDao extends BaseDao{
                     ':photo'=>$_articleEntity->getPhoto(),
                     ':id_type_products'=>$_articleEntity->getProdType(),
                 ]);
-        
             $idNewArticle = $this->db->lastInsertId();
+            $features = $_articleEntity->getFeatures();
+            if ($features){
                 foreach($_articleEntity->getFeatures() as $feature){
                     
                     $stmtFeaturesVsArticles->execute(
@@ -47,6 +47,7 @@ class ArticlesDao extends BaseDao{
                             ':id_articles'=>$idNewArticle,
                         ]);
                 }
+            }
             $this->db->commit();
 
         } catch(PDOException $err) {

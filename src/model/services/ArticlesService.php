@@ -15,7 +15,7 @@ class ArticlesService {
         $newArticle = $this->articleDao->createArticleFromField($_data);
 
         foreach ($_data as $key => $element){
-            if($key != 'name' && $key != 'price' && $key != 'photo' && $key != 'type') {
+            if($key != 'name' && $key != 'price' && $key != 'photo' && $key != 'type' && $key != 'degre') {
                 if ($key == 'cepage') {
                     foreach ($element as $arrayElmt){
                         $newArticleFeature = $this->featuresDao->findFeaturesByID($arrayElmt);
