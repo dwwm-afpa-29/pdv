@@ -3,6 +3,7 @@
 class Articles {
     private $id;
     private $name;
+    private $degre;
     private $price;
     private $photo;
     private $prodType;
@@ -21,6 +22,14 @@ class Articles {
     }
     public function setName($_name) {
         $this->name = $_name;
+        return $this;
+    }
+
+    public function getDegre() {
+        return $this->degre;
+    }
+    public function setDegre($_degre) {
+        $this->degre = $_degre;
         return $this;
     }
 
