@@ -1,5 +1,6 @@
 <?php
 
+// Features rerésentent toutes les caractéristiques
 class Features {
     private $id;
     private $wording;

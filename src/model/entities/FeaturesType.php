@@ -1,5 +1,6 @@
 <?php
 
+// FeatureType  représente les categorie de caractéristiques (ex: couleur_vin; cépage; appellation...)
 class FeaturesType {
     private $id;
     private $wording;

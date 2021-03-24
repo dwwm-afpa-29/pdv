@@ -9,7 +9,11 @@ class FeaturesService{
         $this->FeaturesTypeDao = new FeaturesTypeDao;
     }
 
-    //récupération d'un tableau d'objet features en fonction du type de produits
+    /**
+     * récupération d'un tableau réunissant tous les objet features d'un type de produits donné
+     * @param ID du type de produit
+     * @return tableau d'objet features
+     */
     public function getAllFeaturesByProdType($idProdType){
         $featureTypes = $this->FeaturesTypeDao->findByProdType($idProdType);
         $featuresByProductType = [];
@@ -19,7 +23,11 @@ class FeaturesService{
         return $featuresByProductType;
     }
 
-    //récupération d'un tableau d'objet featuresType en fonction du type de produits
+    /**
+     * récupération d'un tableau réunissant tous les objets featuresType en fonction du type de produits
+     * @param ID du type de produit
+     * @return tableau d'objet FeaturesType
+     */
     public function getFeaturesTypesByProdType($IdtypeFeatures) {
         $featureTypes = $this->FeaturesTypeDao->findByProdType($IdtypeFeatures);
         return $featureTypes;
