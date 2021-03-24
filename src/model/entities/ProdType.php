@@ -1,5 +1,6 @@
 <?php
 
+// Prodtype = les grand types de produits: vin; biere; spiritueux ...
 class ProdType {
     private $id;
     private $wording;

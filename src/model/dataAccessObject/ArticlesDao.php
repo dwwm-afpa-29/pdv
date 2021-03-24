@@ -8,24 +8,18 @@ class ArticlesDao extends BaseDao{
             print_r($stmt->fetch(PDO::FETCH_ASSOC));
         }
     }
-
-    public function createArticleFromField($_data) {
-        $newArticle = new Articles();
-        $newArticle->setName($_data['name'])
-                    ->setDegre($_data['degre'])
-                    ->setPrice($_data['price'])
-                    ->setPhoto($_data['photo'])
-                    ->setProdType($_data['type']);
-        return $newArticle;
-    }
-
-
+/**
+ * Enregistre en base de donnée l'objet article rentré via le formulaire: envoie dans la table articles puis, envois successifs
+ * des caractéristique dans la table relationnelle articles_vs_features
+ * @return 
+ */
     public function recordArticle($_articleEntity){
-        
+        // Préparation des requêtes sql (à faire avant de début la transaction)
         $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products)");
 
         $stmtFeaturesVsArticles = $this->db->prepare("INSERT INTO `articles_vs_features` (`id`, `id_articles`) VALUES (:id, :id_articles)");
         try {
+            // Début de la transation
             $this->db->beginTransaction();
 
             $stmtArticles->execute(
@@ -38,6 +32,7 @@ class ArticlesDao extends BaseDao{
                 ]);
             $idNewArticle = $this->db->lastInsertId();
             $features = $_articleEntity->getFeatures();
+            // Si l'articles à des caractéristiques, elles seront envoyée une par une dans la table articles_vs_features
             if ($features){
                 foreach($_articleEntity->getFeatures() as $feature){
                     
@@ -48,9 +43,11 @@ class ArticlesDao extends BaseDao{
                         ]);
                 }
             }
+            // Commit: Si une des requêtes qui se trouve dans la transaction échou, le commit ne se fait pas.
             $this->db->commit();
-
+// En cas d'erreur sur l'une des requêtes effectuées dans le try, on lance les fonction suivantes
         } catch(PDOException $err) {
+            // rollback: les insertions déjà effectuées sont annulées 
             $this->db->rollback();
             print "ERROR! : ".$err->getMessage()."</br>";
         }
@@ -58,13 +55,7 @@ class ArticlesDao extends BaseDao{
     }
 
 }
-// VOIR les transactions en SQL pour modifier plusieurs tables à la fois et faire un commit seulement une fois que tout est fait.
 
-// site à voir
-
-//   https://www.php.net/manual/fr/pdo.lastinsertid.php
-//   https://www.php.net/manual/fr/pdo.begintransaction.php
-//   https://www.php.net/manual/fr/pdo.transactions.php
 
 
 ?>

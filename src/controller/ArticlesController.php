@@ -2,7 +2,6 @@
 
 class ArticlesController{
 
-    private $featuresTypeService;
     private $prodTypeService;
     private $featuresService;
     private $articlesService;
@@ -10,20 +9,23 @@ class ArticlesController{
     public function __construct(){
         
         $this->prodTypeService = new ProdTypeService();
-        $this->featuresTypeService = new FeaturesTypeService();
         $this->featuresService = new FeaturesService();
         $this->articlesService = new ArticlesService();
-
         $this->articlesDao = new ArticlesDao();
         
         
     }
-
+//temporaire: Pour afficher tous les aticles
     public function getAllArticles(){
         $this->articlesDao->findAll();
     }
 
-    public function newArticle(){
+
+/**
+ * Affichage un menu déroulant avec les grands types de produits: première étape du formulaire d'enregistrement d'un nouvel article
+ * @return void
+ */
+    public function newArticle(): void {
         $allProdType = $this->prodTypeService->getAllTypeProd();
 
         ob_start();
@@ -32,7 +34,12 @@ class ArticlesController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function loadFeatures(){
+/**
+ * Affiche les différents champs à remplir pour un nouvel article avec les caractéristiques (menu déroulants)
+ * correspondantes au type de produit sélectionné
+ * @return void
+ */
+    public function loadFeatures(): void{
         ob_start();
         $dataProdtype= explode(";",$_POST['type']);
         $idProdType = $dataProdtype[0];
@@ -46,12 +53,15 @@ class ArticlesController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function addNewArticle() {
+    /**
+     * création d'un objet article + enregistrement en base de donnée
+     * @return void
+     */
+    public function addNewArticle(): void {
         $newArticleEntity = $this->articlesService->create($_POST);
         $this->articlesService->recordNewArticle($newArticleEntity);
     }
 }
 
-// Commentaire test Git
 
 ?>
