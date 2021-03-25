@@ -32,6 +32,17 @@ class FeaturesService{
         $featureTypes = $this->FeaturesTypeDao->findByProdType($IdtypeFeatures);
         return $featureTypes;
     }
+
+    public function create($_data){
+        $newFeature = new Features();
+        $newFeature->setWording($_data['newFeature'])
+                    ->setIdTypeFeatures($_data['idFeatureType']);
+        return $newFeature;
+    }
+
+    public function recordNewFeature($newFeatureEntity){
+        $this->featuresDao->recordFeature($newFeatureEntity);
+    }
 }
 
     

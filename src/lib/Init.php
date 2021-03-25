@@ -14,16 +14,19 @@ define('URL', $_SERVER['SCRIPT_NAME'] . '?p=');
 
 // Lien de balise A
 const A_LINK = [
-    'accueil' => URL . 'Articles/newArticle',
+    'accueil' => URL . 'Accueil/index',
     'inscription_client' => URL . 'Customer/connexCustomer',
     'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer',
-    'nouveau_produit' => URL . 'Articles/newArticle'
+    'nouveau_produit' => URL . 'Articles/newArticle',
+    'nouvel_caract' => URL . 'Articles/newCaract'
 ];
 
 // Lien de formaulaires
 const FORM_LINK = [
     'addNewArticle' => URL . 'Articles/addNewArticle',
     'loadFeatures' => URL . 'Articles/loadFeatures',
+    'loadTypeFeatures' => URL . 'Articles/loadTypeFeatures',
+    'addNewFeature' => URL . 'Articles/addNewFeature',
     'recoveryCustomer' => URL . 'Customer/recoveryCustomer',
     'recup_lien_mail' => URL . 'linkRecoveryPasswordCustomer',
     'recoveryPasswordCustomer' => URL . 'Customer/recoveryPasswordCustomer',

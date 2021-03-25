@@ -24,7 +24,7 @@ class Features {
     }
 
     public function getIdTypeFeatures() {
-        return $this->IdTypeFeatures;
+        return $this->idTypeFeatures;
     }
 
     public function setIdTypeFeatures($_idTypeFeatures) {

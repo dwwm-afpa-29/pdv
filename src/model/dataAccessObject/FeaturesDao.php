@@ -23,6 +23,26 @@ class FeaturesDao extends BaseDao {
         $stmt = $this->db->query("SELECT id,wording,id_type_features as IdTypeFeatures FROM features WHERE id= ".$id );
         return $stmt->fetchObject(Features::class);
     }
+
+    public function recordFeature($newFeatureEntity) {
+        // Recherche de la caractéristique entrée dans le formulaire pour éviter les doublons dans la bdd.
+        // Dans la requête, tout est transformé en majuscule ( UPPER() ) pour éviter les problème casse.
+        $stmt = $this->db->prepare('SELECT * FROM features WHERE UPPER(wording) = UPPER("'.$newFeatureEntity->getWording().'")  AND id_type_features = '.$newFeatureEntity->getIdTypeFeatures());
+        $res = $stmt->execute();
+        $test = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($test){
+            print_r("la donné existe déjà");
+        } else {
+            $stmtFeature = $this->db->prepare("INSERT INTO features (features.id, features.wording , features.id_type_features) VALUES (NULL, :wording, :id_type_features)");
+            $stmtFeature->execute(
+                [
+                    ':wording' => $newFeatureEntity->getWording(),
+                    ':id_type_features' => $newFeatureEntity->getIdTypeFeatures(),
+                ]
+                );
+            print_r("la nouvelle caractéristique a bien été enregitrée");
+        }
+    }
 }
 
 ?>
