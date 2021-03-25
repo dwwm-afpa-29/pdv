@@ -26,7 +26,7 @@ if (!isset($featureTypes)) {
 
     foreach ($featureTypes as $featureType){
         echo '<label for="'.$featureType->getWording().'">'.$featureType->getWording().'</label>';
-        echo '<input type="checkbox" name="idFeatureType" value= "'.$featureType->getId().'">';
+        echo '<input type="radio" name="idFeatureType" value= "'.$featureType->getId().'">';
     }
     echo '<br> <input type="text" name="newFeature">';
     echo '<input type="submit">';
