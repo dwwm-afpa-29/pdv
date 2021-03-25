@@ -61,6 +61,38 @@ class ArticlesController{
         $newArticleEntity = $this->articlesService->create($_POST);
         $this->articlesService->recordNewArticle($newArticleEntity);
     }
+
+    public function newCaract(){
+        ob_start();
+        $allProdType = $this->prodTypeService->getAllTypeProd();
+
+        require_once BACK_ROOT  . '/views/formCaract.php';
+        $view = ob_get_clean();
+        require_once(BACK_ROOT . '/views/template.php');
+    }
+
+    public function loadTypeFeatures(){
+        ob_start();
+        $allProdType = $this->prodTypeService->getAllTypeProd();
+
+        $dataProdtype= explode(";",$_POST['type']);
+        $idProdType = $dataProdtype[0];
+        $wordingProdType = $dataProdtype[1];
+        $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
+
+        require_once BACK_ROOT  . '/views/formCaract.php';
+        $view = ob_get_clean();
+        require_once(BACK_ROOT . '/views/template.php');
+    }
+
+    public function addNewFeature() {
+        ob_start();
+        $featureEntity = $this->featuresService->create($_POST);
+        $this->featuresService->recordNewFeature($featureEntity);
+
+        $view = ob_get_clean();
+        require_once(BACK_ROOT . '/views/template.php');
+    }
 }
 
 
