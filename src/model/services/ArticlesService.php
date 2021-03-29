@@ -21,7 +21,6 @@ class ArticlesService {
             $newArticle->setName($_data['name'])
                         ->setDegre($_data['degre'])
                         ->setPrice($_data['price'])
-                        ->setPhoto($_data['photo'])
                         ->setProdType($_data['type']);
 
         // Ajout de toutes les caractéristiques (features) à l'objet nouvellement créé.
@@ -46,7 +45,7 @@ class ArticlesService {
      * @return void
      */
     public function recordNewArticle($newArticleEntity){
-        $this->articleDao->recordArticle($newArticleEntity);
+        $this->articleDao->recordArticle($newArticleEntity,$_FILES);
     }
 
 }
