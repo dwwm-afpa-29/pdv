@@ -17,6 +17,8 @@ class ArticlesDao extends BaseDao{
         // Préparation des requêtes sql (à faire avant de début la transaction)
         $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products)");
 
+        $stmtPhoto = $this->db->prepare("UPDATE articles SET articles.photo = :pictureName WHERE articles.id = :id");
+
         $stmtFeaturesVsArticles = $this->db->prepare("INSERT INTO `articles_vs_features` (`id`, `id_articles`) VALUES (:id, :id_articles)");
         try {
             // Début de la transation
@@ -43,6 +45,18 @@ class ArticlesDao extends BaseDao{
                         ]);
                 }
             }
+
+            // upload de la photo et changement de nom
+            $newPictureName = 'img_'.$idNewArticle.'.jpg';
+            $uploadfile = ROOT  . '/public/assets/image/photo_articles/'.$newPictureName;
+            move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
+
+            $stmtPhoto->execute(
+                [
+                    ':id'=>$idNewArticle,
+                    ':pictureName'=>$newPictureName,
+                ]);
+
             // Commit: Si une des requêtes qui se trouve dans la transaction échou, le commit ne se fait pas.
             $this->db->commit();
 // En cas d'erreur sur l'une des requêtes effectuées dans le try, on lance les fonction suivantes

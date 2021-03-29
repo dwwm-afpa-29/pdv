@@ -59,7 +59,8 @@ class ArticlesController{
      */
     public function addNewArticle(): void {
         $newArticleEntity = $this->articlesService->create($_POST);
-        $this->articlesService->recordNewArticle($newArticleEntity);
+
+        $this->articlesService->recordNewArticle($newArticleEntity,$_FILES);
     }
 
     public function newCaract(){

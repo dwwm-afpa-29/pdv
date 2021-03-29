@@ -9,12 +9,12 @@ if (!isset($featureTypes)) {
        echo '<option value="'.$type->getId().';'.$type->getWording().'" '.$selected.'>'.$type->getWording().'</option>';
     }
     echo '</select>';
-    echo '<input type="submit" value="ok">';
+    echo '<input type="submit" class="Button38" value="ok">';
     echo '</form>'; 
 
 } else {
 // Quand le type de produit est choisi, affichege de tout le formulaire avec les caractéristiques correspondants au type de produits
-        echo '<form action="' . FORM_LINK['addNewArticle'] . '" method="POST">';
+        echo '<form action="' . FORM_LINK['addNewArticle'] . '" method="POST" enctype="multipart/form-data">';
 
         echo '<label for="type">Type de produit</label>';
         echo '<select name="type">';
@@ -39,7 +39,7 @@ if (!isset($featureTypes)) {
         echo '<label for="price">prix</label>';
         echo '<input type="number" name="price"></br>';
         echo '<label for="photo">photo</label>';
-        echo '<input type="text" name="photo"></br>';
+        echo '<input type="file" name="photo"></br>';
         // Affichage des menus déroulants de chaques caractéristiques correspondants au type de produit sélectionné
         foreach ($featureTypes as $featureType){
             echo '<label for="'.$featureType->getWording().'">'.$featureType->getWording().'</label>';
@@ -55,7 +55,7 @@ if (!isset($featureTypes)) {
             }
             echo '</select><br>';
         }
-        echo '<input type="submit" value="Enregistrer">';
+        echo '<input type="submit" class="Button38" value="Enregistrer">';
         echo '</form>';
 }   
 
