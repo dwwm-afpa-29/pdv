@@ -158,11 +158,11 @@ class CustomerController {
 
                     if($customer == true) {
 
-                        //je crée un code avec la fonction 'random_int()' (voir doc php pour voir diff avec rand())
                         //J'enregistre ce code dans la bdd en le cryptant
-                        $codeRecovery = bin2hex(random_bytes(15));
-                        
-                        $this->customerService->recoveryTrue($email, $codeRecovery);
+                        $string = implode('', array_merge(range('A','Z'), range('a','z'), range('0','9')));
+                        $randomStart = random_int(10, 20);
+                        $randomEnd = random_int(30, 35);
+                        $codeRecovery = substr(str_shuffle($string), $randomStart, $randomEnd);
                         
 
                         //Je continue avec l'envoi de mail (sendmail.exe)
