@@ -32,7 +32,7 @@ class CustomerController {
 
         //----------on vérifie si c'est la méthode POST qui est utilisée
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
+            ob_start();
             $customerData = $_POST;
             //----------Gestion du recaptcha 
             $data = $this->customerService->reCaptchaVerify($customerData);
@@ -76,6 +76,10 @@ class CustomerController {
             http_response_code(405);
             echo 'Méthode non authorisée';
         }
+
+            require_once(BACK_ROOT . '/views/ViewConnexCustomer.php');
+            $view = ob_get_clean();
+            require_once(BACK_ROOT . '/views/template.php');
     }
 
     //CONNEXION DU CLIENT
@@ -84,6 +88,7 @@ class CustomerController {
      */
 
     public function signinCustomer() {
+        ob_start();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -129,6 +134,9 @@ class CustomerController {
             http_response_code(405);
         }
 
+        require_once(BACK_ROOT . '/views/ViewConnexCustomer.php');
+        $view = ob_get_clean();
+        require_once(BACK_ROOT . '/views/template.php');
     }
 
 
@@ -139,7 +147,7 @@ class CustomerController {
      */
 
     public function recoveryCustomer() {
-
+        ob_start();
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $customerData = $_POST;
@@ -209,6 +217,8 @@ class CustomerController {
 
                         //envoi du mail
                         mail($email, "Récupération de votre mot de passe sur pieddevigne.com", $message, $header);
+
+                        echo 'un mail vient de vous être envoyé';
                     }else{
                         echo 'L\'utilisateur n\'existe pas';
                     }
@@ -219,6 +229,9 @@ class CustomerController {
         }else{
             http_response_code(405);
         }
+        require_once(BACK_ROOT . '/views/accueil.php');
+        $view = ob_get_clean();
+        require_once(BACK_ROOT . '/views/template.php');
     }
 
 
@@ -226,6 +239,11 @@ class CustomerController {
 
 public function linkRecoveryPasswordCustomer(){
 
+    ob_start();
+    require_once(BACK_ROOT.'/views/ViewRecoveryPassword.php');
+    $view = ob_get_clean();
+    require_once(BACK_ROOT . '/views/template.php');
+    
     if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         $explode = explode('/', $_GET['p']);
@@ -235,12 +253,15 @@ public function linkRecoveryPasswordCustomer(){
     }else{
         http_response_code(405);
     }
-    require_once(BACK_ROOT.'/views/ViewRecoveryPassword.php');
+    
+    
 }
 
 //RECUPERATION DU MOT DE PASSE (INSERTION DANS BDD)
 
 public function recoveryPasswordCustomer() {
+    ob_start();
+
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $customerData = $_POST;
@@ -271,6 +292,10 @@ public function recoveryPasswordCustomer() {
     }else{
         http_response_code(405);
     }
+        require_once(BACK_ROOT . '/views/ViewConnexCustomer.php');
+        $view = ob_get_clean();
+        require_once(BACK_ROOT . '/views/template.php');
 }
+
 }
 ?>
