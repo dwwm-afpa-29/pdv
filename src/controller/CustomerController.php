@@ -164,7 +164,7 @@ class CustomerController {
                         $randomEnd = random_int(30, 35);
                         $codeRecovery = substr(str_shuffle($string), $randomStart, $randomEnd);
                         
-
+                        $this->customerService->recoveryTrue($email, $codeRecovery);
                         //Je continue avec l'envoi de mail (sendmail.exe)
                         //Je crée la variable $header pour l'encodage du mail
 
@@ -189,7 +189,7 @@ class CustomerController {
                                     
                                     <div align="center">Bonjour <b>'.$email.'</b>,</div>
                                     Vous avez demandé la réinitialisation de votre mot de passe. </b>
-                                    Veuillez suivre ce lien <a href="http://localhost/PDV/pdv/public/index.php?p=Customer/linkRecoveryPasswordCustomer/'.$codeRecovery.'"> Réinitialiser mon mot de passe </a> </b>
+                                    Veuillez suivre ce lien <a href="http://localhost/pdv/public/index.php?p=Customer/linkRecoveryPasswordCustomer/'.$codeRecovery.'"> Réinitialiser mon mot de passe </a> </b>
                                     Ce lien est valable pendant une durée de 30 minutes.
                                     
                                   </td>
