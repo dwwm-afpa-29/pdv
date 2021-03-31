@@ -53,10 +53,27 @@ if (!isset($featureTypes)) {
                     }
                 }
             }
-            echo '</select><br>';
+            echo '</select>';
+            echo '<button class="buttonAddCaract" id="'.$featureType->getId().'" type="button">Ajouter une caractéristique</button><br>';
+            echo '<div class= "afficher_'.$featureType->getId().'"></div>';
         }
         echo '<input type="submit" class="Button38" value="Enregistrer">';
         echo '</form>';
-}   
+}
 
 ?>
+
+<script>
+$('.buttonAddCaract').click(function() {
+    var idDiv = $(this).attr('id');
+    $.ajax({
+        url: '../src/controller/test.php',
+        type:'GET',
+        dataType: 'html',
+        success : function(code_html) {
+            $('.afficher_'+idDiv).html(code_html);
+        }
+    })
+})
+</script>
+

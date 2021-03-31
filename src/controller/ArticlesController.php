@@ -72,6 +72,11 @@ class ArticlesController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
+    public function newCaractInArticleForm(){
+        echo 'ta mère';
+        // require_once BACK_ROOT  . '/views/formCaract.php';
+    }
+
     public function loadTypeFeatures(){
         ob_start();
         $allProdType = $this->prodTypeService->getAllTypeProd();
