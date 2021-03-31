@@ -106,10 +106,14 @@ class CustomerDao extends BaseDao {
     public function passwordModifiedDAO($passModif) {
         $passwdCrypt = password_hash($passModif, PASSWORD_BCRYPT);
         $connex = $this->db->prepare("UPDATE `customer` set passwd = :passModif WHERE mail = :email");
-        $res = $connex->execute([
+        $connex->execute([
         ':passModif' => $passwdCrypt,
         ':email' => $_SESSION['mail']
         ]);
+
+        $delete = $this->db->prepare("DELETE FROM `customer_recovery` WHERE mail = :email");
+        $delete->execute([':email' => $_SESSION['mail']]);
+
         return true;
     }
     
