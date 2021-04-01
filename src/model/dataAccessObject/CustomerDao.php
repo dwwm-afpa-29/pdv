@@ -47,6 +47,8 @@ class CustomerDao extends BaseDao {
         $connex = $this->db->prepare("SELECT * FROM `customer` WHERE mail = :customerMail");
         $connex->execute([':customerMail' => $customerMail]);
 
+        //print_r($connex->fetch(\PDO::FETCH_ASSOC));
+
         return $connex->fetch(\PDO::FETCH_ASSOC);
     }
 
@@ -95,7 +97,6 @@ class CustomerDao extends BaseDao {
         $connex->execute([':token'=> $token]);
         $res = $connex->fetch(\PDO::FETCH_ASSOC);
         $_SESSION['mail'] = $res['mail'];
-        //print_r($res);
 
         //--------------traitement de la date-------------------------
         $dateActual = time();

@@ -6,7 +6,7 @@
 
     <h2> INSCRIPTION </h2>
 
-    <form action="<?= FORM_LINK['signupCustomer']; ?>" method="POST">
+    <form action="<?= FORM_LINK['signupCustomer']; ?>" method="POST" name = "inscription">
         <p>
             <label for="first_name">Prénom</label>
             <input type="text" name="first_name">
@@ -21,11 +21,11 @@
         </p>
         <p>
             <label for="passwd">Mot de passe</label>
-            <input type="text" name="passwd" id="passwd1">
+            <input type="text" name="passwd" id="passwd1" onkeyup="checkpass()">
         </p>
         <p>
             <label for = "passwd2"> Confirmer votre mot de passe</label>
-            <input type="password" name="passwd2" id="passwd2" onblur="checkpass()">
+            <input type="password" name="passwd2" id="passwd2" onkeyup="checkpass()">
             <div id ="passVerif"></div>
         </p>
         <p>
@@ -108,17 +108,23 @@
             /*-----Mot de passe identique-----*/
 
     function checkpass(){
-        var passwd1 = document.getElementById("passwd1").value;
-        var passwd2 = document.getElementById("passwd2").value;
-        var passVerif = document.getElementById("passVerif");
+        let passwd1 = document.getElementById("passwd1").value;
+        let passwd2 = document.getElementById("passwd2").value;
+        let passVerif = document.getElementById("passVerif");
+        let pass1 = document.forms['inscription'].elements['passwd1'];
+        let pass2 = document.forms['inscription'].elements['passwd2'];
 
         if (passwd1 == passwd2) {
             passVerif.innerHTML = "Les mots de passe sont identiques";
             submit.disabled = false;
+            pass1.style.border = "1px green solid";
+            pass2.style.border = "1px green solid";
         }
         else {
             passVerif.innerHTML = "Les mots de passe sont différents";
             submit.disabled = true;
+            pass1.style.border = "1px red solid";
+            pass2.style.border = "1px red solid";
         }
     }
   </script>

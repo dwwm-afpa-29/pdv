@@ -110,19 +110,17 @@ class CustomerController {
                         $customer = $this->customerService->signin($email);
                         $passwdCrypt = $customer['passwd'];
 
-                        //print_r($customer);
 
                     if ($customer['mail'] == $email) {
 
                         if(password_verify($_POST['passwd'], $passwdCrypt)) {
 
-                            foreach($customer as $customerSession){
-                                $_SESSION[] = $customerSession;
+                            foreach($customer as $key => $value){
+                                $_SESSION[$key] = $value;
                                 
                             }
-
                             print_r($_SESSION);
-
+                            //print_r($customerSession);
                             echo 'Connexion réussie !';
                         }else {
                             echo 'Le mot de passe est incorrect';
