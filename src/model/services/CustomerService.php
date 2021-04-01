@@ -11,15 +11,9 @@ class CustomerService {
 
     public function signup($customerData) {
         
-            //----------nettoyage des données
-            //$customerDataCleaned = array_map(htmlspecialchars($customerData));
-            //print_r($customerDataCleaned);
 
-            //----------Envoi des données vers DAOs
-
-            $customer = $this->customerDao->createCustomerFromFields($customerData);
-            //print_r($customerData);
-            $this->customerDao->signupDAO($customer);
+        $customer = $this->customerDao->createCustomerFromFields($customerData);
+        $this->customerDao->signupDAO($customer);
 
     }
 
@@ -41,14 +35,14 @@ class CustomerService {
 
     //----------Enregistre dans la BDD le mail et le Token
     public function recoveryTrue($customerMail, $codeRecovery) {
-        //print_r($codeRecovery);
+        
         $customer = $this->customerDao->recoveryTrueDAO($customerMail, $codeRecovery);
         return $customer;
     }
     //----------Vérifie la correspondance entre le mail entré et le token du lien
     public function linkRecovery($token) {
         $customer = $this->customerDao->linkRecoveryDAO($token);
-        //print_r($customer);
+
 
         return $customer;
     }
