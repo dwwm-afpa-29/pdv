@@ -11,32 +11,46 @@
             <label for="first_name">Prénom</label>
             <input type="text" name="first_name">
         </p>
+        <p>
             <label for="last_name">Nom</label>
             <input type="text" name="last_name">
+        </p>
         <p>
             <label for="mail">Email</label>
             <input type="email" name="mail">
         </p>
+        <p>
             <label for="passwd">Mot de passe</label>
-            <input type="text" name="passwd">
+            <input type="text" name="passwd" id="passwd1">
+        </p>
+        <p>
+            <label for = "passwd2"> Confirmer votre mot de passe</label>
+            <input type="password" name="passwd2" id="passwd2" onblur="checkpass()">
+            <div id ="passVerif"></div>
+        </p>
         <p>
             <label for="address_street">Numéro et nom de la voie</label>
             <input type="text" name="address_street">
         </p>
+        <p>
             <label for="address_zip_code">Code Postale</label>
             <input type="text" name="address_zip_code">
+        </p>
         <p>
             <label for="address_city">Ville</label>
             <input type="text" name="address_city">
         </p>
+        <p>
             <label for="phone_number">Numéro de téléphone</label>
             <input type="text" name="phone_number">
+        </p>
         <p>
             <label for="date_of_birth">Date de naissance</label>
             <input type="date" name="date_of_birth">
         </p>
+
             <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
-            <input type = "submit" value="Inscription">
+            <input type = "submit" value="Inscription" id = "submit" disabled>
 
     </form>
 
@@ -80,11 +94,31 @@
 
 
     <script>
-            grecaptcha.ready(function() {
-                grecaptcha.execute('6Le0VXgaAAAAADWW3lXLqdAHq5A8Ugcq1s9yjCCh', {action: 'submit'}).then(function(token) {
-                    document.getElementById("recaptchaResponse").value = token;
-                    document.getElementById("recaptchaResponse2").value = token;
-                    document.getElementById("recaptchaResponse3").value = token;
-                });
-            });
+
+            /*-----ReCaptcha-----*/
+            
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Le0VXgaAAAAADWW3lXLqdAHq5A8Ugcq1s9yjCCh', {action: 'submit'}).then(function(token) {
+            document.getElementById("recaptchaResponse").value = token;
+            document.getElementById("recaptchaResponse2").value = token;
+            document.getElementById("recaptchaResponse3").value = token;
+        });
+    });
+
+            /*-----Mot de passe identique-----*/
+
+    function checkpass(){
+        var passwd1 = document.getElementById("passwd1").value;
+        var passwd2 = document.getElementById("passwd2").value;
+        var passVerif = document.getElementById("passVerif");
+
+        if (passwd1 == passwd2) {
+            passVerif.innerHTML = "Les mots de passe sont identiques";
+            submit.disabled = false;
+        }
+        else {
+            passVerif.innerHTML = "Les mots de passe sont différents";
+            submit.disabled = true;
+        }
+    }
   </script>

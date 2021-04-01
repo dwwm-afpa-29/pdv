@@ -12,8 +12,8 @@ class CustomerService {
     public function signup($customerData) {
         
             //----------nettoyage des données
-            /*$customerDataCleaned = strip_tags($customerData);
-            print_r($customerDataCleaned);*/
+            //$customerDataCleaned = array_map(htmlspecialchars($customerData));
+            //print_r($customerDataCleaned);
 
             //----------Envoi des données vers DAOs
 

@@ -33,7 +33,12 @@ class CustomerController {
         //----------on vérifie si c'est la méthode POST qui est utilisée
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             ob_start();
+
+            //----------Nettoyage des données----------
+            $_POST= array_map('htmlspecialchars', $_POST);
             $customerData = $_POST;
+            //print_r($_POST);
+
             //----------Gestion du recaptcha 
             $data = $this->customerService->reCaptchaVerify($customerData);
 
@@ -59,10 +64,10 @@ class CustomerController {
 
                         //----------Envoi des données vers SERVICES
                         $this->customerService->signup($customerData);
-                        echo('envoi réussi');
+                        echo'envoi réussi';
 
                     }else{
-                        echo ('Cette adresse mail est déjà utilisée. Veuillez vous connecter');
+                        echo 'Cette adresse mail est déjà utilisée. Veuillez vous connecter';
                     }
 
                 }else{
@@ -105,14 +110,18 @@ class CustomerController {
                         $customer = $this->customerService->signin($email);
                         $passwdCrypt = $customer['passwd'];
 
+                        //print_r($customer);
+
                     if ($customer['mail'] == $email) {
 
                         if(password_verify($_POST['passwd'], $passwdCrypt)) {
-                            $_SESSION['mail'] = $email;
 
-                            echo '<pre>';
+                            foreach($customer as $customerSession){
+                                $_SESSION[] = $customerSession;
+                                
+                            }
+
                             print_r($_SESSION);
-                            echo '</pre>';
 
                             echo 'Connexion réussie !';
                         }else {
@@ -162,7 +171,6 @@ class CustomerController {
                     $email = $_POST['mail'];
                     $_SESSION['mail'] = $email;
                     $customer = $this->customerService->verifExistMail($email);
-                    //print_r($customer);
 
                     if($customer == true) {
 
@@ -257,7 +265,7 @@ public function linkRecoveryPasswordCustomer(){
     
 }
 
-//RECUPERATION DU MOT DE PASSE (INSERTION DANS BDD)
+//RECUPERATION DU MOT DE PASSE (MODIFICATION ET INSERTION DANS BDD)
 
 public function recoveryPasswordCustomer() {
     ob_start();

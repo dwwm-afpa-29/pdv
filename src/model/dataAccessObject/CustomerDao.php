@@ -45,7 +45,7 @@ class CustomerDao extends BaseDao {
 
     public function signinDAO ($customerMail) {
         $connex = $this->db->prepare("SELECT * FROM `customer` WHERE mail = :customerMail");
-        $result = $connex->execute([':customerMail' => $customerMail]);
+        $connex->execute([':customerMail' => $customerMail]);
 
         return $connex->fetch(\PDO::FETCH_ASSOC);
     }
@@ -56,7 +56,7 @@ class CustomerDao extends BaseDao {
 
     public function verifExistMailDAO ($customerMail) {
         $connex = $this->db->prepare("SELECT * FROM `customer` WHERE mail = :customerMail");
-        $result = $connex->execute([':customerMail' => $customerMail]);
+        $connex->execute([':customerMail' => $customerMail]);
         $result2 = $connex->fetch(\PDO::FETCH_ASSOC);
 
         if($result2 !== false) {  
@@ -72,11 +72,19 @@ class CustomerDao extends BaseDao {
     public function recoveryTrueDAO($customerMail, $codeRecovery){
 
         $actualTime = time();
-        $connex = $this->db->prepare("INSERT INTO `customer_recovery` (mail, code_recovery, date_time) VALUES (:mail, :code_recovery, :actualTime)");
+        $res= $this->db->prepare("SELECT id FROM `customer` WHERE mail=:customerMail");
+        $res->execute([':customerMail' => $customerMail]);
+        $res2 = $res->fetch(\PDO::FETCH_ASSOC);
+        $id = $res2['id'];
+
+
+        $connex = $this->db->prepare("INSERT INTO `customer_recovery` (mail, code_recovery, date_time, id_customer) VALUES (:mail, :code_recovery, :actualTime, :id_customer)");
+
         $connex->execute([
             ':mail'=> $customerMail,
             ':code_recovery'=> $codeRecovery,
-            ':actualTime' => $actualTime
+            ':actualTime' => $actualTime,
+            ':id_customer' => $id
         ]);
     }
 
@@ -87,7 +95,7 @@ class CustomerDao extends BaseDao {
         $connex->execute([':token'=> $token]);
         $res = $connex->fetch(\PDO::FETCH_ASSOC);
         $_SESSION['mail'] = $res['mail'];
-        print_r($res);
+        //print_r($res);
 
         //--------------traitement de la date-------------------------
         $dateActual = time();
