@@ -64,7 +64,14 @@ class CustomerController {
 
                         //----------Envoi des données vers SERVICES
                         $this->customerService->signup($customerData);
-                        echo'envoi réussi';
+
+                        foreach($customerData as $key => $value){
+                            $_SESSION[$key] = $value;
+                            
+                        }
+                        
+                        print_r($_SESSION);
+                        echo'enregistrement réussi';
 
                     }else{
                         echo 'Cette adresse mail est déjà utilisée. Veuillez vous connecter';
