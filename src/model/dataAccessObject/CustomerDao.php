@@ -23,8 +23,8 @@ class CustomerDao extends BaseDao {
 
     public function signupDAO (Customer $customer) {
 
-        $connex = $this->db->prepare("INSERT INTO customer(id, first_name, last_name, mail, passwd, address_street, address_zip_code, address_city, phone_number, date_of_birth) 
-        VALUES(NULL, :first_name, :last_name, :mail, :passwd, :address_street, :address_zip_code, :address_city, :phone_number, :date_of_birth)");
+        $connex = $this->db->prepare("INSERT INTO customer(id, first_name, last_name, mail, passwd, address_street, address_zip_code, address_city, phone_number, date_of_birth, role_user) 
+        VALUES(NULL, :first_name, :last_name, :mail, :passwd, :address_street, :address_zip_code, :address_city, :phone_number, :date_of_birth, NULL)");
         
         $res= $connex->execute([
             ':first_name' => $customer->getFirstName(),
@@ -35,7 +35,7 @@ class CustomerDao extends BaseDao {
             ':address_zip_code' => $customer->getAddressZipCode(),
             ':address_city' => $customer->getAddressCity(),
             ':phone_number' => $customer->getPhoneNumber(),
-            ':date_of_birth' => $customer->getDateOfBirth()->format('Y-m-d')
+            ':date_of_birth' => $customer->getDateOfBirth()->format('Y-m-d'),
         ]);
     }
 
@@ -114,6 +114,8 @@ class CustomerDao extends BaseDao {
 
     public function passwordModifiedDAO($passModif) {
         $passwdCrypt = password_hash($passModif, PASSWORD_BCRYPT);
+        //print_r($passModif);
+        //print_r($passwdCrypt);
         $connex = $this->db->prepare("UPDATE `customer` set passwd = :passModif WHERE mail = :email");
         $connex->execute([
         ':passModif' => $passwdCrypt,

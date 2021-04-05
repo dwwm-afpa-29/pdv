@@ -69,8 +69,9 @@ class CustomerController {
                             $_SESSION[$key] = $value;
                             
                         }
-                        
-                        print_r($_SESSION);
+                        $_SESSION['passwd'] = null;
+
+                        //print_r($_SESSION);
                         echo'enregistrement réussi';
 
                     }else{
@@ -106,6 +107,7 @@ class CustomerController {
 
             $customerData = $_POST;
             $data = $this->customerService->reCaptchaVerify($customerData);
+            //print_r($_POST);
 
             if($data->success) {
 
@@ -116,17 +118,22 @@ class CustomerController {
                         $email = $_POST['mail'];
                         $customer = $this->customerService->signin($email);
                         $passwdCrypt = $customer['passwd'];
-
+                        print_r($customer['passwd']);
+                        print_r($passwdCrypt);
 
                     if ($customer['mail'] == $email) {
 
+                        var_dump(password_verify($_POST['passwd'], $passwdCrypt));
+
                         if(password_verify($_POST['passwd'], $passwdCrypt)) {
+                        
 
                             foreach($customer as $key => $value){
-                                $_SESSION[$key] = $value;
-                                
+                                $_SESSION[$key] = $value;    
                             }
-                            print_r($_SESSION);
+
+                            
+                            //print_r($_SESSION['passwd']);
                             //print_r($customerSession);
                             echo 'Connexion réussie !';
                         }else {

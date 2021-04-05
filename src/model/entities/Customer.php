@@ -12,6 +12,7 @@ class Customer {
     private $addressCity;
     private $phoneNumber;
     private $dateOfBirth;
+    private $roleUser;
 
     public function getId() {
         return $this->id;
@@ -102,6 +103,16 @@ class Customer {
         $this->dateOfBirth = $dateOfBirth;
         return $this;
     }
+
+    public function getRoleUser() {
+        return $this->roleUser;
+    }
+
+    public function setRoleUser($roleUser) : Customer {
+        $this->roleUser = $roleUser;
+        return $this;
+    }
+    
 }
 
 ?>
