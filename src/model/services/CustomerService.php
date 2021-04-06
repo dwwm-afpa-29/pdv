@@ -94,5 +94,52 @@ class CustomerService {
 
         
     }
+
+    /**
+     * Vérification et nettoyage des données du formulaire
+     * avant envoie en bdd pour modification des données utilisateur
+     * @params array $fields. Données du formulaire
+     * @return bool
+     */
+    public function checkBeforeUpdate(array $fields) : bool {
+       // Supprime les caractères html
+       $cleanData = [
+           'lastname' => htmlspecialchars($fields['last_name']),
+           'firstname' => htmlspecialchars($fields['first_name']),
+           'mail' => htmlspecialchars($fields['mail']),
+           'street' => htmlspecialchars($fields['address_street']),
+           'zipCode' => htmlspecialchars($fields['address_zip_code']),
+           'city' => htmlspecialchars($fields['address_city']),
+           'number' => htmlspecialchars($fields['phone_number']),
+           'birth' => htmlspecialchars($fields['date_of_birth'])
+       ];
+
+       $checked = true;
+       // Si une des donnée est vide on renvoie false
+       foreach($cleanData as $data) {
+           if($data == '') {
+            $checked = false;
+           }
+       }
+
+       // Mise à jour dans la bdd si pas d'erreur en amont
+       if($checked) {
+           // Si la mise à jour se passe bien on modifie les infos de session
+            if($this->customerDao->updateCustomer($cleanData)) {
+                $_SESSION['firstname'] = $cleanData['firstname'];
+                $_SESSION['lastname'] = $cleanData['lastname'];
+                $_SESSION['mail'] = $cleanData['mail'];
+                $_SESSION['street'] = $cleanData['street'];
+                $_SESSION['zipCode'] = $cleanData['zipCode'];
+                $_SESSION['city'] = $cleanData['city'];
+                $_SESSION['phone'] = $cleanData['number'];
+                $_SESSION['birth'] = $cleanData['birth'];
+            } else {
+                $checked = false;
+            }
+       }
+
+       return $checked;
+    }
 }
 ?>

@@ -127,6 +127,43 @@ class CustomerDao extends BaseDao {
 
         return true;
     }
+
+    //--------------------------MISE A JOUR DES DONNEES CLIENT
+    /**
+     * Mise à jour des données client dans la bdd
+     * @params array $datas. Nouvelles données
+     * @return bool
+     */
+    public function updateCustomer(array $datas) {
+        $sql = "UPDATE customer
+                SET first_name = :first_name,
+                    last_name = :last_name,
+                    mail = :mail,
+                    address_street = :address_street,
+                    address_zip_code = :address_zip_code,
+                    address_city = :address_city,
+                    phone_number = :phone_number,
+                    date_of_birth = :date_of_birth
+                WHERE id = :id";
+
+        try {
+            $query = $this->db->prepare($sql);
+            $query->bindValue(':first_name', $datas['firstname'], PDO::PARAM_STR);
+            $query->bindValue(':last_name', $datas['lastname'], PDO::PARAM_STR);
+            $query->bindValue(':mail', $datas['mail'], PDO::PARAM_STR);
+            $query->bindValue(':address_street', $datas['street'], PDO::PARAM_STR);
+            $query->bindValue(':address_zip_code', $datas['zipCode'], PDO::PARAM_STR);
+            $query->bindValue(':address_city', $datas['city'], PDO::PARAM_STR);
+            $query->bindValue(':phone_number', $datas['number'], PDO::PARAM_STR);
+            $query->bindValue(':date_of_birth', $datas['birth'], PDO::PARAM_STR);
+            $query->bindValue(':id', $_SESSION['id'], PDO::PARAM_INT);
+            $query->execute();
+
+            return true;
+        } catch(PDOException $ex) {
+            return false;
+        }
+    }
     
 }
 

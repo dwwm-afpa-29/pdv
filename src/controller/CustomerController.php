@@ -21,6 +21,38 @@ class CustomerController {
 
     }
 
+    /**
+     * Génére l'affichage de la page d'accueil client après connexion
+     * @return void
+     */
+    public function homeCustomer() : void {
+        ob_start();
+        require_once(BACK_ROOT . '/views/ViewHomeCustomer.php');
+        $view = ob_get_clean();
+
+        require_once(BACK_ROOT . '/views/template.php');
+    }
+
+    /**
+     * Génére l'affichage du formulaire de modification de données du client.
+     * @params string $state. Défini si il faut afficher la div de message d'erreur ou de succes du 
+     * traitement du formulaire
+     * @return void
+     */
+    public function profileCustomer(string $state = null) : void {
+        $showMessage = $state;
+        
+        if(isset($_POST['modifier'])) {
+            $this->updateCustomerProfile($_POST);
+        } else {
+            ob_start();
+            require_once(BACK_ROOT . '/views/ViewProfileCustomer.php');
+            $view = ob_get_clean();
+    
+            require_once(BACK_ROOT . '/views/template.php');
+        }
+
+    }
 
     //INSCRIPTION DU CLIENT
     /**Vérification de la méthode POST
@@ -126,16 +158,36 @@ class CustomerController {
                         var_dump(password_verify($_POST['passwd'], $passwdCrypt));
 
                         if(password_verify($_POST['passwd'], $passwdCrypt)) {
+<<<<<<< HEAD
                         
 
                             foreach($customer as $key => $value){
                                 $_SESSION[$key] = $value;    
                             }
+=======
+
+                            $_SESSION['id'] = $customer['id'];
+                            $_SESSION['firstname'] = $customer['first_name'];
+                            $_SESSION['lastname'] = $customer['last_name'];
+                            $_SESSION['mail'] = $email;
+                            $_SESSION['street'] = $customer['address_street'];
+                            $_SESSION['zipCode'] = $customer['address_zip_code'];
+                            $_SESSION['city'] = $customer['address_city'];
+                            $_SESSION['phone'] = $customer['phone_number'];
+                            $_SESSION['birth'] = $customer['date_of_birth'];
+
+                            header('location:' . A_LINK['customer_home']);
+                            /*
+                            echo '<pre>';
+                            print_r($_SESSION);
+                            echo '</pre>';
+>>>>>>> Romu
 
                             
                             //print_r($_SESSION['passwd']);
                             //print_r($customerSession);
                             echo 'Connexion réussie !';
+                            */
                         }else {
                             echo 'Le mot de passe est incorrect';
                         }
@@ -317,5 +369,20 @@ public function recoveryPasswordCustomer() {
         require_once(BACK_ROOT . '/views/template.php');
 }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Modification des données client
+     * @params array $datas. Données du formulaire
+     * @return void
+     */
+    private function updateCustomerProfile(array $datas) : void {
+
+        $return = ($this->customerService->checkBeforeUpdate($_POST)) ? 'success' : 'fail';
+        unset($_POST);
+        $this->profileCustomer($return);
+
+    }
+>>>>>>> Romu
 }
 ?>

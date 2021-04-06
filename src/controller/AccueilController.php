@@ -1,6 +1,6 @@
 <?php
 
-class AccueilController{
+class AccueilController {
     public function index(){
         ob_start();
         require_once BACK_ROOT  . '/views/accueil.php';
