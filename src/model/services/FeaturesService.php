@@ -33,6 +33,11 @@ class FeaturesService{
         return $featureTypes;
     }
 
+    public function getFeaturesTypesById($_IdtypeFeature) {
+        $featureType = $this->FeaturesTypeDao->findById($_IdtypeFeature);
+        return $featureType;
+    }
+
     public function create($_data){
         $newFeature = new Features();
         $newFeature->setWording($_data['newFeature'])

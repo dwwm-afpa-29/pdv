@@ -13,6 +13,13 @@ class FeaturesTypeDao extends BaseDao {
             return $stmt->fetchAll(\PDO::FETCH_CLASS, FeaturesType::class);
         }
     }
+    public function findById($_idFeature){
+        $stmt = $this->db->prepare("SELECT * FROM type_features WHERE id = ".$_idFeature);
+        $res = $stmt->execute();
+        if($res){
+            return $stmt->fetchObject(FeaturesType::class);
+        }
+    }
 }
 
 ?>
