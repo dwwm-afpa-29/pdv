@@ -356,8 +356,6 @@ public function recoveryPasswordCustomer() {
         require_once(BACK_ROOT . '/views/template.php');
 }
 
-<<<<<<< HEAD
-=======
     /**
      * Modification des données client
      * @params array $datas. Données du formulaire
@@ -370,6 +368,5 @@ public function recoveryPasswordCustomer() {
         $this->profileCustomer($return);
 
     }
->>>>>>> Romu
 }
 ?>

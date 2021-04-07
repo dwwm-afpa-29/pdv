@@ -14,13 +14,9 @@ define('URL', $_SERVER['SCRIPT_NAME'] . '?p=');
 
 // Lien de balise A
 const A_LINK = [
-<<<<<<< HEAD
-    'accueil' => URL . 'Accueil/index',
-=======
     'accueil' => URL . 'Articles/newArticle',
     'customer_home' => URL . 'Customer/homeCustomer',
     'customer_profile' => URL . 'Customer/profileCustomer',
->>>>>>> Romu
     'inscription_client' => URL . 'Customer/connexCustomer',
     'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer',
     'nouveau_produit' => URL . 'Articles/newArticle',
