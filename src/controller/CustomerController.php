@@ -68,11 +68,10 @@ class CustomerController {
 
             //----------Nettoyage des données----------
             $_POST= array_map('htmlspecialchars', $_POST);
-            $customerData = $_POST;
-            //print_r($_POST);
+            $customer = $_POST;
 
             //----------Gestion du recaptcha 
-            $data = $this->customerService->reCaptchaVerify($customerData);
+            $data = $this->customerService->reCaptchaVerify($customer);
 
             if($data->success) {
                 //----------vérification des champs
@@ -89,13 +88,13 @@ class CustomerController {
                     ) {
 
                     //---------Vérification que le mail n'est pas dans la BDD
-                    $email = $customerData['mail'];
+                    $email = $customer['mail'];
                     $response = $this->customerService->verifExistMail($email);
 
                     if($response == false){
 
                         //----------Envoi des données vers SERVICES
-                        $this->customerService->signup($customerData);
+                        $this->customerService->signup($customer);
 
                         $_SESSION['id'] = $customer['id'];
                         $_SESSION['firstname'] = $customer['first_name'];
