@@ -94,6 +94,19 @@ class ArticlesController{
         $view = ob_get_clean();
         require_once(BACK_ROOT . '/views/template.php');
     }
+
+    
+    public function newCaractInArticleForm($_idFeatureType){
+        $featureType = $this->featuresService->getFeaturesTypesById($_idFeatureType);
+        require_once BACK_ROOT  . '/views/formCaractInFormArticle.php';
+    }
+
+    
+    public function addNewFeatureInArticleForm($data){
+        ob_start();
+        $featureEntity = $this->featuresService->create($data);
+        $this->featuresService->recordNewFeature($featureEntity);
+    }
 }
 
 
