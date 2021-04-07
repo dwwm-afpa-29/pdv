@@ -97,14 +97,18 @@ class CustomerController {
                         //----------Envoi des données vers SERVICES
                         $this->customerService->signup($customerData);
 
-                        foreach($customerData as $key => $value){
-                            $_SESSION[$key] = $value;
-                            
-                        }
-                        $_SESSION['passwd'] = null;
+                        $_SESSION['id'] = $customer['id'];
+                        $_SESSION['firstname'] = $customer['first_name'];
+                        $_SESSION['lastname'] = $customer['last_name'];
+                        $_SESSION['mail'] = $email;
+                        $_SESSION['street'] = $customer['address_street'];
+                        $_SESSION['zipCode'] = $customer['address_zip_code'];
+                        $_SESSION['city'] = $customer['address_city'];
+                        $_SESSION['phone'] = $customer['phone_number'];
+                        $_SESSION['birth'] = $customer['date_of_birth'];
 
-                        //print_r($_SESSION);
-                        echo'enregistrement réussi';
+                        header('location:' . A_LINK['customer_home']);
+
 
                     }else{
                         echo 'Cette adresse mail est déjà utilisée. Veuillez vous connecter';
@@ -139,7 +143,7 @@ class CustomerController {
 
             $customerData = $_POST;
             $data = $this->customerService->reCaptchaVerify($customerData);
-            //print_r($_POST);
+            
 
             if($data->success) {
 
@@ -158,13 +162,6 @@ class CustomerController {
                         var_dump(password_verify($_POST['passwd'], $passwdCrypt));
 
                         if(password_verify($_POST['passwd'], $passwdCrypt)) {
-<<<<<<< HEAD
-                        
-
-                            foreach($customer as $key => $value){
-                                $_SESSION[$key] = $value;    
-                            }
-=======
 
                             $_SESSION['id'] = $customer['id'];
                             $_SESSION['firstname'] = $customer['first_name'];
@@ -177,17 +174,7 @@ class CustomerController {
                             $_SESSION['birth'] = $customer['date_of_birth'];
 
                             header('location:' . A_LINK['customer_home']);
-                            /*
-                            echo '<pre>';
-                            print_r($_SESSION);
-                            echo '</pre>';
->>>>>>> Romu
-
-                            
-                            //print_r($_SESSION['passwd']);
-                            //print_r($customerSession);
-                            echo 'Connexion réussie !';
-                            */
+                           
                         }else {
                             echo 'Le mot de passe est incorrect';
                         }

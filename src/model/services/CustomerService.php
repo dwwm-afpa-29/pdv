@@ -72,7 +72,9 @@ class CustomerService {
             if (function_exists('curl_version')) {
                 $curl = curl_init($url);
                 curl_setopt($curl, CURLOPT_HEADER, false);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
                 $response = curl_exec($curl);
             }else {
                 // sinon on utilise file_get_contents
