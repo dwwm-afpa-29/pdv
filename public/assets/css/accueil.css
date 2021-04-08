@@ -12,7 +12,6 @@
 }
 
 .liens-accueil {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,4 +98,20 @@
   opacity: 1;
   left: 0;
   width:100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .banniere-promo {
+    width: 95%;
+    height: 300px;
+  }
+
+  .boutons-banniere2 {
+    flex-direction: column;
+    justify-content: center;
+
+    height: auto;
+
+    margin-top: 20px;
+  }
 }
