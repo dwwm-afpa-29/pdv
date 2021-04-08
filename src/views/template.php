@@ -46,10 +46,10 @@
         </div>
 
         <div class="nav-mobile">
-            <div class="icone-nav"></div>
-            <div class="icone-nav"></div>
-            <div class="icone-nav"></div>
-            <div class="icone-nav"><a href=""><i class="far fa-user-circle icone"></i></a></div>
+            <div class="icone-nav"><i class="fas fa-wine-bottle"></i></div>
+            <div class="icone-nav"><i class="fas fa-search"></i></div>
+            <div class="icone-nav"><i class="fas fa-shopping-cart"></i></div>
+            <div class="icone-nav"><i class="far fa-user-circle"></i></div>
         </div>
 
     </header>
