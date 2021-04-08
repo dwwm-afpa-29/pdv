@@ -26,7 +26,7 @@ class ArticlesService {
         // Ajout de toutes les caractéristiques (features) à l'objet nouvellement créé.
         foreach ($_data as $key => $element){
             if($key != 'name' && $key != 'price' && $key != 'photo' && $key != 'type' && $key != 'degre') {
-                if ($key == 'cepage') {
+                if ($key == 'Cépages') {
                     foreach ($element as $arrayElmt){
                         $newArticleFeature = $this->featuresDao->findFeaturesByID($arrayElmt);
                         $newArticle->addFeatures($newArticleFeature);

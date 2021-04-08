@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 08 avr. 2021 à 09:21
+-- Généré le : jeu. 08 avr. 2021 à 10:09
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.16
 
@@ -123,6 +123,14 @@ CREATE TABLE `features` (
   `id_type_features` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Déchargement des données de la table `features`
+--
+
+INSERT INTO `features` (`id`, `wording`, `id_type_features`) VALUES
+(1, 'Mertlot', 3),
+(2, 'Cabernet-sauvignon', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +143,23 @@ CREATE TABLE `type_features` (
   `id_type_products` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Déchargement des données de la table `type_features`
+--
+
+INSERT INTO `type_features` (`id`, `wording`, `id_type_products`) VALUES
+(1, 'Couleur_vin', 1),
+(2, 'Région', 1),
+(3, 'Cépages', 1),
+(4, 'Appellation', 1),
+(5, 'Millésime', 1),
+(6, 'Couleur_bière', 3),
+(7, 'Région', 3),
+(8, 'Couleur_Champagne', 2),
+(9, 'Variété', 2),
+(19, 'Catégories_Stiritueux', 4),
+(20, 'Catégories_Sans alcool', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -145,6 +170,19 @@ CREATE TABLE `type_products` (
   `id` int(11) NOT NULL,
   `wording` varchar(150) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `type_products`
+--
+
+INSERT INTO `type_products` (`id`, `wording`) VALUES
+(1, 'Vins'),
+(2, 'Champagnes'),
+(3, 'Bières'),
+(4, 'Spiritueux'),
+(5, 'Sans Alcool'),
+(6, 'Epicerie'),
+(7, 'Accessoires');
 
 --
 -- Index pour les tables déchargées
@@ -243,19 +281,19 @@ ALTER TABLE `customer_recovery`
 -- AUTO_INCREMENT pour la table `features`
 --
 ALTER TABLE `features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `type_features`
 --
 ALTER TABLE `type_features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `type_products`
 --
 ALTER TABLE `type_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Contraintes pour les tables déchargées
