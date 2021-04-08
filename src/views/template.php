@@ -233,28 +233,6 @@
         <div class="produits">
         
             <a href="#">Épicerie</a>
-            <div class="produit produit-epicerie">
-        
-                <!-- Charcuterie -->
-                <h3>Charcuterie</h3>
-                <ul>
-                    <li><a href="#">Sauciflards</a></li>
-                    <li><a href="#">Jambons</a></li>
-                    <li><a href="#">Pâtés</a></li>
-                </ul>
-        
-                <!-- FRUITS ET LÉGUMES -->
-                <h3>Fruits et Légumes</h3>
-                <ul>
-                    <li><a href="#">Pommes</a></li>
-                    <li><a href="#">Raisins</a></li>
-                    <li><a href="#">Cornichons</a></li>
-                </ul>
-        
-                <a href="#">Promotions</a>
-                <a href="#">Nouveautés</a>
-        
-            </div>
         
         </div>
 
@@ -262,28 +240,6 @@
         <div class="produits">
         
             <a href="#">Accessoires</a>
-            <div class="produit produit-accessoires">
-        
-                <!-- OUTILS -->
-                <h3>Outils</h3>
-                <ul>
-                    <li><a href="#">Tire-bouchons</a></li>
-                    <li><a href="#">Décapsuleurs</a></li>
-                    <li><a href="#">Ranges Bouteilles</a></li>
-                </ul>
-        
-                <!-- DÉCORATIONS -->
-                <h3>Décorations</h3>
-                <ul>
-                    <li><a href="#">Dessous de verres</a></li>
-                    <li><a href="#">Tabliers</a></li>
-                    <li><a href="#">Posters</a></li>
-                </ul>
-        
-                <a href="#">Promotions</a>
-                <a href="#">Nouveautés</a>
-        
-            </div>
         
         </div>
 
