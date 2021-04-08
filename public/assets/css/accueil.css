@@ -1,0 +1,102 @@
+.banniere-promo {
+    width: 75%;
+    height: 40%;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(../image/vins.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    box-shadow: 4px 4px 4px #ccc;
+}
+
+.liens-accueil {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 40px;
+    border: 1px solid #ccc;
+}
+
+/* BOUTONS */
+
+.boutons-banniere2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: auto;
+    height: 50px;
+
+    margin-top: 80px;
+    /* border: 1px solid #ccc; */
+}
+
+.fill-button2 {
+  position: relative;
+  overflow:hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:auto;
+  height:45px;
+  border:1px solid #ccc;
+  text-align:center;
+  box-sizing:border-box;
+  color:#fff;
+  text-decoration:none;
+  cursor: pointer;
+  line-height:28px;
+  font-family: 'arial';
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+.fill-button2 > span {
+  display:block;
+  width: 100%;
+}
+.fill-button2 > .fill-button-hover:after, .fill-button2 > .fill-button-hover:before {
+  position:absolute;
+  top:0;
+  opacity:0;
+  display:block;
+  content:"";
+  width:0;
+  height:45px;
+}
+.fill-button2 > .fill-button-hover:after {
+  background-color:#35495e;
+  transform:skewX(45deg);
+  transform-origin:center center;
+  transition:all .55s, opacity .4s;
+  left:50%;
+}
+.fill-button2 .fill-button-hover:before {
+  background-color:#42b883;
+  transition:opacity 1s;
+}
+
+.fill-button2 .fill-button-text {
+  z-index:1;
+  position:relative;
+  color:#000;
+  transition:color .35s;
+}
+.fill-button2:hover .fill-button-text {
+  color:#42b883;
+}
+.fill-button2 .fill-button-hover:hover:after {
+  opacity:1;
+  left:2%;
+  width:95%;
+  transform:skewX(45deg);
+}
+.fill-button2 > .fill-button-hover:hover:before {
+  opacity: 1;
+  left: 0;
+  width:100%;
+}
