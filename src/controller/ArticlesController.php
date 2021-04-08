@@ -107,6 +107,13 @@ class ArticlesController{
         $featureEntity = $this->featuresService->create($data);
         $this->featuresService->recordNewFeature($featureEntity);
     }
+
+    public function viewProducts() {
+        ob_start();
+        require_once(BACK_ROOT . '/views/viewProducts.php');
+        $view = ob_get_clean();
+        require_once(BACK_ROOT . '/views/template.php');
+    }
 }
 
 
