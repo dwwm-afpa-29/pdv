@@ -62,7 +62,7 @@
         <div class="produits">
 
             <a href="#">&nbsp;&nbsp;Vins&nbsp;&nbsp;</a>
-            <div class="produit produit-vin">
+            <div class="produit menu-deroulant">
 
                 <!-- COULEURS -->
                 <h3>Couleurs</h3>
@@ -103,7 +103,7 @@
         <div class="produits">
         
             <a href="#">Champagnes</a>
-            <div class="produit produit-champagne">
+            <div class="produit menu-deroulant">
         
                 <!-- COULEURS -->
                 <h3>Couleurs</h3>
@@ -133,7 +133,7 @@
         <div class="produits">
         
             <a href="#">Bières</a>
-            <div class="produit produit-biere">
+            <div class="produit menu-deroulant">
         
                 <!-- COULEURS -->
                 <h3>Couleurs</h3>
@@ -165,7 +165,7 @@
         <div class="produits">
         
             <a href="#">Spiritueux</a>
-            <div class="produit produit-spiritueux">
+            <div class="produit menu-deroulant">
         
                 <!-- APÉRITIFS -->
                 <h3>Apéritifs</h3>
@@ -203,7 +203,7 @@
         <div class="produits">
         
             <a href="#">Sans Alcool</a>
-            <div class="produit produit-sans-alcool">
+            <div class="produit menu-deroulant">
         
                 <!-- SODAS -->
                 <h3>Sodas</h3>

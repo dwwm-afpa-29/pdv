@@ -1,7 +1,6 @@
                                         /* ----- IMPORTS ----- */
 
 @import url('variables.css');
-@import url('responsive.css');
 @import url('accueil.css');
 @import url('produits.css');
 
@@ -330,33 +329,9 @@ nav {
     transition-duration: 3s;
 }
 
-                                        /* ----- COULEURS MENU PRODUIT ----- */
+                                        /* ----- COULEURS MENU DEROULANT PRODUIT ----- */
 
-.produit-vin {
-    background-color: var(--green);
-}
-
-.produit-champagne {
-    background-color: var(--green);
-}
-
-.produit-biere {
-    background-color: var(--green);
-}
-
-.produit-spiritueux {
-    background-color: var(--green);
-}
-
-.produit-sans-alcool {
-    background-color: var(--green);
-}
-
-.produit-epicerie {
-    background-color: var(--green);
-}
-
-.produit-accessoires {
+.menu-deroulant {
     background-color: var(--green);
 }
 
@@ -510,3 +485,94 @@ footer {
                                         /* ----- FORM ARTICLES ----- */
 
 
+
+
+                                        /* ----- MEDIA QUERIES ----- */
+
+@media screen and (max-width: 1000px) {
+    body {
+        grid-template-rows: 100vh 200px;
+    }
+
+    header {
+        grid-row: 1 / 2;
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(../images/vigne.png);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .img-mobile {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    .img-mobile>img {
+        width: 75%;
+
+        margin-top: 150px;
+    }
+
+    .banniere {
+        display: none;
+    }
+
+    .boutons-banniere {
+        display: none;
+    }
+
+    .bouton-mobile {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+    }
+
+    nav {
+        display: none;
+    }
+
+    main {
+        display: none;
+    }
+
+    .nav-mobile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 80px;
+
+        background-color: var(--raisin);
+    }
+
+    footer {
+        grid-row: 2 / 3;
+        flex-direction: column;
+    }
+
+    .footer1 {
+        display: none;
+    }
+
+    .footer2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer2>p {
+        width: 100%;
+    }
+}
