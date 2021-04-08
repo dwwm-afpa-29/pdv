@@ -164,6 +164,28 @@ class CustomerDao extends BaseDao {
             return false;
         }
     }
+
+    //--------------------------CREATION DE L'HISTORIQUE D'ACHAT
+    /**
+     * Récupère toutes les dates à laquelle le client a effectué un achat
+     * @return array
+     */
+    public function getAllDate()  : array {
+        $sql = "SELECT DISTINCT commande.date
+                FROM commande
+                WHERE commande.id_customer = :id";
+                
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->bindValue(':id', $_SESSION['id'], PDO::PARAM_INT);
+                    $query->execute();
+                    $allDates = $query->fetchAll();
+
+                    return  $allDates;
+                } catch(PDOException $ex) {
+                    return [];
+                }
+    }
     
 }
 

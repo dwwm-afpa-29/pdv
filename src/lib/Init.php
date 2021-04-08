@@ -16,6 +16,7 @@ define('URL', $_SERVER['SCRIPT_NAME'] . '?p=');
 const A_LINK = [
     'accueil' => URL . 'Accueil/index',
     'customer_home' => URL . 'Customer/homeCustomer',
+    'customer_historical' => URL . 'Customer/buyHistorical',
     'customer_profile' => URL . 'Customer/profileCustomer',
     'inscription_client' => URL . 'Customer/connexCustomer',
     'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer',

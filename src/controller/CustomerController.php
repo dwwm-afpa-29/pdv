@@ -39,11 +39,11 @@ class CustomerController {
      * traitement du formulaire
      * @return void
      */
-    public function profileCustomer(string $state = null) : void {
+    public function profileCustomer(?string $state = null) : void {
         $showMessage = $state;
         
         if(isset($_POST['modifier'])) {
-            $this->updateCustomerProfile($_POST);
+            $this->updateCustomerProfile();
         } else {
             ob_start();
             require_once(BACK_ROOT . '/views/ViewProfileCustomer.php');
@@ -52,6 +52,19 @@ class CustomerController {
             require_once(BACK_ROOT . '/views/template.php');
         }
 
+    }
+
+    /**
+     * Génére l'affichage de la page d'historique d'achat
+     * @return void
+     */
+    public function buyHistorical() {
+        ob_start();
+        $allDates = $this->getAllDate();
+        require_once(BACK_ROOT . '/views/ViewBuyHistoricaCustomer.php');
+        $view = ob_get_clean();
+
+        require_once(BACK_ROOT . '/views/template.php');
     }
 
     //INSCRIPTION DU CLIENT
@@ -359,15 +372,23 @@ public function recoveryPasswordCustomer() {
 
     /**
      * Modification des données client
-     * @params array $datas. Données du formulaire
      * @return void
      */
-    private function updateCustomerProfile(array $datas) : void {
+    private function updateCustomerProfile() : void {
 
         $return = ($this->customerService->checkBeforeUpdate($_POST)) ? 'success' : 'fail';
         unset($_POST);
         $this->profileCustomer($return);
 
+    }
+
+    //--------------------------CREATION DE L'HISTORIQUE D'ACHAT
+    /**
+     * Récupère toutes les dates à laquelle le client a effectué un achat
+     * @return array
+     */
+    private function getAllDate()  : array {
+        return $this->customerService->getAllDate();
     }
 }
 ?>

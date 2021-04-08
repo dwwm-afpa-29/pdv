@@ -143,5 +143,14 @@ class CustomerService {
 
        return $checked;
     }
+
+    //--------------------------CREATION DE L'HISTORIQUE D'ACHAT
+    /**
+     * Récupère toutes les dates à laquelle le client a effectué un achat
+     * @return array
+     */
+    public function getAllDate()  : array {
+        return $this->customerDao->getAllDate();
+    }
 }
 ?>
