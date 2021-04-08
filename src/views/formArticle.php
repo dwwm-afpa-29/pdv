@@ -43,8 +43,8 @@ if (!isset($featureTypes)) {
         // Affichage des menus déroulants de chaques caractéristiques correspondants au type de produit sélectionné
         foreach ($featureTypes as $featureType){
             echo '<label for="'.$featureType->getWording().'">'.$featureType->getWording().'</label>';
-            $multiple = ($featureType->getWording()== 'cepage')?"multiple":"";
-            $array = ($featureType->getWording()== 'cepage')?"[]":"";
+            $multiple = ($featureType->getWording()== 'Cépages')?"multiple":"";
+            $array = ($featureType->getWording()== 'Cépages')?"[]":"";
             echo '<select name="'.$featureType->getWording().$array.'" '.$multiple.'>';
             foreach ($featuresByProductType as $features_table){
                 foreach ($features_table as $feature) {
