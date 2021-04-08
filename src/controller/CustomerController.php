@@ -360,7 +360,7 @@ public function recoveryPasswordCustomer() {
      * @params array $datas. Données du formulaire
      * @return void
      */
-    private function updateCustomerProfile(array $datas) : void {
+    private function updateCustomerProfile() : void {
 
         $return = ($this->customerService->checkBeforeUpdate($_POST)) ? 'success' : 'fail';
         unset($_POST);
