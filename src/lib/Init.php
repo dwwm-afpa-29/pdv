@@ -20,7 +20,8 @@ const A_LINK = [
     'inscription_client' => URL . 'Customer/connexCustomer',
     'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer',
     'nouveau_produit' => URL . 'Articles/newArticle',
-    'nouvel_caract' => URL . 'Articles/newCaract'
+    'nouvel_caract' => URL . 'Articles/newCaract',
+    'afficher_produits' => URL . 'Articles/viewProducts'
 ];
 
 // Lien de formaulaires

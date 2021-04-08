@@ -232,14 +232,14 @@
         <!-- ÉPICERIE -->
         <div class="produits">
         
-            <a href="#">Épicerie</a>
+            <a href="<?= A_LINK['afficher_produits'];?>">Épicerie</a>
         
         </div>
 
         <!-- ACCESSOIRES -->
         <div class="produits">
         
-            <a href="#">Accessoires</a>
+            <a href="<?= A_LINK['afficher_produits'];?>">Accessoires</a>
         
         </div>
 
