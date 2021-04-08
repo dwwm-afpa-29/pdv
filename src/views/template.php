@@ -265,8 +265,8 @@
             <a href="#">Bières</a>
             <a href="#">Spiritueux</a>
             <a href="#">Sans Alcool</a>
-            <a href="#">Épicerie</a>
-            <a href="#">Accessoires</a>
+            <a href="<?= A_LINK['afficher_produits'];?>">Épicerie</a>
+            <a href="<?= A_LINK['afficher_produits'];?>">Accessoires</a>
         </div>
         <div class="footer2">
             <p>©2021 - DWWM Afpa Brest</p>
