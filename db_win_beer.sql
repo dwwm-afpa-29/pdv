@@ -1,11 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : jeu. 08 avr. 2021 à 11:08
--- Version du serveur :  10.4.14-MariaDB
--- Version de PHP : 7.2.34
+-- Hôte : localhost
+-- Généré le : jeu. 08 avr. 2021 à 09:21
+-- Version du serveur :  5.7.24
+-- Version de PHP : 7.4.16
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,12 +31,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL,
+
+  `name` varchar(150) COLLATE utf8_bin NOT NULL,
   `degre` float NOT NULL,
   `price` float NOT NULL,
-  `photo` varchar(150) NOT NULL,
+  `photo` varchar(150) COLLATE utf8_bin NOT NULL,
   `id_type_products` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 -- --------------------------------------------------------
 
@@ -45,11 +49,27 @@ CREATE TABLE `articles` (
 CREATE TABLE `articles_vs_features` (
   `id` int(11) NOT NULL,
   `id_articles` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 -- --------------------------------------------------------
 
 --
+
+-- Structure de la table `article_vs_commande`
+--
+
+CREATE TABLE `article_vs_commande` (
+  `id` int(11) NOT NULL,
+  `id_Commande` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+-- --------------------------------------------------------
+
+--
+
 -- Structure de la table `commande`
 --
 
@@ -57,18 +77,8 @@ CREATE TABLE `commande` (
   `id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `id_customer` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `composer`
---
-
-CREATE TABLE `composer` (
-  `id` int(11) NOT NULL,
-  `id_Commande` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -78,24 +88,28 @@ CREATE TABLE `composer` (
 
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `mail` varchar(50) NOT NULL,
-  `passwd` varchar(250) NOT NULL,
-  `address_street` varchar(50) NOT NULL,
-  `address_zip_code` varchar(50) NOT NULL,
-  `address_city` varchar(50) NOT NULL,
-  `phone_number` varchar(50) NOT NULL,
+
+  `first_name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `last_name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `mail` varchar(50) COLLATE utf8_bin NOT NULL,
+  `passwd` varchar(250) COLLATE utf8_bin NOT NULL,
+  `address_street` varchar(50) COLLATE utf8_bin NOT NULL,
+  `address_zip_code` varchar(50) COLLATE utf8_bin NOT NULL,
+  `address_city` varchar(50) COLLATE utf8_bin NOT NULL,
+  `phone_number` varchar(50) COLLATE utf8_bin NOT NULL,
   `date_of_birth` date NOT NULL,
-  `role_user` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `role_user` varchar(50) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 --
 -- Déchargement des données de la table `customer`
 --
 
 INSERT INTO `customer` (`id`, `first_name`, `last_name`, `mail`, `passwd`, `address_street`, `address_zip_code`, `address_city`, `phone_number`, `date_of_birth`, `role_user`) VALUES
-(1, 'Tudwal', 'Prigent', 'tprigent@hotmail.fr', '$2y$10$XbAO0gX6E5JXgtwHPdZpCOvM8H.dbMWma9rEAIQDS8m8dC8LQDYQS', '4 venelle blanche', '29800', 'Saint-Urbain', '0631294048', '1985-05-06', NULL);
+
+(1, 'Bruno', 'Dubief', 'bruno.dubief@hotmail.fr', '$2y$10$vc6WUqALN72zG8yq0b65IOY5lphugQrU7O3KTwlfLRvAKqA02HnAO', '12 rue du château', '29200', 'BREST', '0637227614', '1987-11-10', NULL);
+
 
 -- --------------------------------------------------------
 
@@ -105,11 +119,12 @@ INSERT INTO `customer` (`id`, `first_name`, `last_name`, `mail`, `passwd`, `addr
 
 CREATE TABLE `customer_recovery` (
   `id` int(11) NOT NULL,
-  `mail` varchar(50) NOT NULL,
-  `code_recovery` varchar(50) NOT NULL,
-  `date_time` varchar(50) NOT NULL,
+  `mail` varchar(50) COLLATE utf8_bin NOT NULL,
+  `code_recovery` varchar(50) COLLATE utf8_bin NOT NULL,
+  `date_time` varchar(50) COLLATE utf8_bin NOT NULL,
   `id_customer` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 -- --------------------------------------------------------
 
@@ -119,9 +134,11 @@ CREATE TABLE `customer_recovery` (
 
 CREATE TABLE `features` (
   `id` int(11) NOT NULL,
-  `wording` varchar(150) NOT NULL,
+
+  `wording` varchar(150) COLLATE utf8_bin NOT NULL,
   `id_type_features` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 -- --------------------------------------------------------
 
@@ -131,9 +148,10 @@ CREATE TABLE `features` (
 
 CREATE TABLE `type_features` (
   `id` int(11) NOT NULL,
-  `wording` varchar(150) NOT NULL,
+
+  `wording` varchar(150) COLLATE utf8_bin NOT NULL,
   `id_type_products` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -143,8 +161,8 @@ CREATE TABLE `type_features` (
 
 CREATE TABLE `type_products` (
   `id` int(11) NOT NULL,
-  `wording` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `wording` varchar(150) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Index pour les tables déchargées
@@ -165,18 +183,18 @@ ALTER TABLE `articles_vs_features`
   ADD KEY `articles_vs_features_articles0_FK` (`id_articles`);
 
 --
+-- Index pour la table `article_vs_commande`
+--
+ALTER TABLE `article_vs_commande`
+  ADD PRIMARY KEY (`id`,`id_Commande`),
+  ADD KEY `Article_VS_Commande_Commande0_FK` (`id_Commande`);
+
+--
 -- Index pour la table `commande`
 --
 ALTER TABLE `commande`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Commande_customer_FK` (`id_customer`);
-
---
--- Index pour la table `composer`
---
-ALTER TABLE `composer`
-  ADD PRIMARY KEY (`id`,`id_Commande`),
-  ADD KEY `composer_Commande0_FK` (`id_Commande`);
 
 --
 -- Index pour la table `customer`
@@ -239,7 +257,6 @@ ALTER TABLE `customer`
 ALTER TABLE `customer_recovery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
 -- AUTO_INCREMENT pour la table `features`
 --
 ALTER TABLE `features`
@@ -274,20 +291,19 @@ ALTER TABLE `articles_vs_features`
   ADD CONSTRAINT `articles_vs_features_articles0_FK` FOREIGN KEY (`id_articles`) REFERENCES `articles` (`id`),
   ADD CONSTRAINT `articles_vs_features_features_FK` FOREIGN KEY (`id`) REFERENCES `features` (`id`);
 
+
+-- Contraintes pour la table `article_vs_commande`
 --
+ALTER TABLE `article_vs_commande`
+  ADD CONSTRAINT `Article_VS_Commande_Commande0_FK` FOREIGN KEY (`id_Commande`) REFERENCES `commande` (`id`),
+  ADD CONSTRAINT `Article_VS_Commande_articles_FK` FOREIGN KEY (`id`) REFERENCES `articles` (`id`);
+
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
   ADD CONSTRAINT `Commande_customer_FK` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`);
 
---
--- Contraintes pour la table `composer`
---
-ALTER TABLE `composer`
-  ADD CONSTRAINT `composer_Commande0_FK` FOREIGN KEY (`id_Commande`) REFERENCES `commande` (`id`),
-  ADD CONSTRAINT `composer_articles_FK` FOREIGN KEY (`id`) REFERENCES `articles` (`id`);
 
---
 -- Contraintes pour la table `customer_recovery`
 --
 ALTER TABLE `customer_recovery`
