@@ -543,6 +543,7 @@ footer {
         height: 80px;
 
         background-color: var(--raisin);
+        z-index: 100;
     }
 
     .icone-nav {
