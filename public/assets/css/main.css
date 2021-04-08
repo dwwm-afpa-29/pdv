@@ -447,12 +447,13 @@ footer {
 
 .footer1>a {
     text-decoration: none;
-    color: var(--green);
+    color: rgba(66, 184, 131, 0.7);
     margin: 10px;
 }
 
 .footer1>a:hover {
     font-weight: bold;
+    color: rgba(76, 194, 141, 1);
 }
 
 .footer2 {
