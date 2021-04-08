@@ -105,6 +105,7 @@ class CustomerController {
                         $_SESSION['city'] = $customer['address_city'];
                         $_SESSION['phone'] = $customer['phone_number'];
                         $_SESSION['birth'] = $customer['date_of_birth'];
+                        $_SESSION['role'] = $customer['role_user'];
 
                         header('location:' . A_LINK['customer_home']);
 
@@ -171,6 +172,7 @@ class CustomerController {
                             $_SESSION['city'] = $customer['address_city'];
                             $_SESSION['phone'] = $customer['phone_number'];
                             $_SESSION['birth'] = $customer['date_of_birth'];
+                            $_SESSION['role'] = $customer['role_user'];
 
                             header('location:' . A_LINK['customer_home']);
                            
