@@ -23,6 +23,10 @@ body {
     min-height: 100vh;
 }
 
+a {
+    text-decoration:none
+}
+
                                         /* ----- HEADER ----- */
 
 header {
@@ -481,7 +485,311 @@ footer {
     transform: translateY(-7px);
 }
 
+                                        /* ----- FORM LOGIN ----- */
+                    
+                   
+                    
+.login {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 70px;
+    grid-row-gap: 0px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
 
+.log {
+    margin-bottom: 20px;
+}
+    
+#connexion { 
+    grid-area: 1 / 1 / 2 / 2;
+            
+}
+
+#inscription { 
+    grid-area: 1 / 2 / 2 / 3;        
+}
+
+.login div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;  
+    height: 40vh;
+    overflow: auto;
+    flex-direction: column;
+    color: #35495e;
+}
+    
+    
+
+                        /*-----FORM CONNEXION-----*/
+
+.loginConnex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+
+.titreConnex {
+    grid-area: 1 / 1 / 2 / 3;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    overflow: auto;
+    flex-direction: column;
+    
+}
+
+.titre-email-connex{
+    grid-area: 2 / 1 / 3 / 3;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: end;
+    align-items: start;
+    align-content: flex-start;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.email-connex{
+    grid-area: 3 / 1 / 4 / 3;
+}
+
+.titre-passwd-connex {
+    grid-area: 4 / 1 / 5 / 3;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: end;
+    align-items: start;
+    align-content: flex-start;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.passwd-connex {
+    grid-area: 5 / 1 / 6 / 3;
+}
+
+
+.input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.connex {
+    grid-area: 6 / 2 / 7 / 3;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: end;
+}
+
+.connex-return {
+    grid-area: 6 / 1 / 7 / 2;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: start;
+}
+
+
+.loginForget h1, .loginInscri h1, .loginConnex h1{
+    color: #35495e;
+    font-size : 30px;
+}
+
+.loginForget h2, .loginInscri h2, .loginConnex h2{
+    color :#35495e;
+    font-size: 20px;
+}
+
+                                        /* ----- FORM INSCRIPTION -----*/
+.loginInscri {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+    }
+    
+.titreInsc { 
+    grid-area: 1 / 1 / 2 / 5; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.titre-firstname-inscri { 
+    grid-area: 2 / 1 / 3 / 2; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+.firstname-inscri { 
+    grid-area: 3 / 1 / 4 / 2; 
+}
+.titre-lastname-inscri { 
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.lastname-inscri { 
+    grid-area: 3 / 2 / 4 / 3; 
+}
+.titre-phone-inscri { 
+    grid-area: 2 / 3 / 3 / 4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.phone-inscri { 
+    grid-area: 3 / 3 / 4 / 4; 
+}
+.titre-date-inscri { 
+    grid-area: 2 / 4 / 3 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.date-inscri { 
+    grid-area: 3 / 4 / 4 / 5; 
+}
+.titre-email-inscri { 
+    grid-area: 4 / 1 / 5 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.email-inscri { 
+    grid-area: 5 / 1 / 6 / 5; 
+}
+.titre-passwd-inscri { 
+    grid-area: 6 / 1 / 7 / 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.passwd-inscri { 
+    grid-area: 7 / 1 / 8 / 3; 
+}
+.titre-passwd2-inscri { 
+    grid-area: 6 / 3 / 7 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.passwd2-inscri { 
+    grid-area: 7 / 3 / 8 / 5; 
+}
+.titre-addressStreet-inscri { 
+    grid-area: 8 / 1 / 9 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.addressStreet-inscri { 
+    grid-area: 9 / 1 / 10 / 5; 
+}
+.titre-addressZip-inscri { 
+    grid-area: 10 / 1 / 11 / 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.addressZip-inscri { 
+    grid-area: 11 / 1 / 12 / 3; 
+}
+.titre-addressCity-inscri { 
+    grid-area: 10 / 3 / 11 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.addressCity-inscri { 
+    grid-area: 11 / 3 / 12 / 5; 
+}
+.inscri-return { 
+    grid-area: 12 / 1 / 13 / 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.inscri { 
+    grid-area: 12 / 3 / 13 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+                                        /* ----- FORM FORGET ----- */
+.loginForget {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+    
+.titreForget { 
+    grid-area: 1 / 1 / 2 / 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+.titre-forget-mail { 
+    grid-area: 2 / 1 / 3 / 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;  
+}
+.forget-mail { 
+    grid-area: 3 / 1 / 4 / 3; 
+}
+.forget-return { 
+    grid-area: 4 / 1 / 5 / 2; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.forget { 
+    grid-area: 4 / 2 / 5 / 3; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; 
+}
+                                    
+                    
                                         /* ----- FORM ARTICLES ----- */
 
 
