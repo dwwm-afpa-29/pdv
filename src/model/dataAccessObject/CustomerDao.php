@@ -47,8 +47,6 @@ class CustomerDao extends BaseDao {
         $connex = $this->db->prepare("SELECT * FROM `customer` WHERE mail = :customerMail");
         $connex->execute([':customerMail' => $customerMail]);
 
-        //print_r($connex->fetch(\PDO::FETCH_ASSOC));
-
         return $connex->fetch(\PDO::FETCH_ASSOC);
     }
 
@@ -113,9 +111,9 @@ class CustomerDao extends BaseDao {
     //--------------------------MODIFICATION DU MOT DE PASSE
 
     public function passwordModifiedDAO($passModif) {
+
         $passwdCrypt = password_hash($passModif, PASSWORD_BCRYPT);
-        //print_r($passModif);
-        //print_r($passwdCrypt);
+        
         $connex = $this->db->prepare("UPDATE `customer` set passwd = :passModif WHERE mail = :email");
         $connex->execute([
         ':passModif' => $passwdCrypt,

@@ -62,7 +62,7 @@ class CustomerService {
         //----------Gestion du recaptcha
         if(empty($customerData['recaptcha-response'])){
 
-            echo 'Salut Postman, tu vas bien ?';
+            echo 'T\'es un robot';
             //header('location: index.php');
         }else{
             //on prépare l'URL en ajoutant 'secret=clé_privée'&'response=clé_publique'

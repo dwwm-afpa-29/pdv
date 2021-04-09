@@ -11,6 +11,15 @@ class CustomerController {
 
     }
 
+    public function loginCustomer() {
+
+        ob_start();
+        require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
+        $view = ob_get_clean();
+
+        require_once(BACK_ROOT . '/views/template.php');
+    }
+
     public function connexCustomer() {
 
         ob_start();
@@ -19,6 +28,23 @@ class CustomerController {
 
         require_once(BACK_ROOT . '/views/template.php');
 
+    }
+
+    public function inscriptCustomer() {
+
+        ob_start();
+        require_once(BACK_ROOT . '/views/ViewInscripCustomer.php');
+        $view = ob_get_clean();
+
+        require_once(BACK_ROOT . '/views/template.php');
+    }
+
+    public function forgetCustomer() {
+        ob_start();
+        require_once(BACK_ROOT . '/views/ViewForgetPassCustomer.php');
+        $view = ob_get_clean();
+
+        require_once(BACK_ROOT . '/views/template.php');
     }
 
     /**
@@ -53,6 +79,7 @@ class CustomerController {
         }
 
     }
+
 
     /**
      * Génére l'affichage de la page d'historique d'achat
@@ -139,7 +166,7 @@ class CustomerController {
             echo 'Méthode non authorisée';
         }
 
-            require_once(BACK_ROOT . '/views/ViewConnexCustomer.php');
+            require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
             $view = ob_get_clean();
             require_once(BACK_ROOT . '/views/template.php');
     }
@@ -167,12 +194,9 @@ class CustomerController {
                         $email = $_POST['mail'];
                         $customer = $this->customerService->signin($email);
                         $passwdCrypt = $customer['passwd'];
-                        print_r($customer['passwd']);
-                        print_r($passwdCrypt);
 
                     if ($customer['mail'] == $email) {
 
-                        var_dump(password_verify($_POST['passwd'], $passwdCrypt));
 
                         if(password_verify($_POST['passwd'], $passwdCrypt)) {
 
@@ -208,7 +232,7 @@ class CustomerController {
             http_response_code(405);
         }
 
-        require_once(BACK_ROOT . '/views/ViewConnexCustomer.php');
+        require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
         $view = ob_get_clean();
         require_once(BACK_ROOT . '/views/template.php');
     }
