@@ -1,92 +1,29 @@
-    <h1>Je suis la vue d'inscription du client</h1>
+<form action = "<?= FORM_LINK['signinCustomer']; ?>" method="POST" class = "loginConnex">
 
+    <div class="titreConnex">
+        
+        <h1>Connexion</h1>
+        
+    </div>
+                    
+                           
+    <div class ="titre-email-connex"><label for = "mail"><h2>Votre Email</h2></label></div>
+    <input type = "email" name="mail" placeholder="courriel@exemple.com" onFocus="this.value='';" class="input email-connex">
 
-    <!--------------------SIGNUP-------------------->
+    <div class ="titre-passwd-connex"><label for = "passwd"><h2>Votre mot de passe</h2></label></div>
+    <input type="password" name="passwd" class="input passwd-connex">
 
-
-    <h2> INSCRIPTION </h2>
-
-    <form action="<?= FORM_LINK['signupCustomer']; ?>" method="POST" name = "inscription">
-        <p>
-            <label for="first_name">Prénom</label>
-            <input type="text" name="first_name">
-        </p>
-        <p>
-            <label for="last_name">Nom</label>
-            <input type="text" name="last_name">
-        </p>
-        <p>
-            <label for="mail">Email</label>
-            <input type="email" name="mail">
-        </p>
-        <p>
-            <label for="passwd">Mot de passe</label>
-            <input type="text" name="passwd" id="passwd1" onkeyup="checkpass()">
-        </p>
-        <p>
-            <label for = "passwd2"> Confirmer votre mot de passe</label>
-            <input type="password" name="passwd2" id="passwd2" onkeyup="checkpass()">
-            <div id ="passVerif"></div>
-        </p>
-        <p>
-            <label for="address_street">Numéro et nom de la voie</label>
-            <input type="text" name="address_street">
-        </p>
-        <p>
-            <label for="address_zip_code">Code Postale</label>
-            <input type="text" name="address_zip_code">
-        </p>
-        <p>
-            <label for="address_city">Ville</label>
-            <input type="text" name="address_city">
-        </p>
-        <p>
-            <label for="phone_number">Numéro de téléphone</label>
-            <input type="text" name="phone_number">
-        </p>
-        <p>
-            <label for="date_of_birth">Date de naissance</label>
-            <input type="date" name="date_of_birth">
-        </p>
-
-            <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
-            <input type = "submit" value="Inscription" id = "submit" disabled>
-
-    </form>
-
-    <!--------------------SIGNIN-------------------->
-
-    <h2> CONNEXION </h2>
-    <form action = "<?= FORM_LINK['signinCustomer']; ?>" method="POST">
-    
-        <p>
-            <label for = "mail"> Votre Email</label>
-            <input type = "email" name="mail">
-        </p>
-
-        <p>
-            <label for = "passwd">Votre mot de passe</label>
-            <input type="password" name="passwd">
-        </p>
+    <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
+    <div class = "connex"><input type="submit" id = "submit" value = "Connexion" class = "Button38"></div>
+    <div class ="connex-return"><a href = "<?=A_LINK['login_client']; ?>" value = "Retour" class = "Button38">Retour</a></div>
+                       
+                    
+</form>
+        
             <input type="hidden" id= "recaptchaResponse2" name= "recaptcha-response">
-            <input type="submit" value = "Connexion">
+            <a href = "<?=A_LINK['oublie_mot_de_passe']; ?>" value="Mot de passe oublié" class = "Button38">Mot de passe oublié ?</a>
     
-    </form>
-
-    <!--------------------RECOVERY-------------------->
-
-
-    <h2> MOT DE PASSE OUBLIé </h2>
-
-    <form action = "<?= FORM_LINK['recoveryCustomer']; ?>" method="POST">
-        <p>
-            <label for = "mail"> Votre Email </label>
-            <input type = "email" name="mail">
-        </p>
-            <input type="hidden" id= "recaptchaResponse3" name= "recaptcha-response">
-            <input type="submit" value="Mot de passe oublié">
-    
-    </form>
+ 
 
     <!-------------------- GESTION DU RECAPTCHA -------------------->
 
@@ -101,7 +38,6 @@
         grecaptcha.execute('6Le0VXgaAAAAADWW3lXLqdAHq5A8Ugcq1s9yjCCh', {action: 'submit'}).then(function(token) {
             document.getElementById("recaptchaResponse").value = token;
             document.getElementById("recaptchaResponse2").value = token;
-            document.getElementById("recaptchaResponse3").value = token;
         });
     });
 
