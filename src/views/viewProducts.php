@@ -13,7 +13,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -44,7 +44,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -75,7 +75,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -110,7 +110,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -141,7 +141,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -172,7 +172,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -205,7 +205,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -236,7 +236,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">
@@ -267,7 +267,7 @@
     <div class="card-price">
       <p>Prix</p>
       <div class="button-fav">
-        <a href=""><img src="assets/image/star.png" alt="favoris"></a>
+        <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
     </div>
     <div class="card-buttons">

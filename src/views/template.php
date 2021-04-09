@@ -46,10 +46,20 @@
         </div>
 
         <div class="nav-mobile">
-            <div class="icone-nav"><a href="#" class="fas fa-wine-bottle"></a></div>
+            <div class="icone-nav"><a href="#"><img src="assets/image/icones/bottles2.png" alt="logo bouteilles"></a></div>
+            <div class="icone-nav"><a href="#"><img src="assets/image/icones/search2.png" alt="logo rechercher"></a></div>
+            <div class="icone-nav"><a href="#"><img src="assets/image/icones/panier2.png" alt="logo panier"></a></div>
+            <div class="icone-nav"><a href="#"><?php require('assets/image/icones/userIcon.php'); ?></a></div>
+
+            <!-- <div class="icone-nav"><a href="#"><img src="assets/image/icones/bottles2.png" alt="logo bouteilles"></a></div>
+            <div class="icone-nav"><a href="#"><img src="assets/image/icones/search2.png" alt="logo rechercher"></a></div>
+            <div class="icone-nav"><a href="#"><img src="assets/image/icones/panier2.png" alt="logo panier"></a></div>
+            <div class="icone-nav"><a href="#"><img src="assets/image/icones/user2.png" alt="logo user"></a></div> -->
+
+            <!-- <div class="icone-nav"><a href="#" class="fas fa-wine-bottle"></a></div>
             <div class="icone-nav"><a href="#" class="fas fa-search"></a></div>
             <div class="icone-nav"><a href="#" class="fas fa-shopping-cart"></a></div>
-            <div class="icone-nav"><a href="#" class="far fa-user-circle"></a></div>
+            <div class="icone-nav"><a href="#" class="far fa-user-circle"></a></div> -->
         </div>
 
     </header>
