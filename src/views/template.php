@@ -28,12 +28,9 @@
     <!-- HEADER -->
     <header>
 
-        <div class="img-mobile">
-            <img src="assets/image/logo4.png" alt="logo">
-        </div>
         <!-- BANNIERE -->
         <div class="banniere">
-            <a href="<?= A_LINK['accueil'];?>"><img src="assets/image/logo4.png" alt="logo"></a>
+            <a href="<?= A_LINK['accueil'];?>"><img src="assets/image/logo4.png" alt="logo" class="logo"></a>
             <!-- BOUTONS BANNIERE -->
             <div class="boutons-banniere">
                 
@@ -45,15 +42,19 @@
         </div>
 
         <div class="bouton-mobile">
-            <a class="fill-button" href="#"><span class="fill-button-hover"><span
-                        class="fill-button-text">Connexion</span></span></a>
+            <a class="fill-button" href="#"><span class="fill-button-hover"><span class="fill-button-text">Connexion</span></span></a>
+        </div>
+
+        <div class="nav-mobile">
+            <div class="icone-nav"><a href="#" class="fas fa-wine-bottle"></a></div>
+            <div class="icone-nav"><a href="#" class="fas fa-search"></a></div>
+            <div class="icone-nav"><a href="#" class="fas fa-shopping-cart"></a></div>
+            <div class="icone-nav"><a href="#" class="far fa-user-circle"></a></div>
         </div>
 
     </header>
 
-    <div class="nav-mobile">
-
-    </div>
+    
 
     <!-- NAV -->
     <nav>
@@ -279,6 +280,6 @@
     </footer>
 
     <!-- JAVASCRIPT -->
-    <script src='js/main.js'></script>
+    <script src='assets/js/main.js'></script>
 </body>
 </html>
