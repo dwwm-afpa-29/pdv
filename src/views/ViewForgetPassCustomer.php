@@ -1,7 +1,7 @@
 <form action = "<?= FORM_LINK['recoveryCustomer']; ?>" method="POST" class="loginForget">
 
     <div class = "titreForget">
-        <h1>Envoyer un lien de récupération</h1>
+        <h1>Recevoir un lien de récupération</h1>
     </div>
 
         <div class = "titre-forget-mail"><label for = "mail"><h2>Votre Email</h2></label></div>

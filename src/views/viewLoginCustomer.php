@@ -1,15 +1,12 @@
 <div class="login">
-        <div id ="connexion">
+        
                 
-                <h2 class = "log" >Je suis déjà client</h1>
-                <a class="Button38" href="<?= A_LINK['connexion_client'];?>">Connexion</a>
+        <div class = "log-connex" ><h2>Déjà client</h2></div>
+        <div class = "connexion"><a class="Button38" href="<?= A_LINK['connexion_client'];?>">Connexion</a></div>
+
+
+        <div class = "log-inscri"><h2>Nouveau client</h2></div>
+        <div class= "inscription"><a class="Button38" href="<?= A_LINK['inscription_client'];?>">Inscription</a></div>
             
-        </div>
-            
-        <div id = "inscription">
-            
-                <h2 class = "log">Je suis nouveau client</h1>
-                <a class="Button38" href="<?= A_LINK['inscription_client'];?>">Inscription</a>
-            
-        </div>
-    </div>
+        
+</div>

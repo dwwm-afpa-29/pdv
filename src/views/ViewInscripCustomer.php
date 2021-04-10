@@ -31,7 +31,7 @@
             <input type="text" name="passwd" id="passwd1" onkeyup="checkpass()" class="input passwd-inscri">
         
         
-            <div class = "titre-passwd2-inscri"><label for = "passwd2"> <h2>Confirmer votre mot de passe</h2></label></div>
+            <div class = "titre-passwd2-inscri"><label for = "passwd2"> <h2>Confirmation du mot de passe</h2></label></div>
             <input type="password" name="passwd2" id="passwd2" onkeyup="checkpass()" class="input passwd2-inscri">
             
         
@@ -40,7 +40,7 @@
             <input type="text" name="address_street" class="input addressStreet-inscri">
         
         
-            <div class = "titre-addressZip-inscri"><label for="address_zip_code"><h2>Code Postale</h2></label></div>
+            <div class = "titre-addressZip-inscri"><label for="address_zip_code"><h2>Code Postal</h2></label></div>
             <input type="text" name="address_zip_code" class = "input addressZip-inscri">
         
         
