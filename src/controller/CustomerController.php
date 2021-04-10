@@ -394,6 +394,16 @@ public function recoveryPasswordCustomer() {
         require_once(BACK_ROOT . '/views/template.php');
 }
 
+//DECONNEXION DU CLIENT
+
+public function decoCustomer() {
+    ob_start();
+
+    $_SESSION = [];
+
+    header('location:' . A_LINK['accueil']);
+}
+
     /**
      * Modification des données client
      * @return void

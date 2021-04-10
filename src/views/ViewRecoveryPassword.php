@@ -18,7 +18,7 @@
     
         <div class="titre-passwd2-recovery"><label for = "passwd2"> Confirmation du mot de passe</label></div>
         <input type="password" name="passwd2" id="passwd2" onkeyup="checkpass()" class="input passwd2-recovery">
-        <div id = "passVerif"></div>
+        <div id = "passVerif-recovery"></div>
 
         <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
         <div class = "recovery"><input type = "submit" value = "Enregistrer" disabled id="submit" class="Button38"></div>
@@ -44,7 +44,7 @@
         function checkpass(){
             var passwd1 = document.getElementById("passwd1").value;
             var passwd2 = document.getElementById("passwd2").value;
-            var passVerif = document.getElementById("passVerif");
+            var passVerif = document.getElementById("passVerif-recovery");
             let pass1 = document.forms['recovery'].elements['passwd1'];
             let pass2 = document.forms['recovery'].elements['passwd2'];
 

@@ -28,7 +28,7 @@
         
         
             <div class = "titre-passwd-inscri"><label for="passwd"><h2>Mot de passe</h2></label></div>
-            <input type="text" name="passwd" id="passwd1" onkeyup="checkpass()" class="input passwd-inscri">
+            <input type="password" name="passwd" id="passwd1" onkeyup="checkpass()" class="input passwd-inscri">
         
         
             <div class = "titre-passwd2-inscri"><label for = "passwd2"> <h2>Confirmation du mot de passe</h2></label></div>
@@ -47,6 +47,8 @@
             <div class = "titre-addressCity-inscri"><label for="address_city"><h2>Ville</h2></label></div>
             <input type="text" name="address_city" class = "input addressCity-inscri">
         
+
+            <div id = "passVerif-inscri"></div>
         
 
             <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
@@ -75,16 +77,19 @@
         function checkpass(){
             var passwd1 = document.getElementById("passwd1").value;
             var passwd2 = document.getElementById("passwd2").value;
+            var passVerif = document.getElementById("passVerif-inscri");
             let pass1 = document.forms['inscription'].elements['passwd1'];
             let pass2 = document.forms['inscription'].elements['passwd2'];
 
             if (passwd1 == passwd2) {
                 submit.disabled = false;
+                passVerif.innerHTML = "<h3><font color='green'>Les mots de passe sont identiques</h3>";
                 pass1.style.border = "1px green solid";
                 pass2.style.border = "1px green solid";
             }
             else {
                 submit.disabled = true;
+                passVerif.innerHTML = "<h3><font color='red'>Les mots de passe sont différents</h3>";
                 pass1.style.border = "1px red solid";
                 pass2.style.border = "1px red solid";
             }
