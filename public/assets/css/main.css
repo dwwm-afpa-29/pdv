@@ -490,38 +490,42 @@ footer {
 .login {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 70px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 50px;
     grid-row-gap: 0px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
-}
-
-.log {
-    margin-bottom: 20px;
-}
-    
-#connexion { 
-    grid-area: 1 / 1 / 2 / 2;
-            
-}
-
-#inscription { 
-    grid-area: 1 / 2 / 2 / 3;        
-}
-
-.login div {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;  
-    height: 40vh;
-    overflow: auto;
-    flex-direction: column;
     color: #35495e;
-}
     
+}
+.log-connex { 
+    grid-area: 1 / 1 / 2 / 2; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.connexion { 
+    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+}
+.log-inscri { 
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+}
+.inscription { 
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+} 
+
+.login h2{
+    font-size: 20px;
+}
+
+
     
 
                         /*-----FORM CONNEXION-----*/
@@ -532,6 +536,7 @@ footer {
     grid-template-rows: repeat(7, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    text-align: center;
 }
 
 
@@ -552,8 +557,7 @@ footer {
     display: flex;
     flex-wrap: nowrap;
     justify-content: end;
-    align-items: start;
-    align-content: flex-start;
+    align-items: Center;
     overflow: auto;
     flex-direction: column;
 }
@@ -567,8 +571,7 @@ footer {
     display: flex;
     flex-wrap: nowrap;
     justify-content: end;
-    align-items: start;
-    align-content: flex-start;
+    align-items: center;
     overflow: auto;
     flex-direction: column;
 }
@@ -623,6 +626,7 @@ footer {
     grid-template-rows: repeat(12, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 0px;
+    text-align: center;
     }
     
 .titreInsc { 
@@ -753,6 +757,7 @@ footer {
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    text-align: center;
 }
     
 .titreForget { 
@@ -786,7 +791,71 @@ footer {
     justify-content: center;
     align-items: flex-end; 
 }
-                                    
+                                        /* ----- FORM RECOVERY ----- */
+.loginRecovery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+    color: #35495e;
+    text-align: center;
+    }
+    
+    .titreRecovery { 
+        grid-area: 1 / 1 / 2 / 3;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+    .titre-email-recovery { 
+        grid-area: 2 / 1 / 3 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .email-recovery { 
+        grid-area: 3 / 1 / 4 / 3;
+     }
+    .titre-passwd-recovery { 
+        grid-area: 4 / 1 / 5 / 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end; 
+    }
+    .passwd-recovery { 
+        grid-area: 5 / 1 / 6 / 2;
+     }
+    .titre-passwd2-recovery { 
+        grid-area: 4 / 2 / 5 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .passwd2-recovery { 
+        grid-area: 5 / 2 / 6 / 3;
+     }
+    #passVerif { 
+        grid-area: 6 / 1 / 7 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .recovery { 
+        grid-area: 7 / 1 / 8 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+     .loginRecovery h3 {
+         font-size: 15px;
+     }
+
                     
                                         /* ----- FORM ARTICLES ----- */
 
@@ -916,5 +985,111 @@ footer {
     .footer3 {
         display: none;
     }
+                                        /* ----- RESPONSIVE LOGIN -----*/
+    .login {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 30px;
+    }    
+      
+    .log-connex  { 
+        grid-area: 1 / 1 / 2 / 2;
+        display: flex;
+        justify-content: center; 
+        align-items: flex-end;
+    }
+    .connexion { 
+        grid-area: 2 / 1 / 3 / 2; 
+    }
+    .log-inscri { 
+        grid-area: 3 / 1 / 4 / 2;
+        display: flex;
+        justify-content: center; 
+        align-items: flex-end; 
+    }
+    .inscription { 
+        grid-area: 4 / 1 / 5 / 2; 
+    } 
 
+                                        /* ----- RESPONSIVE INSCRIPTION ----- */
+        .loginInscri {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(14, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 0px;
+        }
+        
+        .titreInsc { 
+            grid-area: 1 / 1 / 2 / 3; 
+        }
+        .titre-firstname-inscri { 
+            grid-area: 2 / 1 / 3 / 2; 
+        }
+        .firstname-inscri { 
+            grid-area: 3 / 1 / 4 / 2; 
+        }
+        .titre-lastname-inscri { 
+            grid-area: 2 / 2 / 3 / 3; 
+        }
+        .lastname-inscri { 
+            grid-area: 3 / 2 / 4 / 3; 
+        }
+        .titre-phone-inscri { 
+            grid-area: 4 / 1 / 5 / 2; 
+        }
+        .phone-inscri { 
+            grid-area: 5 / 1 / 6 / 2; 
+        }
+        .titre-date-inscri { 
+            grid-area: 4 / 2 / 5 / 3; 
+        }
+        .date-inscri { 
+            grid-area: 5 / 2 / 6 / 3; 
+        }
+        .titre-email-inscri { 
+            grid-area: 6 / 1 / 7 / 3; 
+        }
+        .email-inscri { 
+            grid-area: 7 / 1 / 8 / 3;
+        }
+        .titre-passwd-inscri { 
+            grid-area: 8 / 1 / 9 / 2; 
+        }
+        .passwd-inscri { 
+            grid-area: 9 / 1 / 10 / 2; 
+        }
+        .titre-passwd2-inscri { 
+            grid-area: 8 / 2 / 9 / 3; 
+        }
+        .passwd2-inscri { 
+            grid-area: 9 / 2 / 10 / 3;
+        }
+        .titre-addressStreet-inscri{
+            grid-area: 10 / 1 / 11 / 3;
+        }
+        .addressStreet-inscri { 
+            grid-area: 11 / 1 / 12 / 3;
+        }
+        .titre-addressZip-inscri { 
+            grid-area: 12 / 1 / 13 / 2; 
+        }
+        .addressZip-inscri { 
+            grid-area: 13 / 1 / 14 / 2; 
+        }
+        .titre-addressCity-inscri { 
+            grid-area: 12 / 2 / 13 / 3; 
+        }
+        .addressCity-inscri { 
+            grid-area: 13 / 2 / 14 / 3; 
+        }
+        .inscri-return { 
+            grid-area: 14 / 1 / 15 / 2; 
+        }
+        .inscri {
+            grid-area: 14 / 2 / 15 / 3;
+        }
+                                            
 }

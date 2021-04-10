@@ -42,7 +42,7 @@
         </div>
 
         <div class="bouton-mobile">
-            <a class="fill-button" href="#"><span class="fill-button-hover"><span class="fill-button-text">Connexion</span></span></a>
+            <a class="fill-button" href="<?= A_LINK['login_client']; ?>"><span class="fill-button-hover"><span class="fill-button-text">Connexion</span></span></a>
         </div>
 
         <div class="nav-mobile">
