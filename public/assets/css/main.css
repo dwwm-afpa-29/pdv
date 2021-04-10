@@ -618,7 +618,7 @@ footer {
 .loginInscri {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(12, 1fr);
+    grid-template-rows: repeat(13, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 0px;
     text-align: center;
@@ -731,15 +731,22 @@ footer {
 .addressCity-inscri { 
     grid-area: 11 / 3 / 12 / 5; 
 }
+#passVerif-inscri{
+    grid-area: 12 / 1 / 13 / 5;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+
 .inscri-return { 
-    grid-area: 12 / 1 / 13 / 3;
+    grid-area: 13 / 1 / 14 / 3;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end; 
 }
 .inscri { 
-    grid-area: 12 / 3 / 13 / 5;
+    grid-area: 13 / 3 / 14 / 5;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -833,7 +840,7 @@ footer {
     .passwd2-recovery { 
         grid-area: 5 / 2 / 6 / 3;
      }
-    #passVerif { 
+    #passVerif-recovery { 
         grid-area: 6 / 1 / 7 / 3;
         display: flex;
         flex-direction: row;
@@ -851,7 +858,49 @@ footer {
          font-size: 15px;
      }
 
-                    
+                                        /* ----- HOME CUSTOMER -----*/
+.homeCustomer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 70px;
+    color: #35495e;
+    }
+    
+    .titre-home { 
+        grid-area: 1 / 1 / 2 / 4; 
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        
+    }
+    .modif-home-customer { 
+        grid-area: 2 / 1 / 3 / 2;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+
+    }
+    .commande-home-customer { 
+        grid-area: 2 / 2 / 3 / 3; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .historical-home-customer { 
+        grid-area: 2 / 3 / 3 / 4; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .deco-home-customer { 
+        grid-area: 3 / 2 / 4 / 3;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end; 
+    }
+                                             
                                         /* ----- FORM ARTICLES ----- */
 
 
@@ -1086,5 +1135,20 @@ footer {
         .inscri {
             grid-area: 14 / 2 / 15 / 3;
         }
-                                            
+         
+                                        /* ----- RESPONSIVE HOME CUSTOMER ----- */
+    .homeCustomer {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 30px;
+        text-align: center;
+        }
+        
+        .titre-home { grid-area: 1 / 1 / 2 / 2; }
+        .modif-home-customer { grid-area: 2 / 1 / 3 / 2; }
+        .commande-home-customer { grid-area: 3 / 1 / 4 / 2; }
+        .historical-home-customer { grid-area: 4 / 1 / 5 / 2; }
+        .deco-home-customer { grid-area: 5 / 1 / 6 / 2; }
 }
