@@ -94,6 +94,7 @@ class CustomerController {
         require_once(BACK_ROOT . '/views/template.php');
     }
 
+
     //INSCRIPTION DU CLIENT
     /**Vérification de la méthode POST
      * Gestion et vérification du reCaptcha
