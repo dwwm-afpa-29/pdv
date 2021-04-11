@@ -4,7 +4,7 @@ class AdminController{
     private $adminService;
 
     public function __construct(){
-        /*$this->adminService = new AdminService();*/
+        $this->adminService = new AdminService();
     }
     
         
@@ -16,15 +16,18 @@ class AdminController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function CustomerList(){
+    public function customerList(){
         ob_start();
+
+        $customerList = $this->getAllCustomer();
+        //print_r($customerList);
         require_once(BACK_ROOT . '/views/ViewCustomerList.php');
         $view = ob_get_clean();
 
         require_once(BACK_ROOT . '/views/template.php');
     }
     
-    public function AdminCommandeToDo() {
+    public function adminCommandeToDo() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminCommandeToDo.php');
         $view = ob_get_clean();
@@ -32,7 +35,7 @@ class AdminController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function AdminCommandeDone() {
+    public function adminCommandeDone() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminCommandeDone.php');
         $view = ob_get_clean();
@@ -40,7 +43,7 @@ class AdminController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function AdminProductManagement() {
+    public function adminProductManagement() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminProductManagement.php');
         $view = ob_get_clean();
@@ -48,11 +51,16 @@ class AdminController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function AdminProfile() {
+    public function adminProfile() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminProfile.php');
         $view = ob_get_clean();
 
         require_once(BACK_ROOT . '/views/template.php');
     }
+
+    public function getAllCustomer () {
+        return $this->adminService->customerList();
+    }
 }
+
