@@ -1,19 +1,44 @@
 <?php
 
+echo '<pre>';
+    print_r($customerList);
+echo '</pre>';
+
+$i=0;
+$j=0;
+$customer;
 echo '<table>';
-var_dump($customerList);
+
+echo '<thead>';
+echo '<tr>';
+
+foreach($customerList as $key => $value){
+
+    $i++;
+
+    if($i === 1){
+        foreach($value as $caract => $valeur){
+            
+            echo '<th>'.$caract.'</th>';
+            
+        }
+    }
+}
+
+echo '</tr>';
+echo '</thead>';
+echo '<tbody>';
+echo '<tr>';
+
 foreach($customerList as $key => $value){
     
-    echo '<tr>';
-    echo '<th>'.$key.'</th>';
-    echo '<tr>';
-
-    //print_r($value);
-}
-
-foreach($customerList as $key => $value) {
-
-    $customer = $value;
-    //var_dump($customer);
-}
+    foreach($value as $customer){
+        echo '<td>'.$customer.'</td>';
+    }
+    
+} 
+echo '</tr>';
+echo '</tbody>';
 echo '</table>';
+
+print_r($j);
