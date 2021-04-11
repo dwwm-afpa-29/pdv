@@ -4,7 +4,7 @@ class AdminController{
     private $adminService;
 
     public function __construct(){
-        $this->adminService = new AdminService();
+        /*$this->adminService = new AdminService();*/
     }
     
         

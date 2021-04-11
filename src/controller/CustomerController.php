@@ -199,7 +199,7 @@ class CustomerController {
                             
                             $customer = $this->customerService->signin($email);
                             $passwdCrypt = $customer['passwd'];
-
+                            print_r($customer['role']);
 
                             if(password_verify($_POST['passwd'], $passwdCrypt)) {
 
@@ -213,11 +213,14 @@ class CustomerController {
                                 $_SESSION['phone'] = $customer['phone_number'];
                                 $_SESSION['birth'] = $customer['date_of_birth'];
                                 $_SESSION['role'] = $customer['role_user'];
+                                
 
                                 if ($_SESSION['role'] == 'admin') {
-
+                                    header('location:' . A_LINK['admin_home']);
+                                    print_r($_SESSION['role']);
                                 }else {
                                     header('location:' . A_LINK['customer_home']);
+                                    print_r($_SESSION['role']);
                                 }
                                 
                             }else {

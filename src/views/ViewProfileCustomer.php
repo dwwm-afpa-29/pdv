@@ -27,7 +27,7 @@
     <div class = "modif-submit"><input type="submit" name="modifier" value="Valider les changements" class = "Button38"></div>
     <div class ="modif-return"><a href = "<?=A_LINK['customer_home']; ?>" value = "Retour" class = "Button38">Retour</a></div>
 
-    <div class = "modif-mdp"><a href = "<?=A_LINK['oublie_mot_de_passe']; ?>" value="Mot de passe oublié" class = "Button38">Changer de mot de passe</a></div>
+    <div class = "modif-mdp"><a href = "<?=A_LINK['oublie_mot_de_passe']; ?>" value="Mot de passe oublié" class = "Button29 slide_inside">Changer de mot de passe</a></div>
 
 </form>
 <div class = "modif-confirm">

@@ -9,7 +9,7 @@
             
         <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">
         <div class ="forget"><input type="submit" id="submit" value="Envoyer" class = "Button38"></div>
-        <div class ="forget-return"><a href = "<?=A_LINK['login_client']; ?>" value = "Retour" class = "Button38">Retour</a></div>
+        <div class ="forget-return"><a href = "<?=A_LINK['accueil']; ?>" value = "Retour" class = "Button38">Retour</a></div>
         
 </form>
         
