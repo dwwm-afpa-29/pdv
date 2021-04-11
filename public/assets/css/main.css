@@ -866,6 +866,7 @@ footer {
     grid-column-gap: 10px;
     grid-row-gap: 70px;
     color: #35495e;
+    text-align: center;
     }
     
     .titre-home { 
@@ -900,6 +901,153 @@ footer {
         justify-content: center;
         align-items: flex-end; 
     }
+                                        /* ----- FORM MODIF PROFILE CUSTOMER -----*/
+.modif-profile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+    color: #35495e;
+    text-align: center;
+    }
+    
+    .titre-lastname-modif { 
+        grid-area: 1 / 1 / 2 / 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .lastname-modif { 
+        grid-area: 2 / 1 / 3 / 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; 
+    }
+    .titre-firstname-modif { 
+        grid-area: 1 / 2 / 2 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end; 
+    }
+    .firstname-modif { 
+        grid-area: 2 / 2 / 3 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .titre-mail-modif { 
+        grid-area: 3 / 1 / 4 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .mail-modif { 
+        grid-area: 4 / 1 / 5 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .titre-addressStreet-modif { 
+        grid-area: 5 / 1 / 6 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .addressStreet-modif { 
+        grid-area: 6 / 1 / 7 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .titre-addressZip-modif { 
+        grid-area: 7 / 1 / 8 / 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .addressZip-modif { 
+        grid-area: 8 / 1 / 9 / 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .titre-addressCity-modif { 
+        grid-area: 7 / 2 / 8 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end; 
+    }
+    .addressCity-modif { 
+        grid-area: 8 / 2 / 9 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .titre-phone-modif { 
+        grid-area: 9 / 1 / 10 / 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .phone-modif { 
+        grid-area: 10 / 1 / 11 / 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .titre-date-modif { 
+        grid-area: 9 / 2 / 10 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+     }
+    .date-modif { 
+        grid-area: 10 / 2 / 11 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .modif-mdp { 
+        grid-area: 11 / 1 / 12 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+     }
+    .modif-return { 
+        grid-area: 12 / 1 / 13 / 2;;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+    .modif-submit { 
+        grid-area: 12 / 2 / 13 / 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+     
+                                            
                                              
                                         /* ----- FORM ARTICLES ----- */
 
@@ -1151,4 +1299,16 @@ footer {
         .commande-home-customer { grid-area: 3 / 1 / 4 / 2; }
         .historical-home-customer { grid-area: 4 / 1 / 5 / 2; }
         .deco-home-customer { grid-area: 5 / 1 / 6 / 2; }
+
+                                        /* ----- RESPONSIVE MODIF CUSTOMER ----- */
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(13, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 0px;
+    }
+        .modif-mdp { grid-area: 11 / 1 / 12 / 3; }
+        .modif-submit { grid-area: 12 / 1 / 13 / 3; }
+        .modif-return { grid-area: 13 / 1 / 14 / 3; } 
 }

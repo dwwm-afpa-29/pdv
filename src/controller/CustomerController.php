@@ -192,33 +192,39 @@ class CustomerController {
                     isset($_POST['passwd']) && !empty($_POST['passwd'])
                     ) {
                         $email = $_POST['mail'];
-                        $customer = $this->customerService->signin($email);
-                        $passwdCrypt = $customer['passwd'];
+                        $customerTrue = $this->customerService->verifExistMail($email);
 
-                    if ($customer['mail'] == $email) {
+                        if ($customerTrue == true) {
+                            
+                            $customer = $this->customerService->signin($email);
+                            $passwdCrypt = $customer['passwd'];
 
 
-                        if(password_verify($_POST['passwd'], $passwdCrypt)) {
+                            if(password_verify($_POST['passwd'], $passwdCrypt)) {
 
-                            $_SESSION['id'] = $customer['id'];
-                            $_SESSION['firstname'] = $customer['first_name'];
-                            $_SESSION['lastname'] = $customer['last_name'];
-                            $_SESSION['mail'] = $email;
-                            $_SESSION['street'] = $customer['address_street'];
-                            $_SESSION['zipCode'] = $customer['address_zip_code'];
-                            $_SESSION['city'] = $customer['address_city'];
-                            $_SESSION['phone'] = $customer['phone_number'];
-                            $_SESSION['birth'] = $customer['date_of_birth'];
-                            $_SESSION['role'] = $customer['role_user'];
+                                $_SESSION['id'] = $customer['id'];
+                                $_SESSION['firstname'] = $customer['first_name'];
+                                $_SESSION['lastname'] = $customer['last_name'];
+                                $_SESSION['mail'] = $email;
+                                $_SESSION['street'] = $customer['address_street'];
+                                $_SESSION['zipCode'] = $customer['address_zip_code'];
+                                $_SESSION['city'] = $customer['address_city'];
+                                $_SESSION['phone'] = $customer['phone_number'];
+                                $_SESSION['birth'] = $customer['date_of_birth'];
+                                $_SESSION['role'] = $customer['role_user'];
 
-                            header('location:' . A_LINK['customer_home']);
-                           
-                        }else {
-                            echo 'Le mot de passe est incorrect';
-                        }
+                                if ($_SESSION['role'] == 'admin') {
+
+                                }else {
+                                    header('location:' . A_LINK['customer_home']);
+                                }
+                                
+                            }else {
+                                echo 'Le mot de passe est incorrect';
+                            }
                             
                     }else {
-                        echo 'L\'utilisateur n\'existe pas. Veuillez vous enregistrer';
+                        echo 'L\'utilisateur n\'existe pas. Veuillez vous enregistrer.';
                     }
 
 
@@ -315,18 +321,19 @@ class CustomerController {
                         //envoi du mail
                         mail($email, "Récupération de votre mot de passe sur pieddevigne.com", $message, $header);
 
-                        echo 'un mail vient de vous être envoyé';
+                        echo 'Un mail vient de vous être envoyé';
+                        $_SESSION = [];
                     }else{
-                        echo 'L\'utilisateur n\'existe pas';
+                        echo 'L\'utilisateur n\'existe pas, veuillez vous enregistrer';
                     }
                 }
             }else{
-                echo 'pb de réponse du recaptcha';
+                echo 'Pb de réponse du recaptcha';
             }    
         }else{
             http_response_code(405);
         }
-        require_once(BACK_ROOT . '/views/accueil.php');
+        require_once(BACK_ROOT . '/views/viewLoginCustomer.php');
         $view = ob_get_clean();
         require_once(BACK_ROOT . '/views/template.php');
     }
@@ -372,7 +379,8 @@ public function recoveryPasswordCustomer() {
                 $confirm = $this->customerService->passwordModified($passModif);
 
                 if($confirm == true) {
-                    echo 'Votre mot de passe a bien été modifié';
+                    echo 'Votre mot de passe a bien été modifié, veuillez vous reconnecter.';
+                    $_SESSION = [];
                 }
             }
             else if(empty($_SESSION['mail'])){

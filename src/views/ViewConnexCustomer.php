@@ -40,27 +40,4 @@
             document.getElementById("recaptchaResponse2").value = token;
         });
     });
-
-            /*-----Mot de passe identique-----*/
-
-    function checkpass(){
-        let passwd1 = document.getElementById("passwd1").value;
-        let passwd2 = document.getElementById("passwd2").value;
-        let passVerif = document.getElementById("passVerif");
-        let pass1 = document.forms['inscription'].elements['passwd1'];
-        let pass2 = document.forms['inscription'].elements['passwd2'];
-
-        if (passwd1 == passwd2) {
-            passVerif.innerHTML = "Les mots de passe sont identiques";
-            submit.disabled = false;
-            pass1.style.border = "1px green solid";
-            pass2.style.border = "1px green solid";
-        }
-        else {
-            passVerif.innerHTML = "Les mots de passe sont différents";
-            submit.disabled = true;
-            pass1.style.border = "1px red solid";
-            pass2.style.border = "1px red solid";
-        }
-    }
   </script>
