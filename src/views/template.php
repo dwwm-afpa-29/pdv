@@ -46,9 +46,9 @@
         </div>
 
         <div class="nav-mobile">
-            <div class="icone-nav"><a href="#"><img src="assets/image/icones/bottles2.png" alt="logo bouteilles"></a></div>
-            <div class="icone-nav"><a href="#"><img src="assets/image/icones/search2.png" alt="logo rechercher"></a></div>
-            <div class="icone-nav"><a href="#"><img src="assets/image/icones/panier2.png" alt="logo panier"></a></div>
+            <div class="icone-nav"><a href="#"><?php require('assets/image/icones/bottlesIcon.php'); ?></a></div>
+            <div class="icone-nav"><a href="#"><?php require('assets/image/icones/searchIcon.php'); ?></a></div>
+            <div class="icone-nav"><a href="#"><?php require('assets/image/icones/panierIcon.php'); ?></a></div>
             <div class="icone-nav"><a href="#"><?php require('assets/image/icones/userIcon.php'); ?></a></div>
 
             <!-- <div class="icone-nav"><a href="#"><img src="assets/image/icones/bottles2.png" alt="logo bouteilles"></a></div>
