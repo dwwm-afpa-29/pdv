@@ -1225,11 +1225,19 @@ footer {
     .icone-nav>a {
         width: 100%;
         height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         text-decoration: none;
+        /* border: 1px solid #fff; */
     }
 
     .icone-nav>a>svg {
         filter: drop-shadow(2px 2px 4px #000);
+        width: 60px;
+        height: 60px;
     }
 
     .produits {
@@ -1403,4 +1411,15 @@ footer {
         .modif-mdp { grid-area: 11 / 1 / 12 / 3; }
         .modif-submit { grid-area: 12 / 1 / 13 / 3; }
         .modif-return { grid-area: 13 / 1 / 14 / 3; } 
+}
+
+
+
+/* ----- RESPONSIVE SVG ----- */
+
+@media screen and (max-width: 350px) {
+    .icone-nav>a>svg {
+        width: 40px;
+        height: 40px;
+    }
 }
