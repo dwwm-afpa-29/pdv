@@ -97,7 +97,7 @@ class Rooter {
         
         // Instancie mon controller
         $new  = new $controller;
-        var_dump($params);
+        //var_dump($params);
         // Appel de la méthode (action) avec les paramètres éventuels
         $new->$action($params);
     }

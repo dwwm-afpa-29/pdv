@@ -19,4 +19,12 @@ class AdminDao extends BaseDao {
         return $customer;
 
     }
+
+    public function customerSelectByAdminDAO($id){
+
+        $connex = $this->db->prepare("SELECT * FROM `customer` WHERE id = :id");
+        $connex->execute([':id' => $id]);
+        
+        return $connex->fetch(\PDO::FETCH_ASSOC);
+    }
 }

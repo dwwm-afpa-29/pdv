@@ -26,6 +26,17 @@ class AdminController{
 
         require_once(BACK_ROOT . '/views/template.php');
     }
+
+    public function getOneCustomer(){
+        ob_start();
+        
+        $customer = $this->customerSelectByAdmin();
+
+        require_once(BACK_ROOT . '/views/ViewCustomerList.php');
+        $view = ob_get_clean();
+
+        require_once(BACK_ROOT . '/views/template.php');
+    }
     
     public function adminCommandeToDo() {
         ob_start();
@@ -59,8 +70,19 @@ class AdminController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
+
+
     public function getAllCustomer () {
         return $this->adminService->customerList();
     }
+
+    public function customerSelectByAdmin(){
+
+        $explode = explode('/', $_GET['p']);
+        $id = $explode['2'];
+        print_r($this->adminService->customerSelectByAdmin($id));
+        return $this->adminService->customerSelectByAdmin($id);
+    }
+
 }
 
