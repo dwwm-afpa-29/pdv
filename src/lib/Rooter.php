@@ -28,7 +28,8 @@ class Rooter {
     public function __construct(array $get) {
         $this->explodeUrl($get);
         $this->defineController();
-        $this->defineAction();  
+        $this->defineAction(); 
+        $this->defineParams(); 
     }
     
     // METHODES
@@ -96,7 +97,7 @@ class Rooter {
         
         // Instancie mon controller
         $new  = new $controller;
-
+        var_dump($params);
         // Appel de la méthode (action) avec les paramètres éventuels
         $new->$action($params);
     }

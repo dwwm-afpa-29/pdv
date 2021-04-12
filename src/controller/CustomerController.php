@@ -105,8 +105,9 @@ class CustomerController {
 
         //----------on vérifie si c'est la méthode POST qui est utilisée
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            ob_start();
 
+            ob_start();
+            
             //----------Nettoyage des données----------
             $_POST= array_map('htmlspecialchars', $_POST);
             $customer = $_POST;
@@ -148,6 +149,9 @@ class CustomerController {
                         $_SESSION['birth'] = $customer['date_of_birth'];
                         $_SESSION['role'] = $customer['role_user'];
 
+                        unset($_SESSION['post']);
+                        unset($_SESSION['error']);
+
                         header('location:' . A_LINK['customer_home']);
 
 
@@ -156,7 +160,10 @@ class CustomerController {
                     }
 
                 }else{
-                    echo 'Veuillez remplir tous les champs';
+                    $_SESSION['post'] = $_POST;
+                    $_SESSION['error'] = true;
+                    header('location:' . A_LINK['inscription_client']);
+                    
                 }
             }else{
                 echo 'pb de réponse du recaptcha';
@@ -166,6 +173,8 @@ class CustomerController {
             http_response_code(405);
             echo 'Méthode non authorisée';
         }
+
+           
 
             require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
             $view = ob_get_clean();

@@ -1,48 +1,39 @@
-<?php
-
-echo '<pre>';
-    print_r($customerList);
-echo '</pre>';
-
-/*$i=0;
-$j=0;
-$customer;
-echo '<table>';
-
-echo '<thead>';
-echo '<tr>';
-
-foreach($customerList as $key => $value){
-
-    $i++;
-
-    if($i === 1){
-        foreach($value as $caract => $valeur){
+<?php $i = 0 ?>
+<div class = listing>
+    <div class = list>     
+        <table class = "list_client">
+        <thead>
+            <tr>
+            <th> Nom </th>
+            <th> Prénom </th>
+            <th>  Email </th>
+            <th> Téléphone </th>
+            <th> Modifier </th>
+            </tr>
             
-            echo '<th>'.$caract.'</th>';
-            
-        }
-    }
-}
+        </thead>
+        <tbody>
+                
+        <?php foreach($customerList as $customer): ?>
+            <tr class = "row">
+            <td><?=$customer['last_name']?></td>
+            <td><?=$customer['first_name']?></td>
+            <td><?=$customer['mail']?></td>  
+            <td><?=$customer['phone_number']?></td>
+            <?php if ($_SESSION['role']== 'admin'):?>
+            <td><a href = "<?=A_LINK['customer_list']."/".$i;?>">Voir</a></td>
+            <?php endif ?>
+            </tr>
+        <?php $i++; ?>
+        <?php endforeach; ?>   
+            </tbody>
+        </table>
+    </div>
 
-echo '</tr>';
-echo '</thead>';
-echo '<tbody>';
-echo '<tr>';
+    <div class = modif-customer-by-admin>
 
-foreach($customerList as $key => $value){
-    
-    foreach($value as $customer){
-        echo '<td>'.$customer.'</td>';
-    }
-    
-} 
-echo '</tr>';
-echo '</tbody>';
-echo '</table>';
-
-print_r($j);
-
-/*foreach($customerList as $customer){
-    echo $customer['last_name'];
-}*/
+    </div>
+<?php 
+/*echo "<pre>";
+echo (var_dump($customerList));
+echo "</pre>";*/

@@ -10,7 +10,7 @@
     <div class ="titre-email-connex"><label for = "mail"><h2>Votre Email</h2></label></div>
     <input type = "email" name="mail" placeholder="courriel@exemple.com" onFocus="this.value='';" class="input email-connex">
 
-    <div class ="titre-passwd-connex"><label for = "passwd"><h2>Votre mot de passe</h2></label></div>
+    <div class ="titre-passwd-connex"><label for = "passwd" ><h2>Votre mot de passe</h2></label></div>
     <input type="password" name="passwd" class="input passwd-connex">
 
     <input type="hidden" id= "recaptchaResponse" name= "recaptcha-response">

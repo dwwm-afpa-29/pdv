@@ -13,7 +13,7 @@
     <input class ="input addressStreet-modif" type="text" name="address_street" value="<?= $_SESSION['street'] ?? ''; ?>">
 
     <div class = "titre-addressZip-modif"><label for="address_zip_code">Code Postal</label></div>
-    <input class = "addressZip-modif input" type="text" name="address_zip_code" value="<?= $_SESSION['zipCode'] ?? ''; ?>">
+    <input class = "addressZip-modif input" type="text" pattern="[0-9]{5}" name="address_zip_code" value="<?= $_SESSION['zipCode'] ?? ''; ?>">
 
     <div class = "titre-addressCity-modif"><label for="address_city">Ville</label></div>
     <input class = "addressCity-modif input" type="text" name="address_city" value="<?= $_SESSION['city'] ?? ''; ?>">
