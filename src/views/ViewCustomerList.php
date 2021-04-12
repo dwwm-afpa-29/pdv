@@ -4,7 +4,7 @@ echo '<pre>';
     print_r($customerList);
 echo '</pre>';
 
-$i=0;
+/*$i=0;
 $j=0;
 $customer;
 echo '<table>';
@@ -42,3 +42,7 @@ echo '</tbody>';
 echo '</table>';
 
 print_r($j);
+
+/*foreach($customerList as $customer){
+    echo $customer['last_name'];
+}*/
