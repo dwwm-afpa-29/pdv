@@ -20,7 +20,7 @@
             <td><?=$customerS['mail']?></td>  
             <td><?=$customerS['phone_number']?></td>
             <?php if ($_SESSION['role']== 'admin'):?>
-            <td><a href = "<?=A_LINK['customer_list_modif']."/".$customerS['id'];?>">Voir</a></td>
+            <td><a href = "<?=A_LINK['customer_list']."/".$customerS['id'];?>">Voir</a></td>
             <?php endif ?>
             </tr>
         <?php endforeach; ?>   
@@ -29,11 +29,17 @@
     </div>
 
     <div class = modif-customer-by-admin>
-    <?php /*foreach($customer as $custo){
-        echo $custo['last_name'];
 
-    }*/
-    ?>
+    <?php if(isset($customer)):?>
+        <?php foreach($customer as $key): ?>
+
+           <?= $key['last_name']; ?>
+           <?= $key['first_name']; ?>
+        
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+
     </div>
 <?php 
 
