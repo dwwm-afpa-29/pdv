@@ -1,20 +1,27 @@
 <?php
 
-class ArticlesController{
+class ArticlesController extends AccueilController{
 
-    private $prodTypeService;
-    private $featuresService;
+    // private $prodTypeService;
+    // private $featuresService;
     private $articlesService;
 
     public function __construct(){
         
-        $this->prodTypeService = new ProdTypeService();
-        $this->featuresService = new FeaturesService();
+        // $this->prodTypeService = new ProdTypeService();
+        // $this->featuresService = new FeaturesService();
+        parent::__construct();
         $this->articlesService = new ArticlesService();
         $this->articlesDao = new ArticlesDao();
         
         
     }
+
+
+///////////////////   Fonctions pour les formulaires d'enregistrement de produit
+
+
+
 //temporaire: Pour afficher tous les aticles
     public function getAllArticles(){
         $this->articlesDao->findAll();
@@ -30,8 +37,9 @@ class ArticlesController{
 
         ob_start();
         require_once BACK_ROOT  . '/views/formArticle.php';
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        // $view = ob_get_clean();
+        parent::index();
+        // require_once(BACK_ROOT . '/views/template.php');
     }
 
 /**
@@ -49,8 +57,9 @@ class ArticlesController{
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
         
         require_once BACK_ROOT  . '/views/formArticle.php';
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        // $view = ob_get_clean();
+        parent::index();
+        // require_once(BACK_ROOT . '/views/template.php');
     }
 
     /**
@@ -108,12 +117,15 @@ class ArticlesController{
         $this->featuresService->recordNewFeature($featureEntity);
     }
 
+
+    ///////////////////////   Affichage des produits
     public function viewProducts() {
         ob_start();
         require_once(BACK_ROOT . '/views/viewProducts.php');
         $view = ob_get_clean();
         require_once(BACK_ROOT . '/views/template.php');
     }
+
 }
 
 
