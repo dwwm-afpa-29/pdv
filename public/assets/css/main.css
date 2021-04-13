@@ -250,9 +250,11 @@ header {
  
 .radio-toolbar {
     margin-top: 24px;
+    
 }
 .radio-toolbar input[type="radio"] {
     display: none;
+    
 }
 .radio-toolbar label {
     display: inline-block;
@@ -260,6 +262,7 @@ header {
     padding: 4px 11px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
+    cursor: pointer;
 }
 .radio-toolbar input[type="radio"]:checked + label {
     background-color: #bbb;
@@ -1161,33 +1164,33 @@ footer {
 
                                         /* ----- LISTING CLIENT ----- */
 
-     .list_client {
-        border-collapse: collapse;
-        border: 3px solid var(--raisin);
-        width: 800px ;
-        margin-left: auto ;
-        margin-right: auto ;
-    }
-        .list_client thead th {
-            background-color: var(--raisin);
-            color : var(--green);
-            border-collapse: collapse;
-            border: solid 3px var(--raisin);
-        }
+.list_client {
+    border-collapse: collapse;
+    border: 3px solid var(--raisin);
+    width: 800px ;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+.list_client thead th {
+    background-color: var(--raisin);
+    color : var(--green);
+    border-collapse: collapse;
+    border: solid 3px var(--raisin);
+}
 
-        
-        .list_client tbody td {
-            background-color: var(--green);
-            color : var(--raisin);
-            border-collapse: collapse;
-            border: 3px solid var(--raisin);
-        }
 
-        .list_client tbody tr:hover td {
-            background-color: var(--raisin);
-            color : var(--green);
-            cursor: pointer;
-        }
+.list_client tbody td {
+    background-color: var(--green);
+    color : var(--raisin);
+    border-collapse: collapse;
+    border: 3px solid var(--raisin);
+}
+
+.list_client tbody tr:hover td {
+    background-color: var(--raisin);
+    color : var(--green);
+    cursor: pointer;
+}
 
                                         /* ----- VIEW CUSTOMER LIST ----- */
 .listing {
@@ -1217,7 +1220,7 @@ footer {
 .modif-customer-by-admin {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(15, 1fr);
+    grid-template-rows: repeat(13, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     }
@@ -1242,9 +1245,8 @@ footer {
     .titre-roleUser-modifByAdmin { grid-area: 12 / 1 / 13 / 2; }
     .roleUser-modifByAdmin { grid-area: 13 / 1 / 14 / 2; }
     .Verif-modifByAdmin { grid-area: 12 / 2 / 13 / 3; }
-    .modifByAdmin { grid-area: 13 / 2 / 14 / 3; }
-    .div22 { grid-area: 14 / 1 / 15 / 3; }
-    .div23 { grid-area: 15 / 1 / 16 / 3; }
+    .modifByAdmin { grid-area: 13 / 1 / 14 / 3; }
+    
     
     
                                             

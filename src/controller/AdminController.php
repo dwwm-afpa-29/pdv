@@ -16,11 +16,11 @@ class AdminController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function customerList(){
+    public function customerList($params){
         ob_start();
 
         $customerList = $this->getAllCustomer();
-        $customer = $this->getOneCustomer();
+        $customer = $this->getOneCustomer($params);
         require_once(BACK_ROOT . '/views/ViewCustomerList.php');
         $view = ob_get_clean();
 
@@ -66,12 +66,10 @@ class AdminController{
         return $this->adminService->customerList();
     }
 
-    public function getOneCustomer(){
-
-        $explode = explode('/', $_GET['p']);
+    public function getOneCustomer($params){
         
-        if (isset($explode['2'])){
-            $id = $explode['2'];
+        if (isset($params['0'])){
+            $id = $params['0'];
     
             return $this->adminService->customerSelectByAdmin($id);
         }
