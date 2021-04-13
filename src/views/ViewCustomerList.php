@@ -74,11 +74,11 @@
                         <div class = "titre-roleUser-modifByAdmin"><label for="role_user"><h2>Rôle</h2></label></div>
                         <div class = "radio-toolbar roleUser-modifByAdmin">
                             <input type="radio" name="roleUser" id = "radio1" value = "<?=$key['role_user']?? 'admin';?>" <?=($key['role_user'] == 'admin') ? 'checked' : '';?>>
-                            <label for="radio1"><?=$key['role_user']?? 'admin';?></label>
+                            <label for="radio1">Admin</label>
                             <input type="radio" name="roleUser" id = "radio2" value = "<?=$key['role_user']?? 'employee';?>"<?=($key['role_user'] == 'admin') ? 'checked' : '';?>>
-                            <label for="radio1"><?=$key['role_user']?? 'employee';?></label>
+                            <label for="radio2">Employé</label>
                             <input type="radio" name="roleUser" id = "radio3" value = "<?=$key['role_user']?? 'customer';?>"<?=($key['role_user'] == '') ? 'checked' : 'customer';?>>
-                            <label for="radio1"><?=$key['role_user']?? 'employee';?></label>
+                            <label for="radio3">Client</label>
 
 
                         <div id = "Verif-modifByAdmin"></div>
