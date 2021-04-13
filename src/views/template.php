@@ -62,7 +62,7 @@
 
 <?php foreach($allProdTypes as $prodType){?>
     <div class="produits">
-            <a href="#">&nbsp;&nbsp;<?= $prodType->getWording() ?>&nbsp;&nbsp;</a>
+            <a href="<?=A_LINK['afficher_produits']."/".$prodType->getId()?>">&nbsp;&nbsp;<?= $prodType->getWording() ?>&nbsp;&nbsp;</a>
                 <div class="produit menu-deroulant">
             <?php foreach ($allFeatureTypes as $featureType){
             if ($prodType->getId()==$featureType->getId_type_products()){

@@ -119,8 +119,8 @@ class ArticlesController extends AccueilController{
 
 
     ///////////////////////   Affichage des produits
-    public function viewProducts() {
-
+    public function viewProducts($idProdType) {
+        print_r($idProdType);
         require_once(BACK_ROOT . '/views/viewProducts.php');
         parent::index();
     }
