@@ -3,7 +3,7 @@
 class BaseDao {
     private $_DSN = 'mysql:host=localhost;dbname=db_win_beer';
     private $_USER = 'root';
-    private $_PWD = '';
+    private $_PWD = 'root';
 
     protected $db;
 

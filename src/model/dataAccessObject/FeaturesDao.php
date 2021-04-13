@@ -43,6 +43,15 @@ class FeaturesDao extends BaseDao {
             print_r("la nouvelle caractéristique a bien été enregitrée");
         }
     }
+
+    public function findAll() {
+        $stmt = $this->db->prepare("SELECT id,wording,id_type_features as idTypeFeatures FROM features");
+        $res = $stmt->execute();
+        if($res){
+            $features = $stmt->fetchAll(\PDO::FETCH_CLASS, Features::class);
+            return $features;
+        }
+    }
 }
 
 ?>
