@@ -15,6 +15,12 @@ class adminService {
         //print_r($customerList);
         return $customerList;
     }
+
+    public function customerSelectByAdmin($id) {
+        $customerSelectByAdmin = $this->adminDao->customerSelectByAdminDAO($id);
+
+        return $customerSelectByAdmin;
+    }
     
     
 }

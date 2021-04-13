@@ -1,4 +1,10 @@
-    
+<?php if (isset($_SESSION['error']) && $_SESSION['error'] == true) : ?>
+
+<p> Veuillez remplir tous les champs </p>
+
+<?php endif ; ?>
+
+
 
     <form action="<?= FORM_LINK['signupCustomer']; ?>" method="POST" name = "inscription" class = "loginInscri">
 
@@ -8,23 +14,23 @@
 
         
             <div class = "titre-firstname-inscri"><label for="first_name"><h2>Prénom</h2></label></div>
-            <input type="text" name="first_name" class = "input firstname-inscri">
+            <input type="text" name="first_name" class = "input firstname-inscri" value = "<?=$_SESSION['post']['first_name']?? '';?>">
         
         
             <div class = "titre-lastname-inscri"><label for="last_name"><h2>Nom</h2></label></div>
-            <input type="text" name="last_name" class = "input lastname-inscri">
+            <input type="text" name="last_name" class = "input lastname-inscri" value = "<?=$_SESSION['post']['last_name']?? '';?>">
         
         
             <div class = "titre-phone-inscri"><label for="phone_number"><h2>Numéro de téléphone</h2></label></div>
-            <input type="tel" name="phone_number" class = "input phone-inscri" placeholder="0102030405" onFocus="this.value='';" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
+            <input type="tel" name="phone_number" class = "input phone-inscri" placeholder="0102030405" onFocus="this.value='';" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value = "<?=$_SESSION['post']['phone_number']?? '';?>">
         
         
             <div class = "titre-date-inscri"><label for="date_of_birth"><h2>Date de naissance</h2></label></div>
-            <input type="date" name="date_of_birth" class = "input date-inscri">
+            <input type="date" name="date_of_birth" class = "input date-inscri" value = "<?=$_SESSION['post']['date_of_birth']?? '';?>">
         
         
             <div class = "titre-email-inscri"><label for="mail"><h2>Email</h2></label></div>
-            <input type="email" name="mail" placeholder="courriel@exemple.com" onFocus="this.value='';" class="input email-inscri">
+            <input type="email" name="mail" placeholder="courriel@exemple.com" onFocus="this.value='';" class="input email-inscri" value = "<?=$_SESSION['post']['mail']?? '';?>">
         
         
             <div class = "titre-passwd-inscri"><label for="passwd"><h2>Mot de passe</h2></label></div>
@@ -37,15 +43,15 @@
         
         
             <div class="titre-addressStreet-inscri"><label for="address_street"><h2>Numéro et nom de la voie</h2></label></div>
-            <input type="text" name="address_street" class="input addressStreet-inscri">
+            <input type="text" name="address_street" class="input addressStreet-inscri" value = "<?=$_SESSION['post']['address_street']?? '';?>">
         
         
             <div class = "titre-addressZip-inscri"><label for="address_zip_code"><h2>Code Postal</h2></label></div>
-            <input type="text" name="address_zip_code" class = "input addressZip-inscri">
+            <input type="text" name="address_zip_code" pattern="[0-9]{5}" class = "input addressZip-inscri" value = "<?=$_SESSION['post']['address_zip_code']?? '';?>">
         
         
             <div class = "titre-addressCity-inscri"><label for="address_city"><h2>Ville</h2></label></div>
-            <input type="text" name="address_city" class = "input addressCity-inscri">
+            <input type="text" name="address_city" class = "input addressCity-inscri" value = "<?=$_SESSION['post']['address_city']?? '';?>">
         
 
             <div id = "passVerif-inscri"></div>

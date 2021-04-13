@@ -20,12 +20,14 @@ class AdminController{
         ob_start();
 
         $customerList = $this->getAllCustomer();
-        //print_r($customerList);
+        $customer = $this->getOneCustomer();
+        print_r($customer);
         require_once(BACK_ROOT . '/views/ViewCustomerList.php');
         $view = ob_get_clean();
 
         require_once(BACK_ROOT . '/views/template.php');
     }
+
     
     public function adminCommandeToDo() {
         ob_start();
@@ -59,8 +61,23 @@ class AdminController{
         require_once(BACK_ROOT . '/views/template.php');
     }
 
+
+
     public function getAllCustomer () {
         return $this->adminService->customerList();
     }
+
+    public function getOneCustomer(){
+
+        $explode = explode('/', $_GET['p']);
+        
+        if (isset($explode['2'])){
+            $id = $explode['2'];
+    
+            return $this->adminService->customerSelectByAdmin($id);
+        }
+        
+    }
+
 }
 

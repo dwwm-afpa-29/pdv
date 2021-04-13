@@ -1140,6 +1140,36 @@ footer {
         justify-content: center;
         align-items: center;
      }
+
+                                        /* ----- LISTING CLIENT ----- */
+
+     .list_client {
+        border-collapse: collapse;
+        border: 3px solid var(--raisin);
+        width: 800px ;
+        margin-left: auto ;
+        margin-right: auto ;
+    }
+        .list_client thead th {
+            background-color: var(--raisin);
+            color : var(--green);
+            border-collapse: collapse;
+            border: solid 3px var(--raisin);
+        }
+
+        
+        .list_client tbody td {
+            background-color: var(--green);
+            color : var(--raisin);
+            border-collapse: collapse;
+            border: 3px solid var(--raisin);
+        }
+
+        .list_client tbody tr:hover td {
+            background-color: var(--raisin);
+            color : var(--green);
+            cursor: pointer;
+        }
                                             
                                         /* ----- FORM ARTICLES ----- */
 

@@ -18,6 +18,7 @@ const A_LINK = [
     'deconnexion' => URL . 'Customer/decoCustomer',
     'admin_home' => URL . 'Admin/homeAdmin',
     'customer_list' => URL . 'Admin/customerList',
+    //'customer_list_modif' => URL . 'Admin/customerSelectByAdmin',
     'admin_commande_to_do' => URL . 'Admin/adminCommandeToDo',
     'admin_commande_done' => URL . 'Admin/adminCommandeDone',
     'product_management' => URL . 'Admin/adminProductManagement',
