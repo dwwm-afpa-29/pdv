@@ -2,11 +2,11 @@
 
 class FeaturesService{
     private $featuresDao;
-    private $FeaturesTypeDao;
+    private $featuresTypeDao;
 
     public function __construct(){
         $this->featuresDao = new FeaturesDao;
-        $this->FeaturesTypeDao = new FeaturesTypeDao;
+        $this->featuresTypeDao = new FeaturesTypeDao;
     }
 
     /**
@@ -15,7 +15,7 @@ class FeaturesService{
      * @return tableau d'objet features
      */
     public function getAllFeaturesByProdType($idProdType){
-        $featureTypes = $this->FeaturesTypeDao->findByProdType($idProdType);
+        $featureTypes = $this->featuresTypeDao->findByProdType($idProdType);
         $featuresByProductType = [];
         foreach ($featureTypes as $featureType){
                 array_push($featuresByProductType, $this->featuresDao->findFeaturesByFeatureType($featureType->getId()));
@@ -29,12 +29,12 @@ class FeaturesService{
      * @return tableau d'objet FeaturesType
      */
     public function getFeaturesTypesByProdType($IdtypeFeatures) {
-        $featureTypes = $this->FeaturesTypeDao->findByProdType($IdtypeFeatures);
+        $featureTypes = $this->featuresTypeDao->findByProdType($IdtypeFeatures);
         return $featureTypes;
     }
 
     public function getFeaturesTypesById($_IdtypeFeature) {
-        $featureType = $this->FeaturesTypeDao->findById($_IdtypeFeature);
+        $featureType = $this->featuresTypeDao->findById($_IdtypeFeature);
         return $featureType;
     }
 
@@ -47,6 +47,28 @@ class FeaturesService{
 
     public function recordNewFeature($newFeatureEntity){
         $this->featuresDao->recordFeature($newFeatureEntity);
+    }
+
+    public function getAllFeatureTypes(){
+        $allFeatureTypes = $this->featuresTypeDao->findAll();
+        return $allFeatureTypes;
+    }
+
+    public function getAllFeature(){
+        $allFeature = $this->featuresDao->findAll();
+        return $allFeature;
+    }
+
+    public function getAllFeaturesByFeatureType($IdFeaturesType){
+        $featuresByFeaturesType = $this->featuresDao->findFeaturesByFeatureType($IdFeaturesType);
+        return $featuresByFeaturesType;
+    }
+
+    public function cleanUnderscoreFeatureType($allFeatureTypes){
+        foreach ($allFeatureTypes as $featureType){
+            $wording = explode("_", $featureType->getWording() )[0];
+            $featureType->setWording($wording);
+        }
     }
 }
 
