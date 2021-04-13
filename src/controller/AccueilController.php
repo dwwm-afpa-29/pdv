@@ -24,7 +24,7 @@ class AccueilController {
 
         
         // ob_start();
-        require_once BACK_ROOT  . '/views/accueil.php';
+        // require_once BACK_ROOT  . '/views/accueil.php';
         $view = ob_get_clean();
         require_once(BACK_ROOT . '/views/template.php');
     }
