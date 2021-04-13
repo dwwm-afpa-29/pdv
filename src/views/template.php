@@ -36,7 +36,7 @@
                 
                 <a class="fill-button" href="<?php if(empty($_SESSION['firstname'])){ echo(A_LINK['login_client']);} else if (isset($_SESSION['role'])){echo (A_LINK['admin_home']);}else{ echo (A_LINK['customer_home']);}?>"><span class="fill-button-hover"><span class="fill-button-text"><?php if(empty($_SESSION['firstname'])){ echo('Connexion');} else { echo('Mon espace');}  ?></span></span></a>
                 <a class="fill-button" href="#"><span class="fill-button-hover"><span class="fill-button-text"><i class="fas fa-shopping-cart"></i></span></span></a>
-                
+                <p></p>
             </div>
 
         </div>
