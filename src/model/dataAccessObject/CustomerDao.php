@@ -23,8 +23,8 @@ class CustomerDao extends BaseDao {
 
     public function signupDAO (Customer $customer) {
 
-        $connex = $this->db->prepare("INSERT INTO customer(id, first_name, last_name, mail, passwd, address_street, address_zip_code, address_city, phone_number, date_of_birth, role_user) 
-        VALUES(NULL, :first_name, :last_name, :mail, :passwd, :address_street, :address_zip_code, :address_city, :phone_number, :date_of_birth, NULL)");
+        $connex = $this->db->prepare("INSERT INTO customer(id, first_name, last_name, mail, passwd, address_street, address_zip_code, address_city, phone_number, date_of_birth ) 
+        VALUES(NULL, :first_name, :last_name, :mail, :passwd, :address_street, :address_zip_code, :address_city, :phone_number, :date_of_birth, customer)");
         
         $res= $connex->execute([
             ':first_name' => $customer->getFirstName(),

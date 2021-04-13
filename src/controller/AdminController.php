@@ -21,7 +21,6 @@ class AdminController{
 
         $customerList = $this->getAllCustomer();
         $customer = $this->getOneCustomer();
-        print_r($customer);
         require_once(BACK_ROOT . '/views/ViewCustomerList.php');
         $view = ob_get_clean();
 
