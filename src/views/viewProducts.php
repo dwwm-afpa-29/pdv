@@ -1,3 +1,4 @@
+<section id="products">
 <div class="container-produits">
 
 <?php foreach($articles as $unArticle){  ?>
@@ -41,7 +42,7 @@
   </div>
   <?php } ?>
 </div>
-
+</section>
 
 <!-- 
 
@@ -75,4 +76,6 @@
       </div>
     </div>
   </div>
-</div> -->
+ -->
+
+

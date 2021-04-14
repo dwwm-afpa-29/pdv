@@ -120,6 +120,7 @@ class ArticlesController extends AccueilController{
 
 
     ///////////////////////   Affichage des produits
+
     public function viewProducts($data) {
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($data[0]);
         $this->featuresService->cleanUnderscoreFeatureType($featureTypes);
@@ -130,14 +131,6 @@ class ArticlesController extends AccueilController{
             $articles = $this->articlesService->getArticleByProdTypeId($data[0]);
         }
 
-        foreach($articles as $test){
-            $features= $test->getFeatures();
-            foreach($features as $feat){
-                if($feat->getIdTypeFeatures()=='5'){
-                    print_r($feat->getWording());
-                }
-            }
-        }
 
         ob_start();
         require_once(BACK_ROOT . '/views/viewProducts.php');
