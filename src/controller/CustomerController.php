@@ -47,19 +47,7 @@ class CustomerController {
         require_once(BACK_ROOT . '/views/template.php');
     }
 
-    public function validModifCustomerByAdmin(){
-        
-        if(isset($_POST['modifier'])) {
-            $this->updateCustomerProfile();
-            echo'coucou2';
-        } else {
-            ob_start();
-            require_once(BACK_ROOT . '/views/ViewCustomerList.php');
-            $view = ob_get_clean();
-            echo'coucou';
-            require_once(BACK_ROOT . '/views/template.php');
-        }
-    }
+    
     /**
      * Génére l'affichage de la page d'accueil client après connexion
      * @return void
@@ -162,7 +150,6 @@ class CustomerController {
                         $_SESSION['city'] = $customer['address_city'];
                         $_SESSION['phone'] = $customer['phone_number'];
                         $_SESSION['birth'] = $customer['date_of_birth'];
-                        $_SESSION['role'] = $customer['role_user'];
 
                         unset($_SESSION['post']);
                         unset($_SESSION['error']);
@@ -448,11 +435,8 @@ public function decoCustomer() {
 
         $return = ($this->customerService->checkBeforeUpdate($_POST)) ? 'success' : 'fail';
         unset($_POST);
-        if ($_SESSION['role'] == 'customer'){
         $this->profileCustomer($return);
-        }else{
-            $this->validModifCustomerByAdmin($return); 
-        }
+        
     }
 
     //--------------------------CREATION DE L'HISTORIQUE D'ACHAT
