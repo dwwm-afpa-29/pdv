@@ -7,7 +7,6 @@
       <img src="assets/image/photo_articles/<?= $unArticle->getPhoto() ?>" alt="photo produit">
     </div>
     <div class="card-infos">
-<?php } ?>
       <h3><?= $unArticle->getName() ?></h3>
       <p>Région</p>
       <p>Cépage</p>
@@ -34,6 +33,8 @@
       </div>
     </div>
   </div>
+  <?php } ?>
+</div>
 
 
 <!-- 
