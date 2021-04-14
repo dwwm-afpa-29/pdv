@@ -37,20 +37,22 @@ class AdminDao extends BaseDao {
                     address_zip_code = :address_zip_code,
                     address_city = :address_city,
                     phone_number = :phone_number,
-                    date_of_birth = :date_of_birth
+                    date_of_birth = :date_of_birth,
+                    role_user = :role_user
                 WHERE id = :id";
 
         try {
             $query = $this->db->prepare($sql);
-            $query->bindValue(':first_name', $user['firstname'], PDO::PARAM_STR);
-            $query->bindValue(':last_name', $user['lastname'], PDO::PARAM_STR);
+            $query->bindValue(':first_name', $user['first_name'], PDO::PARAM_STR);
+            $query->bindValue(':last_name', $user['last_name'], PDO::PARAM_STR);
             $query->bindValue(':mail', $user['mail'], PDO::PARAM_STR);
-            $query->bindValue(':address_street', $user['street'], PDO::PARAM_STR);
-            $query->bindValue(':address_zip_code', $user['zipCode'], PDO::PARAM_STR);
-            $query->bindValue(':address_city', $user['city'], PDO::PARAM_STR);
-            $query->bindValue(':phone_number', $user['number'], PDO::PARAM_STR);
-            $query->bindValue(':date_of_birth', $user['birth'], PDO::PARAM_STR);
-            $query->bindValue(':id', $user['id'], PDO::PARAM_INT);
+            $query->bindValue(':address_street', $user['address_street'], PDO::PARAM_STR);
+            $query->bindValue(':address_zip_code', $user['address_zip_code'], PDO::PARAM_STR);
+            $query->bindValue(':address_city', $user['address_city'], PDO::PARAM_STR);
+            $query->bindValue(':phone_number', $user['phone_number'], PDO::PARAM_STR);
+            $query->bindValue(':date_of_birth', $user['date_of_birth'], PDO::PARAM_STR);
+            $query->bindValue(':role_user', $user['role_user'], PDO::PARAM_STR);
+            $query->bindValue(':id', $user['id_user'], PDO::PARAM_INT);
             $query->execute();
 
             return true;
@@ -60,6 +62,11 @@ class AdminDao extends BaseDao {
 
 
 
+    }
+
+    public function deleteUserProfileByAdminDAO($user){
+        $connex = $this->db->prepare("DELETE FROM `customer` WHERE id = :id");
+        $connex->execute([':id' => $user['id_user']]);
     }
     
 }

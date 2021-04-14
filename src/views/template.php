@@ -46,7 +46,6 @@
 
         <div class="bouton-mobile">
             <a class="fill-button" href="<?php if(empty($_SESSION['firstname'])){ echo(A_LINK['login_client']);} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo (A_LINK['admin_home']);}else{ echo (A_LINK['customer_home']);}?>"><span class="fill-button-hover"><span class="fill-button-text"><?php if(empty($_SESSION['firstname'])){ echo('Connexion');} else { echo('Mon espace');} ?></span></span></a>
-                        class="fill-button-text">Connexion</span></span></a>
         </div>
 
     </header>

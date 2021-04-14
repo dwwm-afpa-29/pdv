@@ -25,6 +25,10 @@ class adminService {
     public function updateUserProfileByAdmin($user) {
         $userUpdate = $this->adminDao->updateUserProfileByAdminDAO($user);
     }
+
+    public function deleteUserProfileByAdmin($user) {
+        $userDelete = $this->adminDao->deleteUserProfileByAdminDAO($user);
+    }
     
     
 }
