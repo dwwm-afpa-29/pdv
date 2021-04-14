@@ -62,16 +62,16 @@
 
 <?php foreach($allProdTypes as $prodType){?>
     <div class="produits">
-            <a href="#">&nbsp;&nbsp;<?= $prodType->getWording() ?>&nbsp;&nbsp;</a>
+            <a href="<?=A_LINK['afficher_produits']."/".$prodType->getId()?>">&nbsp;&nbsp;<?= $prodType->getWording() ?>&nbsp;&nbsp;</a>
                 <div class="produit menu-deroulant">
             <?php foreach ($allFeatureTypes as $featureType){
             if ($prodType->getId()==$featureType->getId_type_products()){
             ?>
                 <h3><?= $featureType->getWording()?></h3>
                 <ul>
-                <?php foreach (${'features_'.$featureType->getId()} as $feature){                       
-                            echo '<li><a href="#">'.$feature->getWording().'</a></li>';                        
-                    }
+                <?php foreach (${'features_'.$featureType->getId()} as $feature){?>                       
+                            <li><a href="<?=A_LINK['afficher_produits']."/".$prodType->getId()."/".$featureType->getId()."/".$feature->getId()?>"><?=$feature->getWording()?></a></li>                        
+                    <?php }
                     echo '</ul>';
                 }
                 }   ?>
