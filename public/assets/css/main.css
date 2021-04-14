@@ -1238,7 +1238,7 @@ footer {
      }
     .firstname-modifByAdmin { grid-area: 3 / 1 / 4 / 2; }
     .titre-lastname-modifByAdmin { 
-        grid-area: 2 / 2 / 3 / ;
+        grid-area: 2 / 2 / 3 / 2;
         display: flex;
         align-items: flex-end;
         justify-content: center;
