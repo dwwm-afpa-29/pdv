@@ -47,6 +47,19 @@ class CustomerController {
         require_once(BACK_ROOT . '/views/template.php');
     }
 
+    public function validModifCustomerByAdmin(){
+        
+        if(isset($_POST['modifier'])) {
+            $this->updateCustomerProfile();
+            echo'coucou2';
+        } else {
+            ob_start();
+            require_once(BACK_ROOT . '/views/ViewCustomerList.php');
+            $view = ob_get_clean();
+            echo'coucou';
+            require_once(BACK_ROOT . '/views/template.php');
+        }
+    }
     /**
      * Génére l'affichage de la page d'accueil client après connexion
      * @return void
@@ -58,6 +71,8 @@ class CustomerController {
 
         require_once(BACK_ROOT . '/views/template.php');
     }
+
+    
 
     /**
      * Génére l'affichage du formulaire de modification de données du client.
@@ -223,8 +238,8 @@ class CustomerController {
                                 $_SESSION['birth'] = $customer['date_of_birth'];
                                 $_SESSION['role'] = $customer['role_user'];
                                 
-
-                                if ($_SESSION['role'] == 'admin') {
+                                
+                                if ($_SESSION['role'] == ('admin' || 'employee')) {
                                     header('location:' . A_LINK['admin_home']);
                                     print_r($_SESSION['role']);
                                 }else {
@@ -433,8 +448,11 @@ public function decoCustomer() {
 
         $return = ($this->customerService->checkBeforeUpdate($_POST)) ? 'success' : 'fail';
         unset($_POST);
+        if ($_SESSION['role'] == 'customer'){
         $this->profileCustomer($return);
-
+        }else{
+            $this->validModifCustomerByAdmin($return); 
+        }
     }
 
     //--------------------------CREATION DE L'HISTORIQUE D'ACHAT
