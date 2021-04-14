@@ -38,9 +38,9 @@ class ArticlesController extends AccueilController{
  * @return void
  */
     public function newArticle(): void {
+        ob_start();
         $allProdType = $this->prodTypeService->getAllTypeProd();
 
-        ob_start();
         require_once BACK_ROOT  . '/views/formArticle.php';
         // $view = ob_get_clean();
         parent::index();
@@ -73,6 +73,7 @@ class ArticlesController extends AccueilController{
         $newArticleEntity = $this->articlesService->create($_POST);
 
         $this->articlesService->recordNewArticle($newArticleEntity,$_FILES);
+        $this->newArticle();
     }
 
     public function newCaract(){
@@ -119,7 +120,18 @@ class ArticlesController extends AccueilController{
 
 
     ///////////////////////   Affichage des produits
-    public function viewProducts() {
+
+    public function viewProducts($data) {
+        $featureTypes = $this->featuresService->getFeaturesTypesByProdType($data[0]);
+        $this->featuresService->cleanUnderscoreFeatureType($featureTypes);
+
+        if(isset($data[2])){
+            $articles = $this->articlesService->getArticleByFeaturesId($data);
+        } else {
+            $articles = $this->articlesService->getArticleByProdTypeId($data[0]);
+        }
+
+
         ob_start();
         require_once(BACK_ROOT . '/views/viewProducts.php');
         parent::index();

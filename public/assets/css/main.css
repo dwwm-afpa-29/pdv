@@ -1252,7 +1252,7 @@ footer {
      }
     .phone-modifByAdmin { grid-area: 5 / 1 / 6 / 2; }
     .titre-date-modifByAdmin { 
-        grid-area: 4 / 2 / 5 / 3;
+        grid-area: 4 / 2 / 5 / 2;
         display: flex;
         align-items: flex-end;
         justify-content: center;
