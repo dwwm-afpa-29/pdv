@@ -17,8 +17,8 @@ class Rooter {
     private $_action;
     private $_params;
     private $_default = [
-        'controlleur' => 'AccueilController',
-        'action' => 'index',
+        'controlleur' => 'ArticlesController',
+        'action' => 'afficheAccueil',
         'params' => ''];
 
     // CONSTRUCTEUR

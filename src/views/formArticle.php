@@ -32,12 +32,12 @@ if (!isset($featureTypes)) {
         //conditionnel pour ne pas affiché le champs degré pour l'épicerie et les accessoires
         if ($wordingProdType != "épicerie" && $wordingProdType != "accessoires") {
             echo '<label for="degre">degré</label>';
-            echo '<input type="number" name="degre" value = 0></br>';
+            echo '<input type="number" step="0.1" name="degre" value = 0></br>';
         } else {
             echo '<input type="hidden" name="degre" value = 0>';
         };
         echo '<label for="price">prix</label>';
-        echo '<input type="number" name="price"></br>';
+        echo '<input type="number" step="0.01" name="price"></br>';
         echo '<label for="photo">photo</label>';
         echo '<input type="file" name="photo"></br>';
         // Affichage des menus déroulants de chaques caractéristiques correspondants au type de produit sélectionné

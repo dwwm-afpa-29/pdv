@@ -18,6 +18,11 @@ class ArticlesController extends AccueilController{
     }
 
 
+    public function afficheAccueil(){
+        require_once BACK_ROOT  . '/views/accueil.php';
+        parent::index();
+    }
+
 ///////////////////   Fonctions pour les formulaires d'enregistrement de produit
 
 
@@ -33,9 +38,9 @@ class ArticlesController extends AccueilController{
  * @return void
  */
     public function newArticle(): void {
+        ob_start();
         $allProdType = $this->prodTypeService->getAllTypeProd();
 
-        ob_start();
         require_once BACK_ROOT  . '/views/formArticle.php';
         // $view = ob_get_clean();
         parent::index();
@@ -57,9 +62,7 @@ class ArticlesController extends AccueilController{
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
         
         require_once BACK_ROOT  . '/views/formArticle.php';
-        // $view = ob_get_clean();
         parent::index();
-        // require_once(BACK_ROOT . '/views/template.php');
     }
 
     /**
@@ -70,6 +73,7 @@ class ArticlesController extends AccueilController{
         $newArticleEntity = $this->articlesService->create($_POST);
 
         $this->articlesService->recordNewArticle($newArticleEntity,$_FILES);
+        $this->newArticle();
     }
 
     public function newCaract(){
@@ -77,8 +81,7 @@ class ArticlesController extends AccueilController{
         $allProdType = $this->prodTypeService->getAllTypeProd();
 
         require_once BACK_ROOT  . '/views/formCaract.php';
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function loadTypeFeatures(){
@@ -91,8 +94,7 @@ class ArticlesController extends AccueilController{
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
 
         require_once BACK_ROOT  . '/views/formCaract.php';
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function addNewFeature() {
@@ -100,8 +102,7 @@ class ArticlesController extends AccueilController{
         $featureEntity = $this->featuresService->create($_POST);
         $this->featuresService->recordNewFeature($featureEntity);
 
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     
@@ -119,11 +120,20 @@ class ArticlesController extends AccueilController{
 
 
     ///////////////////////   Affichage des produits
-    public function viewProducts() {
+
+    public function viewProducts($data) {
         ob_start();
+        $featureTypes = $this->featuresService->getFeaturesTypesByProdType($data[0]);
+        $this->featuresService->cleanUnderscoreFeatureType($featureTypes);
+
+        if(isset($data[2])){
+            $articles = $this->articlesService->getArticleByFeaturesId($data);
+        } else {
+            $articles = $this->articlesService->getArticleByProdTypeId($data[0]);
+        }
+
         require_once(BACK_ROOT . '/views/viewProducts.php');
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
 }

@@ -14,7 +14,7 @@ define('URL', $_SERVER['SCRIPT_NAME'] . '?p=');
 
 // Lien de balise A
 const A_LINK = [
-    'accueil' => URL . 'Accueil/index',
+    'accueil' => URL . 'Articles/afficheAccueil',
     'deconnexion' => URL . 'Customer/decoCustomer',
     'admin_home' => URL . 'Admin/homeAdmin',
     'customer_list' => URL . 'Admin/customerList',
