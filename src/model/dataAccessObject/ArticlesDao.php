@@ -1,6 +1,7 @@
 <?php
 
 class ArticlesDao extends BaseDao{
+
     public function findAll() {
         $stmt = $this->db->prepare("SELECT * FROM articles");
         $res = $stmt->execute();
@@ -58,13 +59,12 @@ class ArticlesDao extends BaseDao{
             // upload de la photo et changement de nom
             $sizePicture = filesize($_FILES['photo']['tmp_name']);
             $extensionPicture= strrchr($_FILES['photo']['name'],'.');
-            print_r($extensionPicture);
             $extensionsOK = array('.png', '.jpg', '.jpeg');
             if (!in_array($extensionPicture,$extensionsOK)) {
-                print_r("le fichier à uploader doit être de type png, jpg ou jpeg ");
+                echo "le fichier à uploader doit être de type png, jpg ou jpeg ";
             } else {
                 if ($sizePicture>5000000){
-                    print_r("le fichier est trop lourd");
+                    echo"le fichier est trop lourd";
                 } else {
                     $newPictureName = 'img_'.$idNewArticle.'.jpg';
                     $uploadfile = ROOT  . '/public/assets/image/photo_articles/'.$newPictureName;

@@ -1,9 +1,9 @@
 <?php
 
 class BaseDao {
-    private $_DSN = 'mysql:host=localhost;dbname=db_win_beer';
-    private $_USER = 'root';
-    private $_PWD = 'root';
+    private $_DSN = 'mysql:host=mysql-pieddevigne.alwaysdata.net;dbname=pieddevigne_db_win_beer';
+    private $_USER = '232395';
+    private $_PWD = 'dwwmafpa29';
 
     protected $db;
 
