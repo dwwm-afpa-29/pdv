@@ -21,6 +21,10 @@ class adminService {
 
         return $customerSelectByAdmin;
     }
+
+    public function updateUserProfileByAdmin($user) {
+        $userUpdate = $this->adminDao->updateUserProfileByAdminDAO($user);
+    }
     
     
 }

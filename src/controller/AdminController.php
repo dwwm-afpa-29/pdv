@@ -76,5 +76,29 @@ class AdminController{
         
     }
 
+    public function validModifCustomerByAdmin(){
+        
+        ob_start();
+
+        $_POST= array_map('htmlspecialchars', $_POST);
+        $user = $_POST;
+
+            if (isset($_POST['first_name']) && !empty($_POST['first_name']) &&
+            isset($_POST['last_name']) && !empty($_POST['last_name']) &&
+            isset($_POST['mail']) && !empty($_POST['mail']) &&
+            isset($_POST['passwd']) && !empty($_POST['passwd']) &&
+            isset($_POST['address_street']) && !empty($_POST['address_street']) &&
+            isset($_POST['address_zip_code']) && !empty($_POST['address_zip_code']) &&
+            isset($_POST['address_city']) && !empty($_POST['address_city']) &&
+            isset($_POST['phone_number']) && !empty($_POST['phone_number']) &&
+            isset($_POST['date_of_birth']) && !empty($_POST['date_of_birth']) &&
+            isset($_POST['role_user']) && !empty($_POST['roleUser'])
+            ){
+                $this->adminService->updateUserProfileByAdmin($user);
+            }
+    }
+
+    
+
 }
 

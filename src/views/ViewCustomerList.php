@@ -20,7 +20,7 @@
             <td><?=$customerS['first_name']?></td>
             <td><?=$customerS['mail']?></td>  
             <td><?=$customerS['phone_number']?></td>
-            <?=($_SESSION['role']== ('admin' || 'employee')) ? ' <td><a href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Voir</a></td>' : ''; ?>
+            <?=($_SESSION['role']== 'admin' || $_SESSION['role']==  'employee') ? ' <td><a href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Voir</a></td>' : ''; ?>
             <?=($_SESSION['role']== 'admin') ? ' <td><a href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Supprimer</a></td>' : ''; ?>
             </tr>
         <?php endforeach; ?>   
@@ -73,16 +73,18 @@
 
                         <div class = "titre-roleUser-modifByAdmin"><label for="role_user"><h2>Rôle</h2></label></div>
                         <div class = "radio-toolbar roleUser-modifByAdmin">
-                            <input type="radio" name="roleUser" id = "radio1" value = "<?=$key['role_user']?? 'admin';?>" <?=($key['role_user'] == 'admin') ? 'checked' : '';?>>
+                            <input type="radio" name="role_user" id = "radio1" value = "<?=$key['role_user']?? 'admin';?>" <?=($key['role_user'] == 'admin') ? 'checked' : '';?>>
                             <label for="radio1">Admin</label>
-                            <input type="radio" name="roleUser" id = "radio2" value = "<?=$key['role_user']?? 'employee';?>"<?=($key['role_user'] == 'employee') ? 'checked' : '';?>>
+                            <input type="radio" name="role_user" id = "radio2" value = "<?=$key['role_user']?? 'employee';?>"<?=($key['role_user'] == 'employee') ? 'checked' : '';?>>
                             <label for="radio2">Employé</label>
-                            <input type="radio" name="roleUser" id = "radio3" value = "<?=$key['role_user']?? 'customer';?>"<?=($key['role_user'] ==  'customer') ? 'checked' : '';?>>
+                            <input type="radio" name="role_user" id = "radio3" value = "<?=$key['role_user']?? 'customer';?>"<?=($key['role_user'] ==  'customer') ? 'checked' : '';?>>
                             <label for="radio3">Client</label>
                         </div>
 
                         <div class = "modifByAdmin"> <input type = "submit" value="Valider les changements" name="modifier" id = "submit" <?=($_SESSION['role'] == 'employee') ? 'disabled' : '';?> class = "Button38 modifByAdmin"></div>
 
+
+                        <input type="hidden" name="id_user" value = "<?=$key['id']?? '';?>">
 
                 </form>
             
