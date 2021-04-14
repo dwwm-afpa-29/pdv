@@ -120,7 +120,7 @@ class ArticlesController extends AccueilController{
 
     ///////////////////////   Affichage des produits
     public function viewProducts() {
-
+        ob_start();
         require_once(BACK_ROOT . '/views/viewProducts.php');
         parent::index();
     }

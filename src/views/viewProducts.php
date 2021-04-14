@@ -1,3 +1,4 @@
+<section id="products">
 <div class="container-produits">
   <div class="card">
     <div class="card-image">
@@ -284,3 +285,4 @@
     </div>
   </div>
 </div>
+</section>

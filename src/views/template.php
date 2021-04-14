@@ -28,31 +28,37 @@
     <!-- HEADER -->
     <header>
 
-        <div class="img-mobile">
-            <img src="assets/image/logo4.png" alt="logo">
-        </div>
         <!-- BANNIERE -->
         <div class="banniere">
             <a href="<?= A_LINK['accueil'];?>"><img src="assets/image/logo4.png" alt="logo"></a>
             <!-- BOUTONS BANNIERE -->
             <div class="boutons-banniere">
                 
-                <a class="fill-button" href="<?php if(empty($_SESSION['firstname'])){ echo(A_LINK['login_client']);} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo (A_LINK['admin_home']);}else{ echo (A_LINK['customer_home']);}?>"><span class="fill-button-hover"><span class="fill-button-text"><?php if(empty($_SESSION['firstname'])){ echo('Connexion');} else { echo('Mon espace');}  ?></span></span></a>
+                <a class="fill-button" href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><span class="fill-button-hover"><span class="fill-button-text"><?php if(empty($_SESSION['firstname'])){ echo 'Connexion';} else { echo 'Mon espace';}  ?></span></span></a>
                 <a class="fill-button" href="#"><span class="fill-button-hover"><span class="fill-button-text"><i class="fas fa-shopping-cart"></i></span></span></a>
                 <p></p>
             </div>
 
         </div>
 
-        <div class="bouton-mobile">
-            <a class="fill-button" href="<?php if(empty($_SESSION['firstname'])){ echo(A_LINK['login_client']);} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo (A_LINK['admin_home']);}else{ echo (A_LINK['customer_home']);}?>"><span class="fill-button-hover"><span class="fill-button-text"><?php if(empty($_SESSION['firstname'])){ echo('Connexion');} else { echo('Mon espace');} ?></span></span></a>
-                        class="fill-button-text">Connexion</span></span></a>
-        </div>
-
     </header>
 
     <div class="nav-mobile">
-
+        <div class="icone-nav">
+            <a href="<?= A_LINK['accueil'];?>"><?php require('assets/image/icones/homeIcon.php'); ?></a>
+        </div>
+        <div class="icone-nav">
+            <a href="<?= A_LINK['afficher_produits'];?>"><?php require('assets/image/icones/bottlesIcon.php'); ?></a>
+        </div>
+        <div class="icone-nav">
+            <a href="#"><?php require('assets/image/icones/searchIcon.php'); ?></a>
+        </div>
+        <div class="icone-nav">
+            <a href="#"><?php require('assets/image/icones/panierIcon.php'); ?></a>
+        </div>
+        <div class="icone-nav">
+            <a href="<?= A_LINK['customer_home']; ?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
+        </div>
     </div>
 
     <!-- NAV -->
