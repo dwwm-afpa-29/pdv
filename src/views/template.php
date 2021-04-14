@@ -69,9 +69,9 @@
             ?>
                 <h3><?= $featureType->getWording()?></h3>
                 <ul>
-                <?php foreach (${'features_'.$featureType->getId()} as $feature){                       
-                            echo '<li><a href="#">'.$feature->getWording().'</a></li>';                        
-                    }
+                <?php foreach (${'features_'.$featureType->getId()} as $feature){?>                       
+                            <li><a href="<?=A_LINK['afficher_produits']."/".$prodType->getId()."/".$featureType->getId()."/".$feature->getId()?>"><?=$feature->getWording()?></a></li>                        
+                    <?php }
                     echo '</ul>';
                 }
                 }   ?>

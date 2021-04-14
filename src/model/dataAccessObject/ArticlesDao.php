@@ -8,6 +8,15 @@ class ArticlesDao extends BaseDao{
             print_r($stmt->fetch(PDO::FETCH_ASSOC));
         }
     }
+
+    public function findById($_idArticle){
+        $stmt = $this->db->prepare("SELECT * FROM articles WHERE id = ".$_idArticle);
+        $res = $stmt->execute();
+        if($res){
+            return $stmt->fetchObject(Articles::class);
+        }
+    }
+
 /**
  * Enregistre en base de donnée l'objet article rentré via le formulaire: envoie dans la table articles puis, envois successifs
  * des caractéristique dans la table relationnelle articles_vs_features

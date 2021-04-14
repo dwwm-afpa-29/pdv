@@ -52,6 +52,22 @@ class FeaturesDao extends BaseDao {
             return $features;
         }
     }
+
+    public function findArticleIdByFeaturesId($IdFeatures) {
+        $stmt = $this->db->prepare("SELECT 	id_articles FROM articles_vs_features WHERE id = ".$IdFeatures );
+        $res = $stmt->execute();
+        if($res){
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        }
+    }
+
+    public function findFeaturesIdByArticleId($IdArticle) {
+        $stmt = $this->db->prepare("SELECT	id FROM articles_vs_features WHERE 	id_articles = ".$IdArticle );
+        $res = $stmt->execute();
+        if($res){
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        }
+    }
 }
 
 ?>

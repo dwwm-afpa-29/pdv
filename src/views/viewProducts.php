@@ -1,17 +1,22 @@
 <div class="container-produits">
+
+<?php foreach($articles as $unArticle){  ?>
+
   <div class="card">
     <div class="card-image">
-      <img src="assets/image/testVin.png" alt="photo produit">
+      <img src="assets/image/photo_articles/<?= $unArticle->getPhoto() ?>" alt="photo produit">
     </div>
     <div class="card-infos">
-      <h3>Nom</h3>
-      <p>Région - Cépage</p>
-      <p>Degré</p>
+<?php } ?>
+      <h3><?= $unArticle->getName() ?></h3>
+      <p>Région</p>
+      <p>Cépage</p>
+      <p><?= $unArticle->getDegre() ?></p>
       <p>Année</p>
-      <p>Volume</p>
+      <p>75cl</p>
     </div>
     <div class="card-price">
-      <p>Prix</p>
+      <p><?= $unArticle->getPrice() ?></p>
       <div class="button-fav">
         <a href=""><img src="assets/image/icones/star.png" alt="favoris"></a>
       </div>
@@ -30,6 +35,8 @@
     </div>
   </div>
 
+
+<!-- 
   <div class="card">
     <div class="card-image">
       <img src="assets/image/testVin.png" alt="photo produit">
@@ -283,4 +290,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

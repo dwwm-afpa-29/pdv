@@ -119,8 +119,14 @@ class ArticlesController extends AccueilController{
 
 
     ///////////////////////   Affichage des produits
-    public function viewProducts($idProdType) {
-        print_r($idProdType);
+    public function viewProducts($data) {
+        if(isset($data[2])){
+            $articles = $this->articlesService->getArticleByFeaturesId($data);
+        } else {
+            $articles = $this->articlesService->getArticleByProdTypeId($data[0]);
+        }
+
+        ob_start();
         require_once(BACK_ROOT . '/views/viewProducts.php');
         parent::index();
     }
