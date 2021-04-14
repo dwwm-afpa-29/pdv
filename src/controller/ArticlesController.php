@@ -122,6 +122,7 @@ class ArticlesController extends AccueilController{
     ///////////////////////   Affichage des produits
 
     public function viewProducts($data) {
+        ob_start();
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($data[0]);
         $this->featuresService->cleanUnderscoreFeatureType($featureTypes);
 
@@ -131,8 +132,6 @@ class ArticlesController extends AccueilController{
             $articles = $this->articlesService->getArticleByProdTypeId($data[0]);
         }
 
-
-        ob_start();
         require_once(BACK_ROOT . '/views/viewProducts.php');
         parent::index();
     }
