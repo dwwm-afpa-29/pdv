@@ -7,7 +7,7 @@
             <th> Prénom </th>
             <th> Email </th>
             <th> Téléphone </th>
-            <?= ($_SESSION['role'] == 'admin') ? '<th> Modifier </th>' : '';?>
+            <?= ($_SESSION['role'] == ('admin' || 'employee')) ? '<th> Modifier </th>' : '';?>
             <?= ($_SESSION['role'] == 'admin') ? '<th> Supprimer </th>' : '';?>
             </tr>
             
@@ -20,7 +20,7 @@
             <td><?=$customerS['first_name']?></td>
             <td><?=$customerS['mail']?></td>  
             <td><?=$customerS['phone_number']?></td>
-            <?=($_SESSION['role']== 'admin') ? ' <td><a href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Voir</a></td>' : ''; ?>
+            <?=($_SESSION['role']== ('admin' || 'employee')) ? ' <td><a href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Voir</a></td>' : ''; ?>
             <?=($_SESSION['role']== 'admin') ? ' <td><a href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Supprimer</a></td>' : ''; ?>
             </tr>
         <?php endforeach; ?>   
@@ -33,7 +33,7 @@
         <?php if(isset($customer)):?>
             <?php foreach($customer as $key): ?>
 
-                <form action="<?= FORM_LINK['signupCustomer']; ?>" method="POST" name = "inscription" class = "modif-customer-by-admin">
+                <form action="<?= FORM_LINK['customer_update_by_admin']; ?>" method="POST" name = "inscription" class = "modif-customer-by-admin">
 
                     <div class = "titreModifByAdmin">
                         <h1> Modifier les données du client </h1>
@@ -75,20 +75,18 @@
                         <div class = "radio-toolbar roleUser-modifByAdmin">
                             <input type="radio" name="roleUser" id = "radio1" value = "<?=$key['role_user']?? 'admin';?>" <?=($key['role_user'] == 'admin') ? 'checked' : '';?>>
                             <label for="radio1">Admin</label>
-                            <input type="radio" name="roleUser" id = "radio2" value = "<?=$key['role_user']?? 'employee';?>"<?=($key['role_user'] == 'admin') ? 'checked' : '';?>>
+                            <input type="radio" name="roleUser" id = "radio2" value = "<?=$key['role_user']?? 'employee';?>"<?=($key['role_user'] == 'employee') ? 'checked' : '';?>>
                             <label for="radio2">Employé</label>
-                            <input type="radio" name="roleUser" id = "radio3" value = "<?=$key['role_user']?? 'customer';?>"<?=($key['role_user'] == '') ? 'checked' : 'customer';?>>
+                            <input type="radio" name="roleUser" id = "radio3" value = "<?=$key['role_user']?? 'customer';?>"<?=($key['role_user'] ==  'customer') ? 'checked' : '';?>>
                             <label for="radio3">Client</label>
+                        </div>
 
-
-                        <div id = "Verif-modifByAdmin"></div>
-
-
-                        <div class="modifByAdmin"><input type = "submit" value="Valider" id = "submit" disabled class = "Button38 "></div>
+                        <div class = "modifByAdmin"> <input type = "submit" value="Valider les changements" name="modifier" id = "submit" <?=($_SESSION['role'] == 'employee') ? 'disabled' : '';?> class = "Button38 modifByAdmin"></div>
 
 
                 </form>
             
+                
             <?php endforeach; ?>
         <?php endif; ?>
 
