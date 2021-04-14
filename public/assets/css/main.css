@@ -248,24 +248,24 @@ header {
   }
 
  
-.radio-toolbar {
-    margin-top: 24px;
-    
-}
 .radio-toolbar input[type="radio"] {
     display: none;
+    
     
 }
 .radio-toolbar label {
     display: inline-block;
-    background-color: #ddd;
-    padding: 4px 11px;
+    background-color: var(--green);
+    padding: 8px 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
+    border-radius: 45px;
+    margin : 10px;
 }
 .radio-toolbar input[type="radio"]:checked + label {
-    background-color: #bbb;
+    background-color: var(--raisin);
+    color : var(--green);
 }
   
                                         /* ----- NAV ----- */
@@ -1299,7 +1299,13 @@ footer {
         justify-content: center;
     }
     .modifByAdmin { 
-        grid-area: 14 / 1 / 15 / 3;
+        grid-area: 14 / 1 / 15 / 2;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .deleteByAdmin{
+        grid-area: 14 / 2 / 15 / 3;
         display: flex;
         align-items: flex-end;
         justify-content: center;

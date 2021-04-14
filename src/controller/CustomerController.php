@@ -151,6 +151,7 @@ class CustomerController {
                         $_SESSION['phone'] = $customer['phone_number'];
                         $_SESSION['birth'] = $customer['date_of_birth'];
 
+
                         unset($_SESSION['post']);
                         unset($_SESSION['error']);
 
@@ -239,7 +240,7 @@ class CustomerController {
                             }
                             
                     }else {
-                        echo 'L\'utilisateur n\'existe pas. Veuillez vous enregistrer.';
+                        echo "<p style = 'color:red'>L\'utilisateur n\'existe pas. Veuillez vous enregistrer.<p>";
                     }
 
 
