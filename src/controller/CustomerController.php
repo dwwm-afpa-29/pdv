@@ -239,12 +239,12 @@ class CustomerController {
                                 $_SESSION['role'] = $customer['role_user'];
                                 
                                 
-                                if ($_SESSION['role'] == ('admin' || 'employee')) {
+                                if ($_SESSION['role'] == 'admin' || $_SESSION['role'] =='employee') {
                                     header('location:' . A_LINK['admin_home']);
-                                    print_r($_SESSION['role']);
+                                    
                                 }else {
                                     header('location:' . A_LINK['customer_home']);
-                                    print_r($_SESSION['role']);
+                                    
                                 }
                                 
                             }else {
