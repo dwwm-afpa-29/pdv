@@ -1,12 +1,12 @@
 <?php
 
-class CustomerController {
+class CustomerController extends AccueilController {
 
     private $customerService;
 
 
     public function __construct() {
-
+        parent::__construct();
         $this->customerService = new CustomerService();
 
     }
@@ -15,18 +15,14 @@ class CustomerController {
 
         ob_start();
         require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function connexCustomer() {
 
         ob_start();
         require_once(BACK_ROOT . '/views/ViewConnexCustomer.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
 
     }
 
@@ -34,17 +30,13 @@ class CustomerController {
 
         ob_start();
         require_once(BACK_ROOT . '/views/ViewInscripCustomer.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function forgetCustomer() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewForgetPassCustomer.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     
@@ -55,9 +47,7 @@ class CustomerController {
     public function homeCustomer() : void {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewHomeCustomer.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     
@@ -76,9 +66,7 @@ class CustomerController {
         } else {
             ob_start();
             require_once(BACK_ROOT . '/views/ViewProfileCustomer.php');
-            $view = ob_get_clean();
-    
-            require_once(BACK_ROOT . '/views/template.php');
+            parent::index();
         }
 
     }
@@ -92,9 +80,7 @@ class CustomerController {
         ob_start();
         $allDates = $this->getAllDate();
         require_once(BACK_ROOT . '/views/ViewBuyHistoricaCustomer.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
 
@@ -180,8 +166,7 @@ class CustomerController {
            
 
             require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
-            $view = ob_get_clean();
-            require_once(BACK_ROOT . '/views/template.php');
+            parent::index();
     }
 
     //CONNEXION DU CLIENT
@@ -255,8 +240,7 @@ class CustomerController {
         }
 
         require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
 
@@ -350,8 +334,7 @@ class CustomerController {
             http_response_code(405);
         }
         require_once(BACK_ROOT . '/views/viewLoginCustomer.php');
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
 
@@ -361,9 +344,7 @@ public function linkRecoveryPasswordCustomer(){
 
     ob_start();
     require_once(BACK_ROOT.'/views/ViewRecoveryPassword.php');
-    $view = ob_get_clean();
-    require_once(BACK_ROOT . '/views/template.php');
-    
+    parent::index();
     if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         $explode = explode('/', $_GET['p']);
@@ -414,8 +395,7 @@ public function recoveryPasswordCustomer() {
         http_response_code(405);
     }
         require_once(BACK_ROOT . '/views/ViewConnexCustomer.php');
-        $view = ob_get_clean();
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
 }
 
 //DECONNEXION DU CLIENT

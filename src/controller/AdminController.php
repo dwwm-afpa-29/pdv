@@ -1,9 +1,10 @@
 <?php
 
-class AdminController{
+class AdminController extends AccueilController{
     private $adminService;
 
     public function __construct(){
+        parent::__construct();
         $this->adminService = new AdminService();
     }
     
