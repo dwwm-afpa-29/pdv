@@ -57,7 +57,7 @@
             <a href="#"><?php require('assets/image/icones/panierIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
-            <a href="<?= A_LINK['customer_home']; ?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
+            <a href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
         </div>
     </div>
 

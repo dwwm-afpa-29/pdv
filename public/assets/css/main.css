@@ -1148,14 +1148,14 @@ footer {
         align-items: center;
      }
     .retour-accueil-admin { 
-        grid-area:  7 / 1 / 8 / 2;
+        grid-area:  7 / 2 / 8 / 3;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
      }
     .deco-home-admin { 
-        grid-area: 7 / 2 / 8 / 3;
+        grid-area: 7 / 1 / 8 / 2;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -1312,7 +1312,42 @@ footer {
     }
     
     
-        
+                                        /* ----- VIEW ADMIN PRODUCT MANAGEMENT -----*/
+
+.adminProductManagement {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+    color:var(--raisin);
+    }
+    
+    .titre-admin-product-management { 
+        grid-area: 1 / 1 / 2 / 2;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .add_new_article_admin_management { 
+        grid-area: 2 / 1 / 3 / 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .add_quantity_article_admin_management { 
+        grid-area: 3 / 1 / 4 / 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+     }
+    .retour-accueil-admin-product-management { 
+        grid-area: 4 / 1 / 5 / 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+     }
+                                                                                  
     
     
                                             
