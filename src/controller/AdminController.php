@@ -12,9 +12,7 @@ class AdminController extends AccueilController{
     public function homeAdmin(){
         ob_start();
         require_once(BACK_ROOT . '/views/ViewHomeAdmin.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function customerList($params){
@@ -23,42 +21,32 @@ class AdminController extends AccueilController{
         $customerList = $this->getAllCustomer();
         $customer = $this->getOneCustomer($params);
         require_once(BACK_ROOT . '/views/ViewCustomerList.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     
     public function adminCommandeToDo() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminCommandeToDo.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function adminCommandeDone() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminCommandeDone.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function adminProductManagement() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminProductManagement.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
     public function adminProfile() {
         ob_start();
         require_once(BACK_ROOT . '/views/ViewAdminProfile.php');
-        $view = ob_get_clean();
-
-        require_once(BACK_ROOT . '/views/template.php');
+        parent::index();
     }
 
 
@@ -105,8 +93,7 @@ class AdminController extends AccueilController{
 
             }
             require_once(BACK_ROOT . '/views/ViewCustomerList.php');
-            $view = ob_get_clean();
-            require_once(BACK_ROOT . '/views/template.php');
+            parent::index();
     }
 
     
