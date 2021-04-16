@@ -21,6 +21,7 @@
     <script src='https://kit.fontawesome.com/29ef46100e.js' crossorigin='anonymous'></script>
     <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.1.0/default/snipcart.css" />
 </head>
 
 <body>
@@ -35,7 +36,7 @@
             <div class="boutons-banniere">
                 
                 <a class="fill-button" href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><span class="fill-button-hover"><span class="fill-button-text"><?php if(empty($_SESSION['firstname'])){ echo 'Connexion';} else { echo 'Mon espace';}  ?></span></span></a>
-                <a class="fill-button" href="#"><span class="fill-button-hover"><span class="fill-button-text"><i class="fas fa-shopping-cart"></i></span></span></a>
+                <a class="fill-button" href="#/cart"><span class="fill-button-hover"><span class="fill-button-text"><i class="fas fa-shopping-cart"></i></span></span></a>
                 <p></p>
             </div>
 
@@ -54,7 +55,7 @@
             <a href="#"><?php require('assets/image/icones/searchIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
-            <a href="#"><?php require('assets/image/icones/panierIcon.php'); ?></a>
+            <a href="#/cart"><?php require('assets/image/icones/panierIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
             <a href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
@@ -117,5 +118,7 @@
 
     <!-- JAVASCRIPT -->
     <script src='js/main.js'></script>
+    <script async src="https://cdn.snipcart.com/themes/v3.1.0/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
 </body>
 </html>
