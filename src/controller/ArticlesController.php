@@ -37,7 +37,7 @@ class ArticlesController extends AccueilController{
  * Affichage un menu déroulant avec les grands types de produits: première étape du formulaire d'enregistrement d'un nouvel article
  * @return void
  */
-    public function newArticle(): void {
+    public function newArticle($message): void {
         ob_start();
         $allProdType = $this->prodTypeService->getAllTypeProd();
 
@@ -60,7 +60,6 @@ class ArticlesController extends AccueilController{
         $allProdType = $this->prodTypeService->getAllTypeProd();
         $featuresByProductType = $this->featuresService->getAllFeaturesByProdType($idProdType);
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
-        
         require_once BACK_ROOT  . '/views/formArticle.php';
         parent::index();
     }
@@ -71,9 +70,8 @@ class ArticlesController extends AccueilController{
      */
     public function addNewArticle(): void {
         $newArticleEntity = $this->articlesService->create($_POST);
-
-        $this->articlesService->recordNewArticle($newArticleEntity,$_FILES);
-        $this->newArticle();
+        $message = $this->articlesService->recordNewArticle($newArticleEntity,$_FILES);
+        $this->newArticle($message);
     }
 
     public function newCaract(){
@@ -92,7 +90,6 @@ class ArticlesController extends AccueilController{
         $idProdType = $dataProdtype[0];
         $wordingProdType = $dataProdtype[1];
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
-
         require_once BACK_ROOT  . '/views/formCaract.php';
         parent::index();
     }
