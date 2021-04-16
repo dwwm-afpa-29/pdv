@@ -1,5 +1,6 @@
 <?php
 // Affichage du formulaire avec tous les type de produit.
+if(isset($message)){echo $message;};
 if (!isset($featureTypes)) {
     echo '<form action="' . FORM_LINK['loadFeatures'] . '" method="POST">';
     echo '<label for="type">Type de produit</label>';

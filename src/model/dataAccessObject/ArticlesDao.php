@@ -59,12 +59,16 @@ class ArticlesDao extends BaseDao{
             // upload de la photo et changement de nom
             $sizePicture = filesize($_FILES['photo']['tmp_name']);
             $extensionPicture= strrchr($_FILES['photo']['name'],'.');
-            $extensionsOK = array('.png', '.jpg', '.jpeg');
+            $extensionsOK = array('.png', '.jpg', '.jpeg', '.JPG');
             if (!in_array($extensionPicture,$extensionsOK)) {
-                echo "le fichier à uploader doit être de type png, jpg ou jpeg ";
+                $this->db->rollback();
+                $message = "<p style= 'color: red'>le fichier à uploader doit être de type png, jpg ou jpeg </p><br>";
+                return $message;
             } else {
-                if ($sizePicture>5000000){
-                    echo"le fichier est trop lourd";
+                if ($sizePicture>2000000){
+                    $this->db->rollback();
+                    $message = "<p style= 'color: red'>le fichier photo est trop lourd </p><br>";
+                    return $message;
                 } else {
                     $newPictureName = 'img_'.$idNewArticle.'.jpg';
                     $uploadfile = ROOT  . '/public/assets/image/photo_articles/'.$newPictureName;
@@ -80,6 +84,11 @@ class ArticlesDao extends BaseDao{
 
             // Commit: Si une des requêtes qui se trouve dans la transaction échou, le commit ne se fait pas.
             $this->db->commit();
+            $message = "<p style= 'color: green'>le nouvel article à été enregistré avec succès</p><br>";
+            return $message;
+            
+
+
 // En cas d'erreur sur l'une des requêtes effectuées dans le try, on lance les fonction suivantes
         } catch(PDOException $err) {
             // rollback: les insertions déjà effectuées sont annulées 

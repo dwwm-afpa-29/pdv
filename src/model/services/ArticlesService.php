@@ -47,7 +47,8 @@ class ArticlesService {
      * @return void
      */
     public function recordNewArticle($newArticleEntity){
-        $this->articleDao->recordArticle($newArticleEntity,$_FILES);
+        $message = $this->articleDao->recordArticle($newArticleEntity,$_FILES);
+        return $message;
     }
 
     /**
