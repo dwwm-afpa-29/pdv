@@ -11,7 +11,7 @@ class AccueilController {
     }
 
     public function index(){
-
+        // ob_start();
         $allProdTypes = $this->prodTypeService->getAllTypeProd();
         $allFeatureTypes = $this->featuresService->getAllFeatureTypes();
         $this->featuresService->cleanUnderscoreFeatureType($allFeatureTypes);
@@ -23,7 +23,7 @@ class AccueilController {
         }
 
         
-        // ob_start();
+        
         // require_once BACK_ROOT  . '/views/accueil.php';
         $view = ob_get_clean();
         require_once(BACK_ROOT . '/views/template.php');
