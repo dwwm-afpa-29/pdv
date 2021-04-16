@@ -55,7 +55,7 @@
             <a href="#"><?php require('assets/image/icones/searchIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
-            <a href="#"><?php require('assets/image/icones/panierIcon.php'); ?></a>
+            <a href="#/cart"><?php require('assets/image/icones/panierIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
             <a href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
@@ -119,6 +119,6 @@
     <!-- JAVASCRIPT -->
     <script src='js/main.js'></script>
     <script async src="https://cdn.snipcart.com/themes/v3.1.0/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"></div>
+    <div hidden id="snipcart" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
 </body>
 </html>
