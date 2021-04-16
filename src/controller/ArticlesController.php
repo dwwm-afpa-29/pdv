@@ -7,7 +7,7 @@ class ArticlesController extends AccueilController{
     private $articlesService;
 
     public function __construct(){
-        
+        ob_start();
         // $this->prodTypeService = new ProdTypeService();
         // $this->featuresService = new FeaturesService();
         parent::__construct();
