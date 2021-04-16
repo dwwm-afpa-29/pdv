@@ -2,7 +2,6 @@
 <div class="container-produits">
 
 <?php foreach($articles as $unArticle){  ?>
-
   <div class="card">
     <div class="card-image">
       <img src="assets/image/photo_articles/<?= $unArticle->getPhoto() ?>" alt="photo produit">
@@ -36,7 +35,13 @@
         <div class="more-button">+</div>
       </div>
       <div class="shop-button">
-        <a href="add">Ajouter au panier</a>
+        <a class="snipcart-add-item"
+        data-item-id= "<?=$unArticle->getId()?>"
+        data-item-price= "<?= $unArticle->getPrice() ?>"
+        data-item-name="<?=$unArticle->getName()?>"
+        data-item-url="/"
+        data-item-image="<?='assets/image/photo_articles/'.$unArticle->getPhoto()?>"
+        >Ajouter au panier</a>
       </div>
     </div>
   </div>
@@ -79,3 +84,4 @@
  -->
 
 
+ <!--Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$unFeaturetype->getIdTypeFeatures()."/".$unFeaturetype->getFeatures()-->
