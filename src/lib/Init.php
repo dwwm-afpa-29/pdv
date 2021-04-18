@@ -47,7 +47,8 @@ const FORM_LINK = [
     'recup_lien_mail' => URL . 'linkRecoveryPasswordCustomer',
     'recoveryPasswordCustomer' => URL . 'Customer/recoveryPasswordCustomer',
     'signinCustomer' => URL . 'Customer/signinCustomer',
-    'signupCustomer' => URL . 'Customer/signupCustomer'
+    'signupCustomer' => URL . 'Customer/signupCustomer',
+    'admin_order_completed' => URL . 'Admin/orderTraitment'
 ];
 
 /**************** Inclusion de fichiers ***************************************/
