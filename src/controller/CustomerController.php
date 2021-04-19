@@ -14,7 +14,7 @@ class CustomerController extends AccueilController {
     public function loginCustomer() {
 
         ob_start();
-        require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
+        require_once(BACK_ROOT . '/views/viewLoginCustomer.php');
         parent::index();
     }
 
@@ -165,7 +165,7 @@ class CustomerController extends AccueilController {
 
            
 
-            require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
+            require_once(BACK_ROOT . '/views/viewLoginCustomer.php');
             parent::index();
     }
 
@@ -239,7 +239,7 @@ class CustomerController extends AccueilController {
             http_response_code(405);
         }
 
-        require_once(BACK_ROOT . '/views/ViewLoginCustomer.php');
+        require_once(BACK_ROOT . '/views/viewLoginCustomer.php');
         parent::index();
     }
 

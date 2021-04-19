@@ -101,11 +101,12 @@ class AdminController extends AccueilController{
         ob_start();
         $_SESSION['data'] = $_POST['data'];
 
-        // traitement de l'email de commande
-        $this->adminService->orderTraitmentMail($_POST['data']['email']);
 
-        //traitement des produits
-        $this->adminService->orderTraitmentItems($_POST['data']);
+        // traitement de l'email de commande
+        $this->adminService->orderTraitment($_POST['data']);
+
+        
+
 
             // Pour les articles
         //$_POST['data']['items']['items']

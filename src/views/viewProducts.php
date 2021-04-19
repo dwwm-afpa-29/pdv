@@ -48,6 +48,7 @@
         data-item-name="<?=$unArticle->getName()?>"
         data-item-url="<?="https://pieddevigne.alwaysdata.net/public/index.php?p=Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$feature->getIdTypeFeatures()."/".$feature->getId()?>"
         data-item-image="<?='assets/image/photo_articles/'.$unArticle->getPhoto()?>"
+        data-item-quantity=4
         >Ajouter au panier</a>
       </div>
     </div>
@@ -90,5 +91,3 @@
   </div>
  -->
 
-
- <!--Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$unFeaturetype->getIdTypeFeatures()."/".$unFeaturetype->getFeatures()-->
