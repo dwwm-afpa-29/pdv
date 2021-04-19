@@ -69,4 +69,9 @@ class AdminDao extends BaseDao {
         $connex->execute([':id' => $user['id_user']]);
     }
     
+
+    public function orderTraitmentDAO($email, $items){
+
+        $connex = $this->db->prepare();
+    }
 }

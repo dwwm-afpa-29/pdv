@@ -8,13 +8,20 @@
     </div>
     <div class="card-infos">
       <h3><?= $unArticle->getName() ?></h3>
+      <a value="<?=$unArticle->getId()?>"></a>
       <p>Degré: <?= $unArticle->getDegre() ?>°</p>
-
+      <?php
+      /*echo '<pre>'; 
+      print_r($unArticle); echo 
+      '</pre>';*/?>
       <?php foreach($featureTypes as $unFeaturetype){ ?>
         <p><?= $unFeaturetype->getWording()?>: 
         <?php foreach($unArticle->getFeatures() as $feature){
           if($feature->getIdTypeFeatures() == $unFeaturetype->getId()){
             echo $feature->getWording();
+            /*echo '<pre>'; 
+            print_r($feature); echo 
+            '</pre>';*/
           }
         } ?></p>
       <?php } ?>
@@ -39,8 +46,9 @@
         data-item-id= "<?=$unArticle->getId()?>"
         data-item-price= "<?= $unArticle->getPrice() ?>"
         data-item-name="<?=$unArticle->getName()?>"
-        data-item-url="/"
+        data-item-url="<?="https://pieddevigne.alwaysdata.net/public/index.php?p=Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$feature->getIdTypeFeatures()."/".$feature->getId()?>"
         data-item-image="<?='assets/image/photo_articles/'.$unArticle->getPhoto()?>"
+        data-item-quantity=4
         >Ajouter au panier</a>
       </div>
     </div>
@@ -83,5 +91,3 @@
   </div>
  -->
 
-
- <!--Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$unFeaturetype->getIdTypeFeatures()."/".$unFeaturetype->getFeatures()-->

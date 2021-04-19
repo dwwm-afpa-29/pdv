@@ -96,6 +96,31 @@ class AdminController extends AccueilController{
             parent::index();
     }
 
+    public function orderTraitment() {
+        
+        ob_start();
+        $_SESSION['data'] = $_POST['data'];
+
+
+        // traitement de l'email de commande
+        $this->adminService->orderTraitment($_POST['data']);
+
+        
+
+
+            // Pour les articles
+        //$_POST['data']['items']['items']
+        //->foreach id et quantity
+
+            // Pour les clients
+        //$_POST['data']['email']
+
+
+        
+        require_once(BACK_ROOT . '/views/viewProducts.php');  
+        parent::index();
+    }
+
     
 
 }

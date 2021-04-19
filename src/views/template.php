@@ -36,7 +36,7 @@
             <div class="boutons-banniere">
                 
                 <a class="fill-button" href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><span class="fill-button-hover"><span class="fill-button-text"><?php if(empty($_SESSION['firstname'])){ echo 'Connexion';} else { echo 'Mon espace';}  ?></span></span></a>
-                <a class="fill-button" href="#/cart"><span class="fill-button-hover"><span class="fill-button-text"><i class="fas fa-shopping-cart"></i></span></span></a>
+                <a class="fill-button" href="<?=(empty($_SESSION['firstname']))? A_LINK['login_client'] : '#/cart';?>"><span class="fill-button-hover"><span class="fill-button-text"><i class="fas fa-shopping-cart"></i></span></span></a>
                 <p></p>
             </div>
 
@@ -61,7 +61,18 @@
             <a href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
         </div>
     </div>
+    <?php 
+    echo '<pre>';
+    print_r($_SESSION['data']);
+    echo '</pre>';
 
+    foreach($_SESSION['data']['items']['items'] as $key){
+        echo '<pre>';
+        print_r($key['id']);
+        print_r($key['quantity']);
+        echo '</pre>';
+    } 
+    ?>
     <!-- NAV -->
     <nav>
 
@@ -117,8 +128,25 @@
     </footer>
 
     <!-- JAVASCRIPT -->
-    <script src='js/main.js'></script>
+    <script src='assets/js/main.js'></script>
     <script async src="https://cdn.snipcart.com/themes/v3.1.0/default/snipcart.js"></script>
     <div hidden id="snipcart" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
+    <script>
+        document.addEventListener('snipcart.ready', () => {
+            Snipcart.events.on('cart.confirmed', (cartConfirmResponse) =>{
+                console.log(cartConfirmResponse);
+                let data = cartConfirmResponse;
+                console.log(data);
+                $.ajax ({
+                    url: "<?= FORM_LINK['admin_order_completed']?>",
+                    type: 'POST',
+                    data: {data :  data},
+                    success: function(response){
+                    console.log("success");
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 </html>
