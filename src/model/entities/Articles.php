@@ -67,7 +67,7 @@ class Articles {
     }
 
     public function getVisible() {
-        return $this->id;
+        return $this->visible;
     }
     public function setVisible($_visible) {
         $this->visible = $_visible;
