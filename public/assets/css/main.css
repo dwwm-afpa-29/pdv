@@ -126,6 +126,20 @@ header {
     font-size: 2rem;
 }
 
+.logo-panier {
+    position: relative;
+}
+
+.count-product {
+    position: absolute;
+    top: -10px;
+    right: -13px;
+    background-color: var(--green);
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 5px;
+}
+
                                         /* ----- BOUTONS ----- */
 
 .fill-button {
