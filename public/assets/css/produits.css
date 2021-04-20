@@ -73,6 +73,19 @@
 .card-image>img {
   width: 100%;
   /* border: 1px solid #000; */
+  -webkit-transition: all 1s ease; /* Safari et Chrome */
+  -moz-transition: all 1s ease; /* Firefox */
+  -ms-transition: all 1s ease; /* Internet Explorer 9 */
+  -o-transition: all 1s ease; /* Opera */
+  transition: all 1s ease;
+}
+
+.card-image>img:hover {
+  -webkit-transform:scale(1.25); /* Safari et Chrome */
+  -moz-transform:scale(1.25); /* Firefox */
+  -ms-transform:scale(1.25); /* Internet Explorer 9 */
+  -o-transform:scale(1.25); /* Opera */
+  transform:scale(1.25);
 }
 
 .card-image>small {
