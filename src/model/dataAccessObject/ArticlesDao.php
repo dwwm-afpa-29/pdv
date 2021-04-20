@@ -98,6 +98,13 @@ class ArticlesDao extends BaseDao{
         
     }
 
+    public function findArticleIdByProdTypeId($IdProdType) {
+        $stmt = $this->db->prepare("SELECT	id FROM articles WHERE 	id_type_products = ".$IdProdType );
+        $res = $stmt->execute();
+        if($res){
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        }
+    }
 }
 
 

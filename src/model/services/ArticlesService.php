@@ -71,5 +71,21 @@ class ArticlesService {
         }
         return $articles;
     }
+
+    public function getArticleByProdTypeId($data){
+        $articleIds = $this->articleDao->findArticleIdByProdTypeId($data[0]);
+        $articles = [];
+        foreach($articleIds as $article){
+            $newArticleEntity = $this->articleDao->findById($article['id']);
+            $featuresOfArticle = $this->featuresDao->findFeaturesIdByArticleId($article['id']);
+            foreach($featuresOfArticle as $feature){
+                $featureToAdd = $this->featuresDao->findFeaturesByID($feature['id']);
+                $newArticleEntity->addFeatures($featureToAdd);
+            };
+            array_push($articles,$newArticleEntity);
+        }
+        return $articles;
+    }
+
 }
 ?>
