@@ -299,6 +299,7 @@ nav {
     align-items: center;
 
     background-color: var(--raisin);
+    z-index: 50;
 }
 
                                         /* ----- LISTE DES PRODUITS ----- */
