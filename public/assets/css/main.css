@@ -285,6 +285,7 @@ nav {
     align-items: center;
 
     background-color: var(--raisin);
+    z-index: 100;
 }
 
                                         /* ----- LISTE DES PRODUITS ----- */
