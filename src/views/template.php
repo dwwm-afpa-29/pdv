@@ -148,5 +148,31 @@
             })
         })
     </script>
+    <script>
+        let count = 0;
+            $('.quantity').html( function() {
+            $(this).append("<p class = 'count-bouton'>"+count+"</p>");
+            });
+            $('.less-button').click(function(){
+            if(count>0){
+                count= count-1;
+                $('.count-bouton').replaceWith("<p class = 'count-bouton'>"+count+"</p>");
+                $('.snipcart-add-item').attr('data-item-quantity', count)
+            }else{
+
+            }
+            });
+            $('.more-button').click(function(){
+            count= count+1;
+            $('.count-bouton').replaceWith("<p class = 'count-bouton'>"+count+"</p>");
+            $('.snipcart-add-item').attr('data-item-quantity', count)
+            });
+
+            $('.shop-button').click(function() {
+            count= 0;
+            $('.count-bouton').replaceWith("<p class = 'count-bouton'>"+count+"</p>");
+            })
+
+    </script>
 </body>
 </html>

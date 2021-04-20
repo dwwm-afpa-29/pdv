@@ -1,3 +1,5 @@
+
+
 <section id="products">
 <div class="container-produits">
 
@@ -37,7 +39,6 @@
       <div class="incr-buttons">
         <div class="less-button">-</div>
         <div class="quantity">
-          <p>0</p>
         </div>
         <div class="more-button">+</div>
       </div>
@@ -48,7 +49,7 @@
         data-item-name="<?=$unArticle->getName()?>"
         data-item-url="<?="https://pieddevigne.alwaysdata.net/public/index.php?p=Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$feature->getIdTypeFeatures()."/".$feature->getId()?>"
         data-item-image="<?='assets/image/photo_articles/'.$unArticle->getPhoto()?>"
-        data-item-quantity=4
+        data-item-quantity=0
         >Ajouter au panier</a>
       </div>
     </div>
