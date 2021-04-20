@@ -133,6 +133,13 @@ class ArticlesController extends AccueilController{
         parent::index();
     }
 
+    public function viewProductsMobile() {
+        ob_start();
+        $allProdTypes = $this->prodTypeService->getAllTypeProd();
+        require_once(BACK_ROOT . '/views/viewProductsMobile.php');
+        parent::index();
+    }
+
 }
 
 

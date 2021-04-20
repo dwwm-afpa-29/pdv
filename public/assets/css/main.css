@@ -3,6 +3,7 @@
 @import url('variables.css');
 @import url('accueil.css');
 @import url('produits.css');
+@import url('productsMobile.css');
 
                                         /* ----- GENERAL ----- */
 
@@ -299,6 +300,7 @@ nav {
     align-items: center;
 
     background-color: var(--raisin);
+    z-index: 50;
 }
 
                                         /* ----- LISTE DES PRODUITS ----- */

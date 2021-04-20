@@ -32,7 +32,8 @@ const A_LINK = [
     'recup_mot_de_passe' => URL . 'Customer/recoveryPasswordCustomer',
     'nouveau_produit' => URL . 'Articles/newArticle',
     'nouvel_caract' => URL . 'Articles/newCaract',
-    'afficher_produits' => URL . 'Articles/viewProducts'
+    'afficher_produits' => URL . 'Articles/viewProducts',
+    'afficher_produits_mobile' => URL . 'Articles/viewProductsMobile'
 ];
 
 // Lien de formaulaires

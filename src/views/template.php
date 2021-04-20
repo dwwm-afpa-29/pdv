@@ -44,12 +44,14 @@
 
     </header>
 
+    
+
     <div class="nav-mobile">
         <div class="icone-nav">
             <a href="<?= A_LINK['accueil'];?>"><?php require('assets/image/icones/homeIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
-            <a href="<?= A_LINK['afficher_produits'];?>"><?php require('assets/image/icones/bottlesIcon.php'); ?></a>
+            <a href="<?= A_LINK['afficher_produits_mobile'];?>"><?php require('assets/image/icones/bottlesIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
             <a href="#"><?php require('assets/image/icones/searchIcon.php'); ?></a>
@@ -61,20 +63,24 @@
             <a href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
         </div>
     </div>
-    <?php 
-    echo '<pre>';
-    print_r($_SESSION['data']);
-    echo '</pre>';
 
-    foreach($_SESSION['data']['items']['items'] as $key){
-        echo '<pre>';
-        print_r($key['id']);
-        print_r($key['quantity']);
-        echo '</pre>';
-    } 
+    <?php 
+    // echo '<pre>';
+    // print_r($_SESSION['data']);
+    // echo '</pre>';
+
+    // foreach($_SESSION['data']['items']['items'] as $key){
+    //     echo '<pre>';
+    //     print_r($key['id']);
+    //     print_r($key['quantity']);
+    //     echo '</pre>';
+    // } 
     ?>
+
     <!-- NAV -->
     <nav>
+
+    <div hidden id="snipcart" style="z-index:100;" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
 
         <!-- VINS -->
 
@@ -98,6 +104,8 @@
             <?php } ?>
 
     </nav>
+
+    
 
     <!-- MAIN -->
     <main>
@@ -130,7 +138,7 @@
     <!-- JAVASCRIPT -->
     <script src='assets/js/main.js'></script>
     <script async src="https://cdn.snipcart.com/themes/v3.1.0/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
+    
     <script>
         document.addEventListener('snipcart.ready', () => {
             Snipcart.events.on('cart.confirmed', (cartConfirmResponse) =>{
