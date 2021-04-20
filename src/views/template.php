@@ -64,16 +64,16 @@
         </div>
     </div>
     <?php 
-    echo '<pre>';
-    print_r($_SESSION['data']);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($_SESSION['data']);
+    // echo '</pre>';
 
-    foreach($_SESSION['data']['items']['items'] as $key){
-        echo '<pre>';
-        print_r($key['id']);
-        print_r($key['quantity']);
-        echo '</pre>';
-    } 
+    // foreach($_SESSION['data']['items']['items'] as $key){
+    //     echo '<pre>';
+    //     print_r($key['id']);
+    //     print_r($key['quantity']);
+    //     echo '</pre>';
+    // } 
     ?>
     <!-- NAV -->
     <nav>
