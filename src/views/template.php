@@ -51,7 +51,7 @@
             <a href="<?= A_LINK['accueil'];?>"><?php require('assets/image/icones/homeIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
-            <a href="<?= A_LINK['afficher_produits'];?>"><?php require('assets/image/icones/bottlesIcon.php'); ?></a>
+            <a href="<?= A_LINK['afficher_produits_mobile'];?>"><?php require('assets/image/icones/bottlesIcon.php'); ?></a>
         </div>
         <div class="icone-nav">
             <a href="#"><?php require('assets/image/icones/searchIcon.php'); ?></a>
@@ -63,6 +63,7 @@
             <a href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
         </div>
     </div>
+
     <?php 
     // echo '<pre>';
     // print_r($_SESSION['data']);
@@ -75,6 +76,7 @@
     //     echo '</pre>';
     // } 
     ?>
+
     <!-- NAV -->
     <nav>
 
