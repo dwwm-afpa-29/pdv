@@ -8,6 +8,7 @@ class Articles {
     private $photo;
     private $prodType;
     private $features;
+    private $visible;
 
     public function getId() {
         return $this->id;
@@ -62,6 +63,14 @@ class Articles {
     }
     public function addFeatures($_features) {
         $this->features[] = $_features;
+        return $this;
+    }
+
+    public function getVisible() {
+        return $this->visible;
+    }
+    public function setVisible($_visible) {
+        $this->visible = $_visible;
         return $this;
     }
 }

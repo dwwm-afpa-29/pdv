@@ -63,7 +63,20 @@
             <a href="<?php if(empty($_SESSION['firstname'])){ echo A_LINK['login_client'];} else if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'employee'){echo A_LINK['admin_home'];}else{ echo A_LINK['customer_home'];}?>"><?php require('assets/image/icones/userIcon.php'); ?></a>
         </div>
     </div>
-    
+
+    <?php 
+    // echo '<pre>';
+    // print_r($_SESSION['data']);
+    // echo '</pre>';
+
+    // foreach($_SESSION['data']['items']['items'] as $key){
+    //     echo '<pre>';
+    //     print_r($key['id']);
+    //     print_r($key['quantity']);
+    //     echo '</pre>';
+    // } 
+    ?>
+
     <!-- NAV -->
     <nav>
 
