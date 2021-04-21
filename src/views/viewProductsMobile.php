@@ -1,10 +1,12 @@
 <section id="products-mobile">
 
-<?php foreach($allProdTypes as $prodType){?>
-    <div class="section-type">
+<?php foreach ($allProdTypes as $prodType) {?>
+
+    <a href="<?=A_LINK['afficher_features_mobile']."/".$prodType->getId()?>"><div class="section-type">
         <p><?= $prodType->getWording() ?></p>
-        
-    </div>
+        <img src="assets/image/photos_types/<?= $prodType->getPhoto() ?>" alt="bouteilles">
+    </div></a>
+
 <?php } ?>
 
 </section>
