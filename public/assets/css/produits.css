@@ -192,6 +192,7 @@ hr {
   align-items: center;
 
   cursor: pointer;
+  text-align: center;
 
   text-decoration: none;
   background-color: var(--green);
@@ -200,4 +201,57 @@ hr {
   box-shadow: 4px 4px 4px #000;
   padding: 10px;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        width: 300px;
+        height: 900px;
+
+        background: #fff;
+        padding: 5px;
+    }
+
+    .card-nom {
+        grid-column: 1 / 7;
+        grid-row: 1 / 2;
+    }
+
+    .card-image {
+        grid-column: 1 / 7;
+        grid-row: 2 / 4;
+        position: relative;
+    }
+
+    .card-image>small {
+        top: 10px;
+        right: 10px;
+        color: #000;
+        font-size: 1rem;
+    }
+
+    .card-infos {
+        grid-column: 1 / 7;
+        grid-row: 4 / 5;
+
+        padding-top: 10px;
+    }
+
+    .incr-buttons  {
+        grid-column: 1 / 7;
+        grid-row: 5 / 6;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    .shop-button {
+        grid-column: 1 / 7;
+        grid-row: 6 / 7;
+
+        justify-content: center;
+        align-items: center;
+
+        padding-bottom: 10px;
+    }
 }

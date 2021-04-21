@@ -140,6 +140,16 @@ class ArticlesController extends AccueilController{
         parent::index();
     }
 
+    public function viewFeaturesMobile($data) {
+        ob_start();
+        $featureTypes = $this->featuresService->getFeaturesTypesByProdType($data[0]);
+        $this->featuresService->cleanUnderscoreFeatureType($featureTypes);
+        $features = $this->featuresService->getAllFeature();
+
+        require_once(BACK_ROOT . '/views/viewFeaturesMobile.php');
+        parent::index();
+    }
+
 }
 
 
