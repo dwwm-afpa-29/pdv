@@ -1,6 +1,6 @@
 
 <div class = listing>
-    <div class = list>  
+    <div class = "list">  
 
         <div class = "retour-listing"><a href = "<?=A_LINK ['admin_home']?>" class="Button38">Retour</a></div> 
 
@@ -11,6 +11,8 @@
             <th> Type </th>
             <th> Degrés </th>
             <th> Prix </th>
+            <th> visibilité </th>
+            <th> Stock </th>
             </tr>
             
         </thead>
@@ -22,9 +24,10 @@
             <td><?=$article->getProdType()->getWording()?></td>
             <td><?=$article->getDegre()?></td>
             <td><?=$article->getPrice()?></td>
-            <?php foreach($article->getFeatures() as $feature){ ?>
-                <td><strong><?=$feature->getTypeFeatures()->getWording()?>:</strong><br><?=$feature->getWording()?></td>
-            <?php } ?>
+            <?php $visi = ($article->getVisible()==0)?"non":"oui"; ?>
+            <td> <?= $visi ?></td>
+            <td><?=$article->getStock()?></td>
+            <td>modifier</td>
             </tr>
         <?php } ?>   
             </tbody>
