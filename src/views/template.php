@@ -158,28 +158,40 @@
     </script>
     <script>
         let count = 0;
-            $('.quantity').html( function() {
-            $(this).append("<p class = 'count-bouton'>"+count+"</p>");
-            });
-            $('.less-button').click(function(){
-            if(count>0){
-                count= count-1;
-                $('.count-bouton').replaceWith("<p class = 'count-bouton'>"+count+"</p>");
-                $('.snipcart-add-item').attr('data-item-quantity', count)
-            }else{
+        $("p.count-bouton").html(count);
 
-            }
-            });
-            $('.more-button').click(function(){
-            count= count+1;
-            $('.count-bouton').replaceWith("<p class = 'count-bouton'>"+count+"</p>");
-            $('.snipcart-add-item').attr('data-item-quantity', count)
-            });
+        $('.card').hover(function() {
+            $("p.count-bouton").html(count);
+            let id = $(this).attr('data');
+            console.log(id);
+            let count2 = 0;
+            
+            
+            $(".less-button[data ="+id+"]" ).click(function() {
+                if(count2>0){
+                count2= count2-1;
+                console.log(count2);
+                $("p.count-bouton[data ="+id+"]").html(count2);
+                $(".snipcart-add-item").attr("data-item-quantity", count2)
+                }else{
 
-            $('.shop-button').click(function() {
-            count= 0;
-            $('.count-bouton').replaceWith("<p class = 'count-bouton'>"+count+"</p>");
+                }
             })
+      
+            $(".more-button[data ="+id+"]").click(function() {
+
+                count2= count2+1;
+                console.log(count2);
+                $("p.count-bouton[data ="+id+"]").html(count2);
+                $(".snipcart-add-item").attr("data-item-quantity", count2)
+
+            })
+                
+            $(".shop-button").click( function() {
+                $("p.count-bouton[data ="+id+"]").html(count);
+
+            })
+        })
 
     </script>
 </body>
