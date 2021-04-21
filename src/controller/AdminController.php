@@ -49,8 +49,6 @@ class AdminController extends AccueilController{
         parent::index();
     }
 
-
-
     public function getAllCustomer () {
         return $this->adminService->customerList();
     }
