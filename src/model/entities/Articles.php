@@ -9,6 +9,7 @@ class Articles {
     private $prodType;
     private $features;
     private $visible;
+    private $stock;
 
     public function getId() {
         return $this->id;
@@ -71,6 +72,14 @@ class Articles {
     }
     public function setVisible($_visible) {
         $this->visible = $_visible;
+        return $this;
+    }
+
+    public function getStock() {
+        return $this->stock;
+    }
+    public function setStock($_stock) {
+        $this->stock = $_stock;
         return $this;
     }
 }

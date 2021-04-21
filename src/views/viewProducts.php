@@ -8,6 +8,10 @@
 
     <div class="card">
 
+    <?php if($unArticle->getStock()== 0){
+        echo '<p class="dispo">Rupture de stock</p>';
+      } ?>
+
       <div class="card-nom">
           <h3><?= $unArticle->getName() ?> <small>0.75L - <?= $unArticle->getDegre() ?>°</small></h3>
       </div>
@@ -39,7 +43,6 @@
               }
             } ?></p>
           </div>
-          <hr>
 
         <?php } ?>
           
