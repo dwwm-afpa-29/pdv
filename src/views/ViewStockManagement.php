@@ -23,7 +23,7 @@
             <td><?=$article->getDegre()?></td>
             <td><?=$article->getPrice()?></td>
             <?php foreach($article->getFeatures() as $feature){ ?>
-                <td><?=$feature->getTypeFeatures()->getWording()?></td>
+                <td><strong><?=$feature->getTypeFeatures()->getWording()?>:</strong><br><?=$feature->getWording()?></td>
             <?php } ?>
             </tr>
         <?php } ?>   

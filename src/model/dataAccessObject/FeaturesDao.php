@@ -62,7 +62,7 @@ class FeaturesDao extends BaseDao {
     }
 
     public function findFeaturesIdByArticleId($IdArticle) {
-        $stmt = $this->db->prepare("SELECT	id FROM articles_vs_features WHERE 	id_articles = ".$IdArticle );
+        $stmt = $this->db->prepare("SELECT articles_vs_features.id FROM articles_vs_features,features,type_features WHERE articles_vs_features.id = features.id AND features.id_type_features = type_features.id AND articles_vs_features.id_articles = ".$IdArticle." ORDER BY type_features.wording");
         $res = $stmt->execute();
         if($res){
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
