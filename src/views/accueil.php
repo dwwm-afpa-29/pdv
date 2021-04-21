@@ -3,8 +3,8 @@
     <div class="image-accueil">
         <a href="<?= A_LINK['accueil'];?>"><img src="assets/image/logo4.png" alt="logo"></a>
 
-        <div class="bouton-mobile">
-            <a href="#">Connexion</a>
+        <div class="bouton-connexion-mobile">
+            <a href="<?= A_LINK['login_client']; ?>">Connexion</a>
         </div>
     </div>
 
