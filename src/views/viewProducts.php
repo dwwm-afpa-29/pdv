@@ -48,8 +48,10 @@
           
       </div>
           
-          
-      <div class="incr-buttons" >
+       
+
+
+      <div class="incr-buttons" style ="<?=($unArticle->getStock()== 0) ? 'visibility : hidden;' : ''; ?>" >
         <div class="less-button" data="<?=$unArticle->getId()?>">-</div>
         <div class="quantity" data="<?=$unArticle->getId()?>">
         <p class = 'count-bouton' data="<?=$unArticle->getId()?>"></p>
@@ -57,7 +59,7 @@
         <div class="more-button" data="<?=$unArticle->getId()?>">+</div>
       </div>
 
-      <div class="shop-button">
+      <div class="shop-button" style ="<?=($unArticle->getStock()== 0) ? 'visibility : hidden;' : ''; ?>">
         <a class="snipcart-add-item"
         data-item-id= "<?=$unArticle->getId()?>"
         data-item-price= "<?= $unArticle->getPrice() ?>"
