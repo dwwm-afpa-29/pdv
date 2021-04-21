@@ -64,25 +64,6 @@
         </div>
     </div>
 
-    <?php 
-     
-
-    foreach($_SESSION['order']['items']['items'] as $key){
-        echo '<pre>';
-        print_r($key['id']);
-        print_r($key['quantity']);
-        print_r($key['price']*$key['quantity']);
-        echo '</pre>';
-    }
-
-    //var_dump($_SESSION['order']['email']);
-    //var_dump ($_SESSION['test']);
-    /*echo '<pre>';
-    var_dump($_SESSION);
-    echo '</pre>';*/
-    
-    ?>
-
     <!-- NAV -->
     <nav>
 
