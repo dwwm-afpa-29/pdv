@@ -49,7 +49,11 @@ class AdminController extends AccueilController{
         parent::index();
     }
 
-
+    public function stockManagement(){
+        ob_start();
+        require_once(BACK_ROOT . '/views/ViewStockManagement.php');
+        parent::index();
+    }
 
     public function getAllCustomer () {
         return $this->adminService->customerList();
