@@ -6,7 +6,7 @@
 <?php foreach($articles as $unArticle){  
   if($unArticle->getVisible()==1){?>
 
-    <div class="card">
+    <div class="card" data="<?=$unArticle->getId()?>">
 
       <div class="card-nom">
           <h3><?= $unArticle->getName() ?> <small>0.75L - <?= $unArticle->getDegre() ?>°</small></h3>
@@ -46,11 +46,12 @@
       </div>
           
           
-      <div class="incr-buttons">
-        <div class="less-button">-</div>
-        <div class="quantity">
+      <div class="incr-buttons" >
+        <div class="less-button" data="<?=$unArticle->getId()?>">-</div>
+        <div class="quantity" data="<?=$unArticle->getId()?>">
+        <p class = 'count-bouton' data="<?=$unArticle->getId()?>"></p>
         </div>
-        <div class="more-button">+</div>
+        <div class="more-button" data="<?=$unArticle->getId()?>">+</div>
       </div>
 
       <div class="shop-button">
