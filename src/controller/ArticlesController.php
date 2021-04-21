@@ -27,12 +27,6 @@ class ArticlesController extends AccueilController{
 
 
 
-//temporaire: Pour afficher tous les aticles
-    public function getAllArticles(){
-        $this->articlesDao->findAll();
-    }
-
-
 /**
  * Affichage un menu déroulant avec les grands types de produits: première étape du formulaire d'enregistrement d'un nouvel article
  * @return void
@@ -137,6 +131,13 @@ class ArticlesController extends AccueilController{
         ob_start();
         $allProdTypes = $this->prodTypeService->getAllTypeProd();
         require_once(BACK_ROOT . '/views/viewProductsMobile.php');
+        parent::index();
+    }
+    
+    public function stockManagement(){
+        ob_start();
+        $allArticles = $this->articlesService->getAllArticles();
+        require_once(BACK_ROOT . '/views/ViewStockManagement.php');
         parent::index();
     }
 

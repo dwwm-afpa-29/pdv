@@ -49,7 +49,7 @@ if (!isset($featureTypes)) {
             echo '<select name="'.$featureType->getWording().$array.'" '.$multiple.'>';
             foreach ($featuresByProductType as $features_table){
                 foreach ($features_table as $feature) {
-                    if ($feature->getIdTypeFeatures()==$featureType->getId()){
+                    if ($feature->getTypeFeatures()==$featureType->getId()){
                         echo '<option value="'.$feature->getId().'">'.$feature->getWording().'</option>';
                     }
                 }

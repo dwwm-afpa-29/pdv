@@ -4,7 +4,7 @@
 class Features {
     private $id;
     private $wording;
-    private $idTypeFeatures;
+    private $typeFeatures;
 
     public function getId() {
         return $this->id;
@@ -23,12 +23,12 @@ class Features {
         return $this;
     }
 
-    public function getIdTypeFeatures() {
-        return $this->idTypeFeatures;
+    public function getTypeFeatures() {
+        return $this->typeFeatures;
     }
 
-    public function setIdTypeFeatures($_idTypeFeatures) {
-        $this->idTypeFeatures = $_idTypeFeatures;
+    public function setTypeFeatures($_typeFeatures) {
+        $this->typeFeatures = $_typeFeatures;
         return $this;
     }
 }

@@ -3,10 +3,14 @@
 class ArticlesService { 
     private $articleDao;
     private $featuresDao;
+    private $prodTypeDao;
+    private $featuresTypeDao;
 
     public function __construct(){
         $this->articleDao = new ArticlesDao();
         $this->featuresDao = new FeaturesDao();
+        $this->prodTypeDao = new ProdTypeDao();
+        $this->featuresTypeDao =new FeaturesTypeDao();
     }
 
 /**
@@ -83,6 +87,22 @@ class ArticlesService {
                 $newArticleEntity->addFeatures($featureToAdd);
             };
             array_push($articles,$newArticleEntity);
+        }
+        return $articles;
+    }
+
+    public function getAllArticles(){
+        $articles = $this->articleDao->findAll();
+        foreach($articles as $unArticle){
+            $featureIdsOfArticle = $this->featuresDao->findFeaturesIdByArticleId($unArticle->getId());
+            foreach($featureIdsOfArticle as $feature){
+                $featureToAdd = $this->featuresDao->findFeaturesByID($feature['id']);
+                $featureTypeToAdd = $this->featuresTypeDao->findById($featureToAdd->getTypeFeatures());
+                $featureToAdd->setTypeFeatures($featureTypeToAdd);
+                $unArticle->addFeatures($featureToAdd);
+            };
+            $prodTypeOfArticle = $this->prodTypeDao->findById($unArticle->getProdType());
+            $unArticle->setProdType($prodTypeOfArticle);
         }
         return $articles;
     }

@@ -7,7 +7,7 @@
  */
 class FeaturesDao extends BaseDao {
     public function findFeaturesByFeatureType($IdtypeFeatures) {
-        $stmt = $this->db->prepare("SELECT id,wording,id_type_features as idTypeFeatures FROM features WHERE id_type_features = ".$IdtypeFeatures );
+        $stmt = $this->db->prepare("SELECT id,wording,id_type_features as typeFeatures FROM features WHERE id_type_features = ".$IdtypeFeatures );
         $res = $stmt->execute();
         if($res){
             return $stmt->fetchAll(\PDO::FETCH_CLASS, Features::class);
@@ -20,7 +20,7 @@ class FeaturesDao extends BaseDao {
  * @return objets de la classe Features
  */
     public function findFeaturesByID($id) {
-        $stmt = $this->db->query("SELECT id,wording,id_type_features as idTypeFeatures FROM features WHERE id= ".$id );
+        $stmt = $this->db->query("SELECT id,wording,id_type_features as typeFeatures FROM features WHERE id= ".$id );
         return $stmt->fetchObject(Features::class);
     }
 
@@ -37,7 +37,7 @@ class FeaturesDao extends BaseDao {
             $stmtFeature->execute(
                 [
                     ':wording' => $newFeatureEntity->getWording(),
-                    ':id_type_features' => $newFeatureEntity->getIdTypeFeatures(),
+                    ':id_type_features' => $newFeatureEntity->getTypeFeatures(),
                 ]
                 );
             print_r("la nouvelle caractéristique a bien été enregitrée");
@@ -45,7 +45,7 @@ class FeaturesDao extends BaseDao {
     }
 
     public function findAll() {
-        $stmt = $this->db->prepare("SELECT id,wording,id_type_features as idTypeFeatures FROM features");
+        $stmt = $this->db->prepare("SELECT id,wording,id_type_features as typeFeatures FROM features");
         $res = $stmt->execute();
         if($res){
             $features = $stmt->fetchAll(\PDO::FETCH_CLASS, Features::class);

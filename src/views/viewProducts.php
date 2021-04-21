@@ -35,7 +35,7 @@
             </p>
             </div>
             <?php foreach($unArticle->getFeatures() as $feature){
-              if($feature->getIdTypeFeatures() == $unFeaturetype->getId()){ ?>
+              if($feature->getTypeFeatures() == $unFeaturetype->getId()){ ?>
                 <div class="valeur">
                 <p><strong><?= $feature->getWording(); ?></strong></p>
                 </div> 
@@ -61,7 +61,7 @@
         data-item-id= "<?=$unArticle->getId()?>"
         data-item-price= "<?= $unArticle->getPrice() ?>"
         data-item-name="<?=$unArticle->getName()?>"
-        data-item-url="<?="https://pieddevigne.alwaysdata.net/public/index.php?p=Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$feature->getIdTypeFeatures()."/".$feature->getId()?>"
+        data-item-url="<?="https://pieddevigne.alwaysdata.net/public/index.php?p=Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$feature->getTypeFeatures()."/".$feature->getId()?>"
         data-item-image="<?='assets/image/photo_articles/'.$unArticle->getPhoto()?>"
         data-item-quantity=0
         >Ajouter au panier</a>

@@ -13,6 +13,11 @@ class ProdTypeDao extends BaseDao{
             return $prodTypes;
         }
     }
+
+    public function findById($id){
+        $stmt = $this->db->query("SELECT * FROM type_products WHERE id = ".$id );
+        return $stmt->fetchObject(ProdType::class);
+    }
 }
 
 ?>
