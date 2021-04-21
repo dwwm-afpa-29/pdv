@@ -30,14 +30,6 @@ class adminService {
         $userDelete = $this->adminDao->deleteUserProfileByAdminDAO($user);
     }
     
-    public function orderTraitment($data) {
-
-        $email = $data['data']['email'];
-        $items = $data['data']['items']['items'];
-
-        $this->adminDao->orderTraitmentDAO($email, $items);
-        
-    }
     
    
 }

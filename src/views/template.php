@@ -65,16 +65,22 @@
     </div>
 
     <?php 
-    // echo '<pre>';
-    // print_r($_SESSION['data']);
-    // echo '</pre>';
+     
 
-    // foreach($_SESSION['data']['items']['items'] as $key){
-    //     echo '<pre>';
-    //     print_r($key['id']);
-    //     print_r($key['quantity']);
-    //     echo '</pre>';
-    // } 
+    foreach($_SESSION['order']['items']['items'] as $key){
+        echo '<pre>';
+        print_r($key['id']);
+        print_r($key['quantity']);
+        print_r($key['price']*$key['quantity']);
+        echo '</pre>';
+    }
+
+    //var_dump($_SESSION['order']['email']);
+    //var_dump ($_SESSION['test']);
+    /*echo '<pre>';
+    var_dump($_SESSION);
+    echo '</pre>';*/
+    
     ?>
 
     <!-- NAV -->
@@ -158,19 +164,22 @@
     </script>
     <script>
         let count = 0;
+        
         $("p.count-bouton").html(count);
 
         $('.card').hover(function() {
+
             $("p.count-bouton").html(count);
+
             let id = $(this).attr('data');
-            console.log(id);
-            let count2 = 0;
             
+            let count2=0;
             
             $(".less-button[data ="+id+"]" ).click(function() {
                 if(count2>0){
+
                 count2= count2-1;
-                console.log(count2);
+                
                 $("p.count-bouton[data ="+id+"]").html(count2);
                 $(".snipcart-add-item").attr("data-item-quantity", count2)
                 }else{
@@ -181,15 +190,19 @@
             $(".more-button[data ="+id+"]").click(function() {
 
                 count2= count2+1;
-                console.log(count2);
+                
                 $("p.count-bouton[data ="+id+"]").html(count2);
                 $(".snipcart-add-item").attr("data-item-quantity", count2)
 
             })
                 
-            $(".shop-button").click( function() {
+            $(".snipcart-add-item").click( function() {
                 $("p.count-bouton[data ="+id+"]").html(count);
 
+            })
+
+            $('.card').mouseleave(function() {
+                count2=0;
             })
         })
 

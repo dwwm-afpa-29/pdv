@@ -6,6 +6,7 @@ class AdminController extends AccueilController{
     public function __construct(){
         parent::__construct();
         $this->adminService = new AdminService();
+        $this->adminDao = new AdminDao();
     }
     
         
@@ -99,11 +100,10 @@ class AdminController extends AccueilController{
     public function orderTraitment() {
         
         ob_start();
-        $_SESSION['data'] = $_POST['data'];
 
+        $_SESSION['order'] = $_POST['data'];
 
-        // traitement de l'email de commande
-        $this->adminService->orderTraitment($_POST['data']);
+        $this->adminDao->orderTraitmentDAO();
 
         
 
@@ -115,9 +115,7 @@ class AdminController extends AccueilController{
             // Pour les clients
         //$_POST['data']['email']
 
-
-        
-        require_once(BACK_ROOT . '/views/viewProducts.php');  
+        require_once(BACK_ROOT . '/views/accueil.php');
         parent::index();
     }
 
