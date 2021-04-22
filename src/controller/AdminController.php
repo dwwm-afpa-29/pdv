@@ -26,11 +26,6 @@ class AdminController extends AccueilController{
     }
 
     
-    public function adminCommandeToDo() {
-        ob_start();
-        require_once(BACK_ROOT . '/views/ViewAdminCommandeToDo.php');
-        parent::index();
-    }
 
     public function adminCommandeDone() {
         ob_start();
@@ -103,21 +98,20 @@ class AdminController extends AccueilController{
 
         $this->adminDao->orderTraitmentDAO();
 
-        
-
-
-            // Pour les articles
-        //$_POST['data']['items']['items']
-        //->foreach id et quantity
-
-            // Pour les clients
-        //$_POST['data']['email']
-
         require_once(BACK_ROOT . '/views/accueil.php');
         parent::index();
     }
 
     
+    public function getAllOrderToDo(){
+
+        ob_start();
+
+        $commandeList = $this->adminDao->orderInPrepareDAO();
+
+        require_once(BACK_ROOT.'/views/ViewOrder.php');
+        parent::index();
+    }
 
 }
 

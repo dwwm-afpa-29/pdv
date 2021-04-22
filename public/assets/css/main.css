@@ -1187,6 +1187,7 @@ footer {
     width: 800px ;
     margin-left: auto ;
     margin-right: auto ;
+    
 }
 .list_client thead th {
     background-color: var(--raisin);
@@ -1223,8 +1224,13 @@ footer {
         grid-area: 1 / 1 / 2 / 2;
         border-right: 2px solid var(--raisin) ;
         padding-right: 10px;
-
-    }
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-scrollbar-color: var(--raisin);
+        -webkit-scrollbar-width: thin;
+        scrollbar-color: var(--raisin);
+        scrollbar-width: thin;
+        }
 
 
     .modif-customer-by-admin { 

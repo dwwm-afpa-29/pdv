@@ -18,7 +18,7 @@ const A_LINK = [
     'deconnexion' => URL . 'Customer/decoCustomer',
     'admin_home' => URL . 'Admin/homeAdmin',
     'customer_list' => URL . 'Admin/customerList',
-    'admin_commande_to_do' => URL . 'Admin/adminCommandeToDo',
+    'admin_commande_to_do' => URL . 'Admin/getAllOrderToDo',
     'admin_commande_done' => URL . 'Admin/adminCommandeDone',
     'product_management' => URL . 'Admin/adminProductManagement',
     'articles_stockManagement' => URL . 'Articles/stockManagement',
@@ -35,7 +35,7 @@ const A_LINK = [
     'nouvel_caract' => URL . 'Articles/newCaract',
     'afficher_produits' => URL . 'Articles/viewProducts',
     'afficher_produits_mobile' => URL . 'Articles/viewProductsMobile',
-    'afficher_features_mobile' => URL . 'Articles/viewFeaturesMobile'
+    'afficher_features_mobile' => URL . 'Articles/viewFeaturesMobile',
 ];
 
 // Lien de formaulaires

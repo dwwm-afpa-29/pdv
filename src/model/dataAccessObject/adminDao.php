@@ -90,7 +90,6 @@ class AdminDao extends BaseDao {
                     ':id_customer'=>$_SESSION['id'],
                 ]
                 );
-            $_SESSION['test'] = 'hey';
             
             $selectCommande->execute(
                 [
@@ -136,5 +135,23 @@ class AdminDao extends BaseDao {
             print "ERROR! : ".$err->getMessage()."</br>";
         }
         
+    }
+
+    public function orderInPrepareDAO() {
+
+        $connex = $this->db->prepare("SELECT commande.id, first_name, last_name, date FROM `customer`,`commande` WHERE id_customer = customer.id AND statut = 'Validée' ORDER BY date");
+         
+        try{
+
+            $connex->execute();
+            while($commande = $connex->fetch(PDO::FETCH_ASSOC)) {
+
+                $commandeList[]= $commande;
+            };
+            return $commandeList;
+
+        }catch(PDOException $ex){
+            return[];
+        }
     }
 }

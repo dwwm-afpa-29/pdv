@@ -128,9 +128,18 @@
     <!-- JAVASCRIPT -->
     <script src='assets/js/main.js'></script>
     <script async src="https://cdn.snipcart.com/themes/v3.1.0/default/snipcart.js"></script>
-    <div hidden id="snipcart" style="z-index:100;" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
+    <div hidden id="snipcart" style="z-index:100;" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur" data-config-modal-style="side"></div>
+
+
     <script>
         document.addEventListener('snipcart.ready', () => {
+
+            Snipcart.events.on('cart.created', (cartState)=> {
+                console.log(cartState);
+                let cart = cartState;
+                console.log(cart);
+            });
+
             Snipcart.events.on('cart.confirmed', (cartConfirmResponse) =>{
                 console.log(cartConfirmResponse);
                 let data = cartConfirmResponse;
@@ -182,14 +191,22 @@
                 
             $(".snipcart-add-item").click( function() {
                 $("p.count-bouton[data ="+id+"]").html(count);
-
+                count2=0;
             })
 
             $('.card').mouseleave(function() {
                 count2=0;
+                $(".snipcart-add-item").attr("data-item-quantity", 1)
+
             })
         })
 
     </script>
+
+    <script>
+        $(".snipcart-cart__footer").css('visibility','hidden');
+    </script>
+
 </body>
 </html>
+
