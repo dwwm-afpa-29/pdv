@@ -26,6 +26,8 @@
 
 <body>
 
+
+
     <!-- HEADER -->
     <header>
 
@@ -64,10 +66,11 @@
         </div>
     </div>
 
+
     <!-- NAV -->
     <nav>
 
-    <div hidden id="snipcart" style="z-index:100;" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
+    
 
         <!-- VINS -->
 
@@ -125,7 +128,7 @@
     <!-- JAVASCRIPT -->
     <script src='assets/js/main.js'></script>
     <script async src="https://cdn.snipcart.com/themes/v3.1.0/default/snipcart.js"></script>
-    
+    <div hidden id="snipcart" style="z-index:100;" data-api-key="ZWMyYTgyYzItNmZkMC00ZDAzLTg0NmQtODgxYzJhN2Q4NDcyNjM3NTQxODI5NjY2Nzc3NzI4"data-currency="eur"></div>
     <script>
         document.addEventListener('snipcart.ready', () => {
             Snipcart.events.on('cart.confirmed', (cartConfirmResponse) =>{
