@@ -8,6 +8,7 @@
 
     <div class="card" data="<?=$unArticle->getId()?>">
 
+
     <?php if($unArticle->getStock() <= 0){
         echo '<p class="dispo">Rupture de stock</p>';
       } ?>
@@ -58,14 +59,14 @@
         <div class="more-button" data="<?=$unArticle->getId()?>">+</div>
       </div>
 
-      <div class="shop-button" style ="<?=($unArticle->getStock() <= 0) ? 'visibility : hidden;' : ''; ?>">
-        <a class="snipcart-add-item"
+      <div class="shop-button" style ="<?=($unArticle->getStock()<= 0) ? 'visibility : hidden;' : ''; ?>" >
+        <a class="<?=(empty($_SESSION['firstname']))? '' : 'snipcart-add-item';?>" href="<?=(empty($_SESSION['firstname']))? A_LINK['login_client'] : '';?>"
         data-item-id= "<?=$unArticle->getId()?>"
         data-item-price= "<?= $unArticle->getPrice() ?>"
         data-item-name="<?=$unArticle->getName()?>"
         data-item-url="<?="https://pieddevigne.alwaysdata.net/public/index.php?p=Articles/viewProducts/".$unFeaturetype->getId_type_products()."/".$feature->getTypeFeatures()."/".$feature->getId()?>"
         data-item-image="<?='assets/image/photo_articles/'.$unArticle->getPhoto()?>"
-        data-item-quantity=0
+        data-item-quantity=1 
         >Ajouter au panier</a>
       </div>
           
