@@ -141,6 +141,20 @@ class ArticlesController extends AccueilController{
         parent::index();
     }
 
+    public function modificationArticle(){
+        ob_start();
+        $allArticles = $this->articlesService->getAllArticles();
+        require_once(BACK_ROOT . '/views/ViewStockManagement.php');
+        // $dataProdtype= explode(";",$_POST['type']);
+        $idProdType = 1 ;//$dataProdtype[0];     MODIF POUR ESSAI
+        $wordingProdType = 'vin'; //$dataProdtype[1];
+        $allProdType = $this->prodTypeService->getAllTypeProd();
+        $featuresByProductType = $this->featuresService->getAllFeaturesByProdType($idProdType);
+        $featureTypes = $this->featuresService->getFeaturesTypesByProdType($idProdType);
+        require_once(BACK_ROOT  . '/views/viewModifArticle.php');
+        parent::index();
+    }
+
     public function viewFeaturesMobile($data) {
         ob_start();
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($data[0]);
