@@ -68,9 +68,9 @@ if (!isset($featureTypes)) {
 $('.buttonAddCaract').click(function() {
     var idDivFeature = $(this).attr('id');
     $.ajax({
-        url: '../src/lib/ajax/runFormCaractInFormArticle.php',
+        url: '../src/lib/ajax/ajaxRequest.php',
         type:'POST',
-        data : 'idFeatureType=' + idDivFeature,
+        data : 'controller=' + 'ArticlesController' + '&action=' + 'newCaractInArticleForm' + '&idFeatureType=' + idDivFeature,
         dataType: 'html',
         success : function(code_html) {
             $('.afficher_'+idDivFeature).html(code_html);

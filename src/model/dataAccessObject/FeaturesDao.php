@@ -27,7 +27,7 @@ class FeaturesDao extends BaseDao {
     public function recordFeature($newFeatureEntity) {
         // Recherche de la caractéristique entrée dans le formulaire pour éviter les doublons dans la bdd.
         // Dans la requête, tout est transformé en majuscule ( UPPER() ) pour éviter les problème casse.
-        $stmt = $this->db->prepare('SELECT * FROM features WHERE UPPER(wording) = UPPER("'.$newFeatureEntity->getWording().'")  AND id_type_features = '.$newFeatureEntity->getIdTypeFeatures());
+        $stmt = $this->db->prepare('SELECT * FROM features WHERE UPPER(wording) = UPPER("'.$newFeatureEntity->getWording().'")  AND id_type_features = '.$newFeatureEntity->getTypeFeatures());
         $res = $stmt->execute();
         $test = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($test){

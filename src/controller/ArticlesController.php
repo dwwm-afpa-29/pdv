@@ -97,8 +97,8 @@ class ArticlesController extends AccueilController{
     }
 
     
-    public function newCaractInArticleForm($_idFeatureType){
-        $featureType = $this->featuresService->getFeaturesTypesById($_idFeatureType);
+    public function newCaractInArticleForm($data){
+        $featureType = $this->featuresService->getFeaturesTypesById($data['idFeatureType']);
         require_once BACK_ROOT  . '/views/formCaractInFormArticle.php';
     }
 
