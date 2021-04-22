@@ -76,11 +76,19 @@ class CustomerController extends AccueilController {
 
     /**
      * Génére l'affichage de la page d'historique d'achat
+     * @params $params id de la commande à récupérer.
      * @return void
      */
-    public function buyHistorical() {
+    public function buyHistorical($params) {
         ob_start();
         $allDates = $this->getAllDate();
+        $detailCommande = [];
+        
+        if(isset($params[0])) {
+            $id = $params[0];
+            $detailCommande = $this->getCommande($id);
+        }
+
         require_once(BACK_ROOT . '/views/ViewBuyHistoricaCustomer.php');
         parent::index();
     }
@@ -429,6 +437,15 @@ public function decoCustomer() {
      */
     private function getAllDate()  : array {
         return $this->customerService->getAllDate();
+    }
+
+    /**
+     * Récupère une commande que le client a effectué
+     * @params int $id. id de la commande
+     * @return array
+     */
+    private function getCommande(int $id)  : array {
+        return $this->customerService->getCommande($id);
     }
 }
 ?>

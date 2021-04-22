@@ -152,5 +152,14 @@ class CustomerService {
     public function getAllDate()  : array {
         return $this->customerDao->getAllDate();
     }
+
+    /**
+     * Récupère une commande que le client a effectué
+     * @params int $id. id de la commande
+     * @return array
+     */
+    public function getCommande(int $id)  : array {
+        return $this->customerDao->getCommande($id);
+    }
 }
 ?>
