@@ -347,7 +347,8 @@ nav {
     align-items: flex-start;
 
     width: 250px;
-    height: 350px;
+    height: auto;
+    max-height: 350px;
 
     transition-duration: 3s;
     background-color: #fff;
