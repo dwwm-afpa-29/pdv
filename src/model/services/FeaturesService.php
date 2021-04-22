@@ -41,7 +41,7 @@ class FeaturesService{
     public function create($_data){
         $newFeature = new Features();
         $newFeature->setWording($_data['newFeature'])
-                    ->setIdTypeFeatures($_data['idFeatureType']);
+                    ->setTypeFeatures($_data['idFeatureType']);
         return $newFeature;
     }
 

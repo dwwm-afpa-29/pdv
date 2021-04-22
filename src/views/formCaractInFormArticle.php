@@ -11,9 +11,9 @@ $('.recordCaract').click(function() {
     var newFeature = $('#valeur').val();
     var idFeatureType = <?php echo $featureType->getId(); ?>;
     $.ajax({
-        url: '../src/lib/ajax/addNewCaractFromFormArticle.php',
+        url: '../src/lib/ajax/ajaxRequest.php',
         type:'POST',
-        data : 'newFeature=' + newFeature + '&idFeatureType=' + idFeatureType,
+        data : 'controller=' + 'ArticlesController' + '&action=' + 'addNewFeatureInArticleForm' + '&newFeature=' + newFeature + '&idFeatureType=' + idFeatureType,
         dataType: 'html',
         success : function(code_html) {
             $('.afficher_' + idFeatureType).html(code_html);
