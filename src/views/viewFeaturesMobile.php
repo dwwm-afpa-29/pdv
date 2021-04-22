@@ -7,7 +7,8 @@
 
         <ul>
         <?php foreach ($features as $feature) {?>
-            <?php if ($feature->getIdTypeFeatures() == $featureType->getId()) {?>
+            <?php if ($feature->getTypeFeatures() == $featureType->getId()) {?>
+                
                 <li><a href="<?=A_LINK['afficher_produits']."/".$featureType->getId_type_products()."/".$featureType->getId()."/".$feature->getId()?>"><?= $feature->getWording() ?></a></li>
             <?php } ?>
         <?php } ?>
