@@ -18,7 +18,7 @@
 
       <div class="card-image">
         <img src="assets/image/photo_articles/<?= $unArticle->getPhoto() ?>" alt="photo produit">
-        <small><?= $unArticle->getPrice() ?>€</small>
+        <small><?= number_format($unArticle->getPrice(), 2) ?>€</small>
       </div>
 
       <div class="card-infos">
