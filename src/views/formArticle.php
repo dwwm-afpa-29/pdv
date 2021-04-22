@@ -1,29 +1,28 @@
 <?php
 // Affichage du formulaire avec tous les type de produit.
 if(isset($message)){echo $message;};
-if (!isset($featureTypes)) {
-    echo '<form action="' . FORM_LINK['loadFeatures'] . '" method="POST">';
-    echo '<label for="type">Type de produit</label>';
-    echo '<select name="type">';
-    foreach ($allProdType as $type) {
-        $selected = ($type->getId() == $idProdType)? "selected":"";
-       echo '<option value="'.$type->getId().';'.$type->getWording().'" '.$selected.'>'.$type->getWording().'</option>';
-    }
-    echo '</select>';
-    echo '<input type="submit" class="Button38" value="ok">';
-    echo '</form>'; 
+if (!isset($featureTypes)) { ?>
+    <form action="<?= FORM_LINK['loadFeatures'] ?>" method="POST">
+    <label for="type">Type de produit</label>
+    <select name="type">
+    <?php foreach ($allProdType as $type) {
+        $selected = ($type->getId() == $idProdType)? "selected":""; ?>
+       <option value="<?=$type->getId() ?>;<?= $type->getWording()?>" <?=$selected?>><?=$type->getWording()?></option>
+    <?php } ?>
+    </select>
+    <input type="submit" class="Button38" value="ok">
+    </form>
+<?php } else ?>
+<!-- Quand le type de produit est choisi, affichege de tout le formulaire avec les caractéristiques correspondants au type de produits -->
+        <form action="<?=FORM_LINK['addNewArticle']?>" method="POST" enctype="multipart/form-data">
 
-} else {
-// Quand le type de produit est choisi, affichege de tout le formulaire avec les caractéristiques correspondants au type de produits
-        echo '<form action="' . FORM_LINK['addNewArticle'] . '" method="POST" enctype="multipart/form-data">';
-
-        echo '<label for="type">Type de produit</label>';
-        echo '<select name="type">';
-        foreach ($allProdType as $type) {
+        <label for="type">Type de produit</label>
+        <select name="type">
+        <?php foreach ($allProdType as $type) {
             // Type de produit choisi = sélectionné; formulaire désactivé
             $selected = ($type->getId() == $idProdType)? "selected":"";
            echo '<option disabled="disabled" value="'.$type->getId().'" '.$selected.'>'.$type->getWording().'</option>';
-        }
+        
         echo '</select><br>';
             // input non affiché pour garder l'id du type de produit sélectionner dans les résultats du formulaire
         echo '<input name="type" type="hidden" value="'.$idProdType.'">';

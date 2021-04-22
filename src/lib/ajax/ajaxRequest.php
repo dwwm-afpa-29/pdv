@@ -15,7 +15,6 @@ foreach($_POST as $key => $uneData){
     }
 }
 
-print_r($data);
 $controller->$action($data);
 
 ?>
