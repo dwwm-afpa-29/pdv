@@ -13,6 +13,7 @@
             <th> Prix </th>
             <th> visibilité </th>
             <th> Stock </th>
+            <th> Editer </th>
             </tr>
             
         </thead>
@@ -27,7 +28,7 @@
             <?php $visi = ($article->getVisible()==0)?"non":"oui"; ?>
             <td> <?= $visi ?></td>
             <td><?=$article->getStock()?></td>
-            <td>modifier</td>
+            <td><a href="<?= A_LINK['modifier_article']."/".$article->getId()?>">modifier</a></td>
             </tr>
         <?php } ?>   
             </tbody>
