@@ -8,7 +8,8 @@
 
     <div class="card" data="<?=$unArticle->getId()?>">
 
-    <?php if($unArticle->getStock()<= 0){
+
+    <?php if($unArticle->getStock() <= 0){
         echo '<p class="dispo">Rupture de stock</p>';
       } ?>
 
@@ -18,7 +19,7 @@
 
       <div class="card-image">
         <img src="assets/image/photo_articles/<?= $unArticle->getPhoto() ?>" alt="photo produit">
-        <small><?= $unArticle->getPrice() ?>€</small>
+        <small><?= number_format($unArticle->getPrice(), 2) ?>€</small>
       </div>
 
       <div class="card-infos">
@@ -31,17 +32,16 @@
 
           <div class="ligne">
             <div class="cle">
-            <p><?= $unFeaturetype->getWording()?>: 
-            </p>
+              <p><?= $unFeaturetype->getWording()?>: </p>
             </div>
             <?php foreach($unArticle->getFeatures() as $feature){
               if($feature->getTypeFeatures() == $unFeaturetype->getId()){ ?>
                 <div class="valeur">
-                <p><strong><?= $feature->getWording(); ?></strong></p>
+                  <p><strong><?= $feature->getWording(); ?></strong></p>
                 </div> 
                 <?php
               }
-            } ?></p>
+            } ?>
           </div>
 
         <?php } ?>
@@ -51,7 +51,7 @@
        
 
 
-      <div class="incr-buttons" style ="<?=($unArticle->getStock()<= 0) ? 'visibility : hidden;' : ''; ?>" >
+      <div class="incr-buttons" style ="<?=($unArticle->getStock() <= 0) ? 'visibility : hidden;' : ''; ?>" >
         <div class="less-button" data="<?=$unArticle->getId()?>">-</div>
         <div class="quantity" data="<?=$unArticle->getId()?>">
         <p class = 'count-bouton' data="<?=$unArticle->getId()?>"></p>

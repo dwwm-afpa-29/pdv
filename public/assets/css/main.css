@@ -347,7 +347,8 @@ nav {
     align-items: flex-start;
 
     width: 250px;
-    height: 350px;
+    height: auto;
+    max-height: 350px;
 
     transition-duration: 3s;
     background-color: #fff;
@@ -1115,7 +1116,7 @@ footer {
 .homeAdmin {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(9, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     color: var(--raisin);
@@ -1492,6 +1493,14 @@ footer {
     .footer3 {
         display: none;
     }
+
+    .retour-accueil-admin { 
+        grid-area:  7 / 1 / 8 / 3;
+     }
+    .deco-home-admin { 
+        grid-area: 8 / 1 / 9 / 3;
+     }
+
                                         /* ----- RESPONSIVE LOGIN -----*/
     .login {
         display: grid;

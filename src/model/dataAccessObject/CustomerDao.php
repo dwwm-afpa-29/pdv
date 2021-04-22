@@ -166,13 +166,15 @@ class CustomerDao extends BaseDao {
 
     //--------------------------CREATION DE L'HISTORIQUE D'ACHAT
     /**
-     * Récupère toutes les dates à laquelle le client a effectué un achat
+     * Récupère toutes les dates à laquelle le client a effectué un achat avec le montant total
      * @return array
      */
     public function getAllDate()  : array {
-        $sql = "SELECT DISTINCT commande.date
+        $sql = "SELECT commande.id, commande.date, SUM(price) AS total
                 FROM commande
-                WHERE commande.id_customer = :id";
+                INNER JOIN article_vs_commande AS cmd ON cmd.id_commande = commande.id
+                WHERE commande.id_customer = :id
+                GROUP BY commande.date";
                 
                 try {
                     $query = $this->db->prepare($sql);
@@ -185,7 +187,30 @@ class CustomerDao extends BaseDao {
                     return [];
                 }
     }
-    
+
+    /**
+     * Récupère une commande que le client a effectué
+     * @params int $id. id de la commande
+     * @return array
+     */
+    public function getCommande(int $id)  : array {
+        $sql = "SELECT cmd.price AS total, cmd.quantity, articles.name, articles.price AS pu
+                FROM article_vs_commande AS cmd
+                INNER JOIN articles ON articles.id = cmd.id
+                WHERE cmd.id_commande = :id";
+                
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->bindValue(':id', $id, PDO::PARAM_INT);
+                    $query->execute();
+                    $detail = $query->fetchAll();
+
+                    return  $detail;
+                } catch(PDOException $ex) {
+                    return [];
+                }
+    }
+
 }
 
 ?>

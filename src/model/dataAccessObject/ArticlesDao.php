@@ -12,7 +12,7 @@ class ArticlesDao extends BaseDao{
     }
 
     public function findById($_idArticle){
-        $stmt = $this->db->prepare("SELECT * FROM articles WHERE id = ".$_idArticle);
+        $stmt = $this->db->prepare("SELECT id, name, degre, price, photo, id_type_products as prodType, stock, visible FROM articles WHERE id = ".$_idArticle);
         $res = $stmt->execute();
         if($res){
             return $stmt->fetchObject(Articles::class);

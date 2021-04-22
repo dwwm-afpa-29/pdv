@@ -36,6 +36,7 @@ const A_LINK = [
     'afficher_produits' => URL . 'Articles/viewProducts',
     'afficher_produits_mobile' => URL . 'Articles/viewProductsMobile',
     'afficher_features_mobile' => URL . 'Articles/viewFeaturesMobile',
+    'modifier_article' => URL . 'Articles/modificationArticle'
 ];
 
 // Lien de formaulaires

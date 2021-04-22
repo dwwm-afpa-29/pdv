@@ -107,5 +107,17 @@ class ArticlesService {
         return $articles;
     }
 
+    public function getArticleById($id){
+        $articleEntity = $this->articleDao->findById($id);
+            $featuresOfArticle = $this->featuresDao->findFeaturesIdByArticleId($id);
+            foreach($featuresOfArticle as $feature){
+                $featureToAdd = $this->featuresDao->findFeaturesByID($feature['id']);
+                $articleEntity->addFeatures($featureToAdd);
+            };
+            $prodTypeOfArticle = $this->prodTypeDao->findById($articleEntity->getProdType());
+            $articleEntity->setProdType($prodTypeOfArticle);
+            return $articleEntity;
+    }
+
 }
 ?>

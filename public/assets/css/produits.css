@@ -90,9 +90,9 @@
 .card-image>small {
   position: absolute;
   top: 55px;
-  right: 30px;
+  right: 20px;
   color: #fff;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 /* INFOS */
@@ -114,8 +114,9 @@
   width: 100%;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  flex-wrap: wrap;
   /* border: 1px solid green; */
 }
 
@@ -125,6 +126,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  /* border: 1px solid green; */
 }
 
 .valeur {
@@ -133,6 +135,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  /* border: 1px solid green; */
 }
 
 hr {

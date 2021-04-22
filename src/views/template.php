@@ -107,13 +107,9 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer1">
-            <a href="#">Vins</a>
-            <a href="#">Champagnes</a>
-            <a href="#">Bières</a>
-            <a href="#">Spiritueux</a>
-            <a href="#">Sans Alcool</a>
-            <a href="<?= A_LINK['afficher_produits'];?>">Épicerie</a>
-            <a href="<?= A_LINK['afficher_produits'];?>">Accessoires</a>
+        <?php foreach($allProdTypes as $prodType){?>
+            <a href="<?=A_LINK['afficher_produits']."/".$prodType->getId()?>"><?= $prodType->getWording() ?></a>
+        <?php } ?>
         </div>
         <div class="footer2">
             <p>©2021 - DWWM Afpa Brest</p>
