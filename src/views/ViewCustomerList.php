@@ -3,30 +3,32 @@
 
         <div class = "retour-listing"><a href = "<?=A_LINK ['admin_home']?>" class="Button38">Retour</a></div> 
 
-        <table class = "list_client">
-        <thead>
-            <tr>
-            <th> Nom </th>
-            <th> Prénom </th>
-            <th> Email </th>
-            <th> Téléphone </th>
-            <th> Editer </th>
-            </tr>
-            
-        </thead>
-        <tbody>
+        <div class = "table">
+            <table class = "list_client">
+            <thead>
+                <tr>
+                <th> Nom </th>
+                <th> Prénom </th>
+                <th> Email </th>
+                <th> Téléphone </th>
+                <th> Editer </th>
+                </tr>
                 
-        <?php foreach($customerList as $customerS): ?>
-            <tr class = "row">
-            <td><?=$customerS['last_name']?></td>
-            <td><?=$customerS['first_name']?></td>
-            <td><?=$customerS['mail']?></td>  
-            <td><?=$customerS['phone_number']?></td>
-            <?=($_SESSION['role']== 'admin' || $_SESSION['role']==  'employee') ? ' <td><a  href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Voir le client</a></td>' : ''; ?>
-            </tr>
-        <?php endforeach; ?>   
-            </tbody>
-        </table>
+            </thead>
+            <tbody>
+                    
+            <?php foreach($customerList as $customerS): ?>
+                <tr class = "row">
+                <td><?=$customerS['last_name']?></td>
+                <td><?=$customerS['first_name']?></td>
+                <td><?=$customerS['mail']?></td>  
+                <td><?=$customerS['phone_number']?></td>
+                <?=($_SESSION['role']== 'admin' || $_SESSION['role']==  'employee') ? ' <td><a  href = "'.A_LINK['customer_list'].'/'.$customerS['id'].'">Voir le client</a></td>' : ''; ?>
+                </tr>
+            <?php endforeach; ?>   
+                </tbody>
+            </table>
+        </div>
     </div>
 
     
