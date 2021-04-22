@@ -302,7 +302,7 @@ class CustomerController extends AccueilController {
                                     
                                     <div align="center">Bonjour <b>'.$email.'</b>,</div>
                                     Vous avez demandé la réinitialisation de votre mot de passe. </b>
-                                    Veuillez suivre ce lien <a href="http://localhost/pdv/public/index.php?p=Customer/linkRecoveryPasswordCustomer/'.$codeRecovery.'"> Réinitialiser mon mot de passe </a> </b>
+                                    Veuillez suivre ce lien <a href="https://pieddevigne.alwaysdata.net/public/index.php?p=Customer/linkRecoveryPasswordCustomer/'.$codeRecovery.'"> Réinitialiser mon mot de passe </a> </b>
                                     Ce lien est valable pendant une durée de 30 minutes.
                                     
                                   </td>

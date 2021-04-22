@@ -1225,6 +1225,8 @@ footer {
         padding-right: 10px;
 
     }
+
+
     .modif-customer-by-admin { 
         grid-area: 1 / 2 / 2 / 3;
         border-left: 2px solid var(--raisin);

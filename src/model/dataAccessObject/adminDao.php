@@ -70,8 +70,71 @@ class AdminDao extends BaseDao {
     }
     
 
-    public function orderTraitmentDAO($email, $items){
+    public function orderTraitmentDAO(){
 
-        $connex = $this->db->prepare();
+        $insertCommande = $this->db->prepare("INSERT INTO commande (id_customer) VALUES (:id_customer)");
+
+        $selectCommande = $this->db->prepare("SELECT id FROM `commande` WHERE id_customer = :id_customer ORDER BY date DESC LIMIT 1");
+
+        $insertArticleVSCommande = $this->db->prepare("INSERT INTO `article_vs_commande`(id, id_commande, quantity, price) VALUES(:id, :id_commande, :quantity, :price)");
+
+        $stockArticle = $this->db->prepare("SELECT stock FROM `articles` WHERE id = :id");
+
+        $updateArticle = $this->db->prepare("UPDATE `articles` SET stock = :stock WHERE id = :id");
+
+        try {
+            $this->db->beginTransaction();
+
+            $insertCommande->execute(
+                [
+                    ':id_customer'=>$_SESSION['id'],
+                ]
+                );
+            $_SESSION['test'] = 'hey';
+            
+            $selectCommande->execute(
+                [
+                    ':id_customer'=>$_SESSION['id'],  
+                ]);
+
+            $idCommmande = $selectCommande->fetch(\PDO::FETCH_ASSOC);
+
+
+            foreach($_SESSION['order']['items']['items'] as $key) {
+
+                $insertArticleVSCommande->execute(
+                    [
+                        ':id'=>$key['id'],
+                        ':id_commande'=>$idCommmande['id'],
+                        ':quantity'=>$key['quantity'],
+                        ':price'=>($key['price']*$key['quantity']),
+                    ]
+                );
+
+                $stockArticle->execute(
+                    [
+                        ':id'=>$key['id'],
+                    ]
+                );
+
+                $quantityStockArticle = $stockArticle->fetch(\PDO::FETCH_ASSOC);
+
+                $updateArticle->execute(
+                    [
+                        ':id'=>$key['id'],
+                        ':stock'=>($quantityStockArticle['stock']-$key['quantity']),
+                    ]
+                    );
+            }
+
+            
+            $this->db->commit();
+
+
+        }catch(PDOException $err) {
+            $this->db->rollback();
+            print "ERROR! : ".$err->getMessage()."</br>";
+        }
+        
     }
 }

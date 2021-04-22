@@ -3,10 +3,11 @@
 class ArticlesDao extends BaseDao{
 
     public function findAll() {
-        $stmt = $this->db->prepare("SELECT * FROM articles");
+        $stmt = $this->db->prepare("SELECT id, name, degre, price, photo, id_type_products as prodType, stock, visible FROM `articles`");
         $res = $stmt->execute();
         if($res){
-            print_r($stmt->fetch(PDO::FETCH_ASSOC));
+           $product = $stmt->fetchAll(\PDO::FETCH_CLASS, Articles::class);
+           return $product;
         }
     }
 
