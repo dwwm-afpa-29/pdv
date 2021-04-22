@@ -90,9 +90,9 @@
 .card-image>small {
   position: absolute;
   top: 55px;
-  right: 30px;
+  right: 20px;
   color: #fff;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 /* INFOS */
