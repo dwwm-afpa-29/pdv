@@ -12,7 +12,7 @@ if (!isset($featureTypes)) { ?>
     </select>
     <input type="submit" class="Button38" value="ok">
     </form>
-<?php } else ?>
+<?php } else {?>
 <!-- Quand le type de produit est choisi, affichege de tout le formulaire avec les caractéristiques correspondants au type de produits -->
         <form action="<?=FORM_LINK['addNewArticle']?>" method="POST" enctype="multipart/form-data">
 
@@ -22,7 +22,7 @@ if (!isset($featureTypes)) { ?>
             // Type de produit choisi = sélectionné; formulaire désactivé
             $selected = ($type->getId() == $idProdType)? "selected":"";
            echo '<option disabled="disabled" value="'.$type->getId().'" '.$selected.'>'.$type->getWording().'</option>';
-        
+        }
         echo '</select><br>';
             // input non affiché pour garder l'id du type de produit sélectionner dans les résultats du formulaire
         echo '<input name="type" type="hidden" value="'.$idProdType.'">';
