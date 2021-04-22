@@ -31,17 +31,16 @@
 
           <div class="ligne">
             <div class="cle">
-            <p><?= $unFeaturetype->getWording()?>: 
-            </p>
+              <p><?= $unFeaturetype->getWording()?>: </p>
             </div>
             <?php foreach($unArticle->getFeatures() as $feature){
               if($feature->getTypeFeatures() == $unFeaturetype->getId()){ ?>
                 <div class="valeur">
-                <p><strong><?= $feature->getWording(); ?></strong></p>
+                  <p><strong><?= $feature->getWording(); ?></strong></p>
                 </div> 
                 <?php
               }
-            } ?></p>
+            } ?>
           </div>
 
         <?php } ?>
