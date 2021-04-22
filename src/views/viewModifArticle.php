@@ -4,26 +4,26 @@
         <select name="type">
         <?php foreach ($allProdType as $type) {
             // Type de produit choisi = sélectionné; formulaire désactivé
-            $selected = ($type->getId() == $idProdType)? "selected":""; ?>
+            $selected = ($type->getId() == $articleToModify->getProdType()->getId())? "selected":""; ?>
            <option disabled="disabled" value="<?=$type->getId()?>" <?=$selected?>><?=$type->getWording()?></option>
         <?php } ?>
         </select><br>
             <!-- input non affiché pour garder l'id du type de produit sélectionner dans les résultats du formulaire -->
-        <input name="type" type="hidden" value="<?=$idProdType?>">
+        <input name="type" type="hidden" value="<?=$articleToModify->getProdType()->getId()?>">
     
         <label for="name">Nom de l\'article</label>
-        <input type="text" name="name"></br>
+        <input type="text" name="name" value="<?=$articleToModify->getName()?>"></br>
         <!-- conditionnel pour ne pas affiché le champs degré pour l'épicerie et les accessoires -->
-        <?php if ($wordingProdType != "épicerie" && $wordingProdType != "accessoires") { ?>
+        <?php if ($articleToModify->getProdType()->getWording() != "épicerie" && $articleToModify->getProdType()->getWording() != "accessoires") { ?>
             <label for="degre">degré</label>
-            <input type="number" step="0.1" name="degre" value = 0></br>
+            <input type="number" step="0.1" name="degre" value = <?=$articleToModify->getDegre()?>></br>
         <?php } else { ?>
             <input type="hidden" name="degre" value = 0>
         <?php }; ?>
         <label for="price">prix</label>
-        <input type="number" step="0.01" name="price"></br>
-        <label for="photo">photo</label>
-        <input type="file" name="photo"></br>
+        <input type="number" step="0.01" name="price" value = <?=$articleToModify->getPrice()?>></br>
+        <!-- <label for="photo">photo</label>
+        <input type="file" name="photo"></br> -->
         <!-- Affichage des menus déroulants de chaques caractéristiques correspondants au type de produit sélectionné -->
         <?php foreach ($featureTypes as $featureType){
             echo '<label for="'.$featureType->getWording().'">'.$featureType->getWording().'</label>';
@@ -33,7 +33,14 @@
             foreach ($featuresByProductType as $features_table){
                 foreach ($features_table as $feature) {
                     if ($feature->getTypeFeatures()==$featureType->getId()){
-                        echo '<option value="'.$feature->getId().'">'.$feature->getWording().'</option>';
+                        foreach($articleToModify->getFeatures() as $articleFeature){
+                            $selectedFeat = "";
+                            if($feature->getId() == $articleFeature->getId()){
+                                $selectedFeat = "selected";
+                                break;
+                            }
+                        }
+                        echo '<option value="'.$feature->getId().'" '.$selectedFeat.'>'.$feature->getWording().'</option>';
                     }
                 }
             } ?>

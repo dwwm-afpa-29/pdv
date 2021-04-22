@@ -28,7 +28,7 @@
             <?php $visi = ($article->getVisible()==0)?"non":"oui"; ?>
             <td> <?= $visi ?></td>
             <td><?=$article->getStock()?></td>
-            <td><a href="<?= A_LINK['modifier_article'];?>">modifier</a></td>
+            <td><a href="<?= A_LINK['modifier_article']."/".$article->getId()?>">modifier</a></td>
             </tr>
         <?php } ?>   
             </tbody>
