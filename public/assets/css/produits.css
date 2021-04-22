@@ -114,8 +114,9 @@
   width: 100%;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  flex-wrap: wrap;
   /* border: 1px solid green; */
 }
 
@@ -125,6 +126,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  /* border: 1px solid green; */
 }
 
 .valeur {
@@ -133,6 +135,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  /* border: 1px solid green; */
 }
 
 hr {
