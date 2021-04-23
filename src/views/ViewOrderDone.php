@@ -11,7 +11,6 @@
                 <th> Prénom </th>
                 <th> Nom </th>
                 <th> Date </th>
-                <th> Statut </th>
                 <th> Détail </th>
                 </tr>
                 
@@ -24,7 +23,6 @@
                 <td><?=$commande['first_name']?></td>
                 <td><?=$commande['last_name']?></td>  
                 <td><?=$commande['date']?></td>
-                <td><?=$commande['statut']?></td>
                 <td><a href = "<?= A_LINK['admin_commande_to_do'].'/'.$commande['id']?>">Voir</a>
                 </tr>
             <?php endforeach; ?>   
@@ -45,8 +43,8 @@
                 <p>Type de produit : <?=$key['wording']?></p>
                 <p>Référence produit : <?=$key['name']?></p>
                 <p>Quantité : <?=$key['quantity']?></p>
+                <p>Quantité : <?=$key['price']?></p>
             <?php endforeach?>
-            <a href = "<?=A_LINK['']?>" class = "Button38">Valider la préparation</a>
         </div>
     <?php endif?> 
 

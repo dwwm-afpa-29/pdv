@@ -1397,7 +1397,14 @@ footer {
         justify-content: center;
      }
                                                                                   
-    
+                                        /* ----- View ORDER -----*/
+.detail-commande{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    color : var(--raisin);
+    flex-direction: column;
+}
     
                                             
                                         /* ----- FORM ARTICLES ----- */

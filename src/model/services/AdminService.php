@@ -12,7 +12,7 @@ class adminService {
     public function customerList() {
 
         $customerList = $this->adminDao->customerList();
-        //print_r($customerList);
+        
         return $customerList;
     }
 
