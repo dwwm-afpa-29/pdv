@@ -114,7 +114,7 @@ class ArticlesDao extends BaseDao{
 
         // Mise à jour nouvelles données de l'article
         $stmtArticles = $this->db->prepare("UPDATE `articles` SET `name` = :nameProd, `degre` = :degre, `price` = :price, `id_type_products` = :id_type_products , `visible` = :visible , `stock` = :stock WHERE id = :id");
-                                            //  UPDATE `formations` SET `code` = :code, `titre` = :titre, `langage` = :langage WHERE `formations`.`id` = :id
+
         $stmtFeaturesVsArticles = $this->db->prepare("INSERT INTO `articles_vs_features` (`id`, `id_articles`) VALUES (:id, :id_articles)");
         try {
             // Début de la transation
@@ -152,7 +152,7 @@ class ArticlesDao extends BaseDao{
 
             // Commit: Si une des requêtes qui se trouve dans la transaction échou, le commit ne se fait pas.
             $this->db->commit();
-            $message = "<p style= 'color: green'>le nouvel article à été enregistré avec succès</p><br>";
+            $message = "<p style= 'color: green'>La modification a été enregistré avec succès</p><br>";
             return $message;
             
 
