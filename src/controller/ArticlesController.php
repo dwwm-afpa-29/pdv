@@ -63,7 +63,8 @@ class ArticlesController extends AccueilController{
      * @return void
      */
     public function addNewArticle(): void {
-        $newArticleEntity = $this->articlesService->create($_POST);
+        $id="";   // Ici c'est un nouvel article, donc l'id n'existe pas encore mais il faut créé la variable vide pou pouvoir utiliser la fonction create()
+        $newArticleEntity = $this->articlesService->create($_POST,$id);
         $message = $this->articlesService->recordNewArticle($newArticleEntity,$_FILES);
         $this->newArticle($message);
     }
@@ -134,7 +135,7 @@ class ArticlesController extends AccueilController{
         parent::index();
     }
     
-    public function stockManagement(){
+    public function stockManagement($message){
         ob_start();
         $allArticles = $this->articlesService->getAllArticles();
         require_once(BACK_ROOT . '/views/ViewStockManagement.php');
@@ -145,14 +146,21 @@ class ArticlesController extends AccueilController{
         ob_start();
         $allArticles = $this->articlesService->getAllArticles();
         require_once(BACK_ROOT . '/views/ViewStockManagement.php');
-
-        $articleToModify = $this->articlesService->getArticleById($_data[0]);
+        $idOfArticleToModify = $_data[0];
+        $articleToModify = $this->articlesService->getArticleById($idOfArticleToModify);
         
         $allProdType = $this->prodTypeService->getAllTypeProd();
         $featuresByProductType = $this->featuresService->getAllFeaturesByProdType($articleToModify->getProdType()->getId());
         $featureTypes = $this->featuresService->getFeaturesTypesByProdType($articleToModify->getProdType()->getId());
         require_once(BACK_ROOT  . '/views/viewModifArticle.php');
         parent::index();
+    }
+
+    public function updateArticle($id){
+        $idArticle = $id[0];
+        $entityArticleToUpdate = $this->articlesService->create($_POST,$idArticle);
+        $message = $this->articlesService->newUpdateArticle($entityArticleToUpdate);
+        $this->stockManagement($message);
     }
 
     public function viewFeaturesMobile($data) {

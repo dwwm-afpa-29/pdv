@@ -18,7 +18,7 @@ class ArticlesService {
  * @param Tableau associatif issu du POST du formulaire de nouvel article.
  * @return objet de la classe Article
  */
-    public function create($_data) {
+    public function create($_data,$id) {
 
         // Début de création avec les attribut de base de l'objet
             $newArticle = new Articles();
@@ -27,7 +27,8 @@ class ArticlesService {
                         ->setPrice($_data['price'])
                         ->setProdType($_data['type'])
                         ->setVisible($_data['visible'])
-                        ->setStock($_data['stock']);
+                        ->setStock($_data['stock'])
+                        ->setId($id);
 
         // Ajout de toutes les caractéristiques (features) à l'objet nouvellement créé.
         foreach ($_data as $key => $element){
@@ -54,6 +55,11 @@ class ArticlesService {
      */
     public function recordNewArticle($newArticleEntity){
         $message = $this->articleDao->recordArticle($newArticleEntity,$_FILES);
+        return $message;
+    }
+
+    public function newUpdateArticle($ArticleToUpdate){
+        $message = $this->articleDao->updateArticle($ArticleToUpdate);
         return $message;
     }
 

@@ -1,4 +1,4 @@
-<form action="<?=FORM_LINK['addNewArticle']?>" method="POST" enctype="multipart/form-data">
+<form action="<?=FORM_LINK['updateArticle']."/".$idOfArticleToModify?>" method="POST" enctype="multipart/form-data">
 
         <label for="type">Type de produit</label>
         <select name="type">
@@ -63,7 +63,7 @@
             <button class="buttonAddCaract" id="<?=$featureType->getId()?>" type="button">Ajouter une caractéristique</button><br>
             <div class= "afficher_<?=$featureType->getId()?>"></div>
         <?php } ?>
-        <input type="submit" class="Button38" value="Enregistrer">
+        <input type="submit" class="Button38" value="Enregistrer Modifications">
         </form>
 
 
