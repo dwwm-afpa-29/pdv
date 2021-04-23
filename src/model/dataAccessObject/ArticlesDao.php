@@ -26,7 +26,7 @@ class ArticlesDao extends BaseDao{
  */
     public function recordArticle($_articleEntity){
         // Préparation des requêtes sql (à faire avant de début la transaction)
-        $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products)");
+        $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products` , `visible` , `stock`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products, :visible, :stock)");
 
         $stmtPhoto = $this->db->prepare("UPDATE articles SET articles.photo = :pictureName WHERE articles.id = :id");
 
@@ -42,6 +42,8 @@ class ArticlesDao extends BaseDao{
                     ':price'=>$_articleEntity->getPrice(),
                     ':photo'=>$_articleEntity->getPhoto(),
                     ':id_type_products'=>$_articleEntity->getProdType(),
+                    ':visible'=>$_articleEntity->getVisible(),
+                    ':stock'=>$_articleEntity->getStock(),
                 ]);
             $idNewArticle = $this->db->lastInsertId();
             $features = $_articleEntity->getFeatures();
@@ -86,6 +88,71 @@ class ArticlesDao extends BaseDao{
             // Commit: Si une des requêtes qui se trouve dans la transaction échou, le commit ne se fait pas.
             $this->db->commit();
             $message = "<p style= 'color: green'>le nouvel article à été enregistré avec succès</p><br>";
+            return $message;
+            
+
+
+// En cas d'erreur sur l'une des requêtes effectuées dans le try, on lance les fonction suivantes
+        } catch(PDOException $err) {
+            // rollback: les insertions déjà effectuées sont annulées 
+            $this->db->rollback();
+            print "ERROR! : ".$err->getMessage()."</br>";
+        }
+        
+    }
+    /**
+     * Mettre à jour la base de donnée l'objet article créé par le formulaire de modification d'article:
+     * des caractéristique dans la table relationnelle articles_vs_features
+     * @return 
+     */
+
+    public function updateArticle($_articleEntity){
+        // Préparation des requêtes sql (à faire avant de début la transaction)
+
+        //suppression des lignes dans feature articles_vs_features
+        $stmtDeleteFeaturesVsArticles = $this->db->prepare("DELETE FROM `articles_vs_features` WHERE id_articles = :idArticle");
+
+        // Mise à jour nouvelles données de l'article
+        $stmtArticles = $this->db->prepare("UPDATE `articles` SET `name` = :nameProd, `degre` = :degre, `price` = :price, `id_type_products` = :id_type_products , `visible` = :visible , `stock` = :stock WHERE id = :id");
+
+        $stmtFeaturesVsArticles = $this->db->prepare("INSERT INTO `articles_vs_features` (`id`, `id_articles`) VALUES (:id, :id_articles)");
+        try {
+            // Début de la transation
+            $this->db->beginTransaction();
+
+            $stmtDeleteFeaturesVsArticles->execute(
+                [
+                    ':idArticle'=>$_articleEntity->getId()
+                ]
+                );
+
+            $stmtArticles->execute(
+                [
+                    ':id'=>$_articleEntity->getId(),
+                    ':nameProd'=>$_articleEntity->getName(),
+                    ':degre'=>$_articleEntity->getDegre(),
+                    ':price'=>$_articleEntity->getPrice(),
+                    ':id_type_products'=>$_articleEntity->getProdType(),
+                    ':visible'=>$_articleEntity->getVisible(),
+                    ':stock'=>$_articleEntity->getStock(),
+                ]);
+            $features = $_articleEntity->getFeatures();
+            // Si l'articles à des caractéristiques, elles seront envoyée une par une dans la table articles_vs_features
+            if ($features){
+                foreach($_articleEntity->getFeatures() as $feature){
+                    
+                    $stmtFeaturesVsArticles->execute(
+                        [
+                            ':id'=>$feature->getId(),
+                            ':id_articles'=>$_articleEntity->getId(),
+                        ]);
+                }
+            }
+
+
+            // Commit: Si une des requêtes qui se trouve dans la transaction échou, le commit ne se fait pas.
+            $this->db->commit();
+            $message = "<p style= 'color: green'>La modification a été enregistré avec succès</p><br>";
             return $message;
             
 

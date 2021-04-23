@@ -34,3 +34,5 @@
             </tbody>
         </table>
     </div>
+
+    <?php if(isset($message)){echo $message;}; ?>
