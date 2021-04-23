@@ -170,11 +170,10 @@ class CustomerDao extends BaseDao {
      * @return array
      */
     public function getAllDate()  : array {
-        $sql = "SELECT commande.id, commande.date, SUM(price) AS total
+        $sql = "SELECT commande.id, commande.date, commande.statut, SUM(price) AS total
                 FROM commande
                 INNER JOIN article_vs_commande AS cmd ON cmd.id_commande = commande.id
-                WHERE commande.id_customer = :id
-                GROUP BY commande.date";
+                WHERE commande.id_customer = :id";
                 
                 try {
                     $query = $this->db->prepare($sql);
