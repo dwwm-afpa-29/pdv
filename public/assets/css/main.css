@@ -1110,7 +1110,23 @@ footer {
         justify-content: center;
         align-items: center;
      }
-     
+
+                                             /* ----- FORM ADMIN HOME ----- */
+    .form-article{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 25px;
+        grid-row-gap: 0px;
+        color: #35495e;
+    }
+    
+    .form-article-info-principal{
+        grid-column: 1/1;
+    }
+
+    .form-article-features{
+        grid-column: 2/2;
+    }
                                             
                                         /* ----- FORM ADMIN HOME ----- */
 .homeAdmin {

@@ -14,8 +14,8 @@ if (!isset($featureTypes)) { ?>
     </form>
 <?php } else {?>
 <!-- Quand le type de produit est choisi, affichege de tout le formulaire avec les caractéristiques correspondants au type de produits -->
-        <form action="<?=FORM_LINK['addNewArticle']?>" method="POST" enctype="multipart/form-data">
-
+<form action="<?=FORM_LINK['addNewArticle']?>" method="POST" enctype="multipart/form-data" class = "form-article">
+<div class="Article-info-principal">
         <label for="type">Type de produit</label>
         <select name="type">
         <?php foreach ($allProdType as $type) {
@@ -50,7 +50,9 @@ if (!isset($featureTypes)) { ?>
         <input type="number" step="0.01" name="price"></br>
         <label for="photo">photo</label>
         <input type="file" name="photo"></br>
+</div>
         <!-- Affichage des menus déroulants de chaques caractéristiques correspondants au type de produit sélectionné -->
+        <div class="form-article-features">
         <?php foreach ($featureTypes as $featureType){
             echo '<label for="'.$featureType->getWording().'">'.$featureType->getWording().'</label>';
             $multiple = ($featureType->getWording()== 'Cépages')?"multiple":"";
@@ -67,8 +69,9 @@ if (!isset($featureTypes)) { ?>
             <button class="buttonAddCaract" id="<?=$featureType->getId()?>" type="button">Ajouter une caractéristique</button><br>
             <div class= "afficher_<?=$featureType->getId()?>"></div>
         <?php } ?>
+        </div>
         <input type="submit" class="Button38" value="Enregistrer">
-        </form>
+</form>
 <?php } ?>
 
 <script>
