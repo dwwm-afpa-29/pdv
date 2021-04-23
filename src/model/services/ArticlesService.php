@@ -25,11 +25,13 @@ class ArticlesService {
             $newArticle->setName($_data['name'])
                         ->setDegre($_data['degre'])
                         ->setPrice($_data['price'])
-                        ->setProdType($_data['type']);
+                        ->setProdType($_data['type'])
+                        ->setVisible($_data['visible'])
+                        ->setStock($_data['stock']);
 
         // Ajout de toutes les caractéristiques (features) à l'objet nouvellement créé.
         foreach ($_data as $key => $element){
-            if($key != 'name' && $key != 'price' && $key != 'photo' && $key != 'type' && $key != 'degre') {
+            if($key != 'name' && $key != 'price' && $key != 'photo' && $key != 'type' && $key != 'degre' && $key != 'visible' && $key != 'stock') {
                 if ($key == 'Cépages') {
                     foreach ($element as $arrayElmt){
                         $newArticleFeature = $this->featuresDao->findFeaturesByID($arrayElmt);

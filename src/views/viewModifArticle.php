@@ -1,4 +1,4 @@
-<form action="<?=FORM_LINK['addNewArticle']?>" method="POST" enctype="multipart/form-data" class = "modif-profile">
+<form action="<?=FORM_LINK['addNewArticle']?>" method="POST" enctype="multipart/form-data">
 
         <label for="type">Type de produit</label>
         <select name="type">
@@ -11,8 +11,23 @@
             <!-- input non affiché pour garder l'id du type de produit sélectionner dans les résultats du formulaire -->
         <input name="type" type="hidden" value="<?=$articleToModify->getProdType()->getId()?>">
     
-        <label for="name">Nom de l\'article</label>
+        <label for="name">Nom de l'article</label>
         <input type="text" name="name" value="<?=$articleToModify->getName()?>"></br>
+
+        <label for="visible">Visibilité de l'article</label>
+        <select name="visible">
+            <?php if($articleToModify->getVisible()== 1){ ?>
+            <option value="1" selected>oui</option>
+            <option value="2">non</option>
+            <?php } else { ?>
+            <option value="1">oui</option>
+            <option value="2" selected>non</option>
+            <?php } ?>
+        </select>
+
+        <label for="stock">Stock</label>
+        <input type="number" name="stock" value = <?=$articleToModify->getStock()?>></br>
+
         <!-- conditionnel pour ne pas affiché le champs degré pour l'épicerie et les accessoires -->
         <?php if ($articleToModify->getProdType()->getWording() != "épicerie" && $articleToModify->getProdType()->getWording() != "accessoires") { ?>
             <label for="degre">degré</label>

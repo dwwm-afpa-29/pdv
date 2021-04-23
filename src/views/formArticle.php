@@ -27,8 +27,18 @@ if (!isset($featureTypes)) { ?>
             <!-- input non affiché pour garder l'id du type de produit sélectionner dans les résultats du formulaire -->
         <input name="type" type="hidden" value="<?=$idProdType?>">
     
-        <label for="name">Nom de l\'article</label>
+        <label for="name">Nom de l'article</label>
         <input type="text" name="name"></br>
+
+        <label for="visible">Visibilité de l'article</label>
+        <select name="visible">
+            <option value="1" selected>oui</option>
+            <option value="2">non</option>
+        </select>
+
+        <label for="stock">Stock</label>
+        <input type="number" name="stock" value = 0></br>
+
         <!-- conditionnel pour ne pas affiché le champs degré pour l'épicerie et les accessoires -->
         <?php if ($wordingProdType != "épicerie" && $wordingProdType != "accessoires") { ?>
             <label for="degre">degré</label>

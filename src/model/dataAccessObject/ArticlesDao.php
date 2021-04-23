@@ -26,7 +26,7 @@ class ArticlesDao extends BaseDao{
  */
     public function recordArticle($_articleEntity){
         // Préparation des requêtes sql (à faire avant de début la transaction)
-        $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products)");
+        $stmtArticles = $this->db->prepare("INSERT INTO `articles` (`id`,`name`, `degre` , `price`, `photo`, `id_type_products` , `visible` , `stock`) VALUES (NULL, :nameProd, :degre , :price , :photo, :id_type_products, :visible, :stock)");
 
         $stmtPhoto = $this->db->prepare("UPDATE articles SET articles.photo = :pictureName WHERE articles.id = :id");
 
@@ -42,6 +42,8 @@ class ArticlesDao extends BaseDao{
                     ':price'=>$_articleEntity->getPrice(),
                     ':photo'=>$_articleEntity->getPhoto(),
                     ':id_type_products'=>$_articleEntity->getProdType(),
+                    ':visible'=>$_articleEntity->getVisible(),
+                    ':stock'=>$_articleEntity->getStock(),
                 ]);
             $idNewArticle = $this->db->lastInsertId();
             $features = $_articleEntity->getFeatures();
