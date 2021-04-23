@@ -139,7 +139,7 @@ class AdminDao extends BaseDao {
 
     public function orderInPrepareDAO() {
 
-        $connex = $this->db->prepare("SELECT commande.id, first_name, last_name, date FROM `customer`,`commande` WHERE id_customer = customer.id AND statut = 'Validée' ORDER BY date");
+        $connex = $this->db->prepare("SELECT commande.id, first_name, last_name, date, commande.statut FROM `customer`,`commande` WHERE id_customer = customer.id AND statut <> 'Disponible' ORDER BY date");
          
         try{
 
@@ -153,5 +153,24 @@ class AdminDao extends BaseDao {
         }catch(PDOException $ex){
             return[];
         }
+    }
+
+    public function orderInPrepareDetailDAO($id){
+
+        $connex = $this->db->prepare("SELECT first_name, last_name, commande.id, commande.date, commande.statut, article_vs_commande.quantity, article_vs_commande.price, articles.name, type_products.wording
+                                        FROM customer, commande, article_vs_commande, articles, type_products
+                                        WHERE customer.id = commande.id_customer
+                                        AND commande.id = article_vs_commande.id_commande
+                                        AND article_vs_commande.id = articles.id
+                                        AND articles.id_type_products = type_products.id
+                                        AND commande.id = :id 
+                                        AND commande.statut <> 'Disponible'");
+
+        $connex->execute([
+            ':id' => $id,
+        ]);
+
+        return $connex->fetchAll(\PDO::FETCH_ASSOC);
+           
     }
 }

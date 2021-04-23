@@ -29,6 +29,7 @@ class AdminController extends AccueilController{
 
     public function adminCommandeDone() {
         ob_start();
+        $this->
         require_once(BACK_ROOT . '/views/ViewAdminCommandeDone.php');
         parent::index();
     }
@@ -105,9 +106,24 @@ class AdminController extends AccueilController{
     
     public function getAllOrderToDo(){
 
+        return $this->adminDao->orderInPrepareDAO();
+
+    }
+
+    public function getOneOrderToDo($params) {
+
+        if(isset($params['0'])){
+            $id = $params['0'];
+            return $this->adminDao->orderInPrepareDetailDAO($id);
+        }
+        
+    }
+
+    public function getOrderToDo($params) {
         ob_start();
 
-        $commandeList = $this->adminDao->orderInPrepareDAO();
+        $commandeList = $this->getAllOrderToDo();
+        $idCommande = $this->getOneOrderToDo($params);
 
         require_once(BACK_ROOT.'/views/ViewOrder.php');
         parent::index();
