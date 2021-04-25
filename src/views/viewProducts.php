@@ -9,9 +9,7 @@
     <div class="card" data="<?=$unArticle->getId()?>">
 
 
-    <?php if($unArticle->getStock() <= 0){
-        echo '<p class="dispo">Rupture de stock</p>';
-      } ?>
+    
 
       <div class="card-nom">
           <h3><?= $unArticle->getName() ?> <small>0.75L - <?= $unArticle->getDegre() ?>°</small></h3>
@@ -51,6 +49,9 @@
        
 
 
+      <?php if($unArticle->getStock() <= 0){
+        echo '<p class="dispo">Rupture de stock</p>';
+      } ?>
       <div class="incr-buttons" style ="<?=($unArticle->getStock() <= 0) ? 'visibility : hidden;' : ''; ?>" >
         <div class="less-button" data="<?=$unArticle->getId()?>">-</div>
         <div class="quantity" data="<?=$unArticle->getId()?>">
