@@ -130,12 +130,6 @@
     <script>
         document.addEventListener('snipcart.ready', () => {
 
-            Snipcart.events.on('cart.created', (cartState)=> {
-                console.log(cartState);
-                let cart = cartState;
-                console.log(cart);
-            });
-
             Snipcart.events.on('cart.confirmed', (cartConfirmResponse) =>{
                 console.log(cartConfirmResponse);
                 let data = cartConfirmResponse;
