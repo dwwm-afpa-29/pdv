@@ -39,18 +39,6 @@
   color: #000;
 }
 
-.dispo {
-  grid-column: 3 / 5;
-  grid-row: 2 / 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  font-weight: 900;
-  text-align: center;
-  color: red;
-}
-
 /* NOM */
 
 .card-nom {
@@ -145,6 +133,18 @@ hr {
 }
 
 /* QUANTITE */
+
+.dispo {
+  grid-column: 4 / 7;
+  grid-row: 4 / 5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  color: red;
+}
 
 .incr-buttons  {
   grid-column: 4 / 7;
@@ -250,6 +250,13 @@ hr {
         grid-row: 4 / 5;
 
         padding-top: 10px;
+    }
+
+    .dispo {
+        grid-column: 1 / 7;
+        grid-row: 5 / 6;
+        justify-content: center;
+        align-items: center;
     }
 
     .incr-buttons  {
